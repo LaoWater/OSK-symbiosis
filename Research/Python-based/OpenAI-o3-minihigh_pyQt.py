@@ -3,7 +3,10 @@
 # (failed AI agentic system realization of the purpose of the program - to type KEYS in current window.)
 # Second Iteration: Prompting specifically to ponder & integrate the main functionality and real world use.
 # Better but not sending keys
-# Third Iteration:
+# Third Iteration: Working!!!
+# Very simple UI, yet it's very pleasant for the eyes in it's simplicity and color pallete and most importantly, it's working!
+# Final Rating: 8/10.
+
 
 import sys
 import keyboard  # pip install keyboard

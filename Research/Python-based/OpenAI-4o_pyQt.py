@@ -3,7 +3,7 @@
 # (failed AI agentic system realization of the purpose of the program - to type KEYS in current window.)
 # Second Iteration: Prompting specifically to ponder & integrate the main functionality and real world use.
 # Better but not sending keys
-# Third Iteration:
+# Third Iteration: Focus is not lost, but key not sent. UI still highly rudimentary.
 
 import sys
 import win32gui
