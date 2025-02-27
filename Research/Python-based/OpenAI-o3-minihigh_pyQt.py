@@ -2,7 +2,8 @@
 # GUI feeling nice
 # (failed AI agentic system realization of the purpose of the program - to type KEYS in current window.)
 # Second Iteration: Prompting specifically to ponder & integrate the main functionality and real world use.
-#
+# Better but not sending keys
+# Third Iteration:
 
 import sys
 import keyboard  # pip install keyboard
@@ -14,22 +15,20 @@ class KeyButton(QPushButton):
         super().__init__(label, parent)
         self.key_label = label
         self.setFixedSize(QSize(60, 60))
-        # Prevent focus so that the active app retains focus.
+        # Prevent button from accepting focus
         self.setFocusPolicy(Qt.NoFocus)
 
     def mousePressEvent(self, event):
-        # Determine the key to send.
+        # Determine which key to send
         if self.key_label.lower() == "space":
             key_to_send = " "
         else:
             key_to_send = self.key_label.lower() if len(self.key_label) == 1 else self.key_label
-
         try:
-            # Simulate a key press.
+            # Send the key press to the system
             keyboard.press_and_release(key_to_send)
         except Exception as e:
             print(f"Error sending key {self.key_label}: {e}")
-
         event.accept()
 
 class KeyboardWidget(QWidget):
@@ -41,27 +40,27 @@ class KeyboardWidget(QWidget):
         grid = QGridLayout(self)
         grid.setSpacing(10)
 
-        # Basic QWERTY layout.
+        # Define a basic QWERTY layout.
         row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P']
         row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L']
         row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M']
 
-        # Add first row.
+        # First row: Q-P
         for i, key in enumerate(row1):
             btn = KeyButton(key)
             grid.addWidget(btn, 0, i)
 
-        # Second row offset by one.
+        # Second row: A-L (offset by one column)
         for i, key in enumerate(row2):
             btn = KeyButton(key)
             grid.addWidget(btn, 1, i + 1)
 
-        # Third row offset by two.
+        # Third row: Z-M (offset by two columns)
         for i, key in enumerate(row3):
             btn = KeyButton(key)
             grid.addWidget(btn, 2, i + 2)
 
-        # Space key spanning multiple columns.
+        # Fourth row: a large Space key spanning multiple columns.
         space_btn = KeyButton("Space")
         space_btn.setFixedSize(QSize(400, 60))
         grid.addWidget(space_btn, 3, 1, 1, 8)
@@ -74,8 +73,9 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        # Always on top and non-intrusive.
+        # Ensure the OSK stays on top but does not activate on click.
         self.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.Tool)
+        # This attribute helps, but the Win32 trick below is critical on Windows.
         self.setAttribute(Qt.WA_ShowWithoutActivating, True)
         self.setFocusPolicy(Qt.NoFocus)
 
@@ -83,7 +83,7 @@ class MainWindow(QMainWindow):
         keyboard_widget.setFocusPolicy(Qt.NoFocus)
         self.setCentralWidget(keyboard_widget)
 
-        # Dark theme with neon blue accents.
+        # Apply dark theme with neon blue accents.
         self.setStyleSheet("""
             QMainWindow {
                 background-color: #121212;
@@ -111,8 +111,20 @@ class MainWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    # Removed: app.setAttribute(Qt.AA_ShowWithoutActivating)
     window = MainWindow()
     window.show()
-    sys.exit(app.exec())
 
+    # --- Windows-specific fix: Prevent OSK window from stealing focus ---
+    try:
+        import ctypes
+        from ctypes import wintypes
+        GWL_EXSTYLE = -20
+        WS_EX_NOACTIVATE = 0x08000000  # Prevent window activation on click
+        hwnd = int(window.winId())
+        exStyle = ctypes.windll.user32.GetWindowLongW(hwnd, GWL_EXSTYLE)
+        ctypes.windll.user32.SetWindowLongW(hwnd, GWL_EXSTYLE, exStyle | WS_EX_NOACTIVATE)
+    except Exception as e:
+        print("Failed to set WS_EX_NOACTIVATE:", e)
+    # ----------------------------------------------------------------------
+
+    sys.exit(app.exec())

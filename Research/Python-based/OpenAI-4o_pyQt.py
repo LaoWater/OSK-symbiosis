@@ -1,21 +1,21 @@
 # Model Rating: 3/10 - not working
 # GUI feeling OK
 # (failed AI agentic system realization of the purpose of the program - to type KEYS in current window.)
-#
-
+# Second Iteration: Prompting specifically to ponder & integrate the main functionality and real world use.
+# Better but not sending keys
+# Third Iteration:
 
 import sys
 import win32gui
 import win32con
 import ctypes
 from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QGridLayout
-from PyQt6.QtGui import QFont, QPalette, QColor
-from PyQt6.QtCore import Qt, QSize
+from PyQt6.QtGui import QFont
+from PyQt6.QtCore import Qt, QSize, QTimer
 
-# Win32 API key press simulation
+# Win32 API for sending key presses
 SendInput = ctypes.windll.user32.SendInput
 
-# Windows Key Event Structures
 PUL = ctypes.POINTER(ctypes.c_ulong)
 
 
@@ -69,12 +69,18 @@ class OnScreenKeyboard(QWidget):
     def __init__(self):
         super().__init__()
 
+        self.last_active_window = None
         self.setWindowTitle("Neon On-Screen Keyboard")
         self.setFixedSize(600, 300)
 
-        # Keep the window on top
-        self.setWindowFlags(Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.FramelessWindowHint)
+        # Keep the window on top and prevent focus stealing
+        self.setWindowFlags(Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.Tool | Qt.WindowType.FramelessWindowHint)
         self.setStyleSheet("background-color: #121212;")  # Dark theme
+
+        # Timer to continuously track last active window
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_last_active_window)
+        self.timer.start(500)  # Check every 500ms
 
         self.init_ui()
 
@@ -117,9 +123,18 @@ class OnScreenKeyboard(QWidget):
             }
         """
 
+    def update_last_active_window(self):
+        """ Continuously store the last active window before interacting with OSK. """
+        active_window = win32gui.GetForegroundWindow()
+
+        # If OSK is not the active window, store it
+        if active_window and active_window != int(self.winId()):
+            self.last_active_window = active_window
+
     def send_keypress(self, vk_code):
-        """ Send a simulated key press to the currently active window. """
-        active_window = win32gui.GetForegroundWindow()  # Get active window
+        """ Send a simulated key press to the last active window. """
+        if self.last_active_window:
+            win32gui.SetForegroundWindow(self.last_active_window)  # Keep last active window in focus
         press_key(vk_code)
 
     def release_keypress(self, vk_code):
@@ -132,3 +147,4 @@ if __name__ == "__main__":
     keyboard = OnScreenKeyboard()
     keyboard.show()
     sys.exit(app.exec())
+
