@@ -1,7 +1,8 @@
 import sys
 import pyautogui
-from PyQt6.QtCore import Qt, QSize, QPropertyAnimation, QEasingCurve
-from PyQt6.QtGui import QColor, QPalette
+from PyQt6.QtCore import (Qt, QSize, QPropertyAnimation, QEasingCurve,
+                          pyqtProperty, QTimer)
+from PyQt6.QtGui import QColor, QPalette, QEnterEvent
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton,
                              QGridLayout, QWidget, QSizePolicy)
 
@@ -12,11 +13,12 @@ class KeyButton(QPushButton):
         super().__init__(normal_char)
         self.normal_char = normal_char
         self.shifted_char = shifted_char or self._get_shifted_char(normal_char)
-        self.setFocusPolicy(Qt.NoFocus)
-        self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.setFocusPolicy(Qt.FocusPolicy.NoFocus)
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.setMinimumSize(QSize(40, 40))
 
-        # Hover animation
+        # Animation setup
+        self._color = QColor(127, 127, 127)
         self.animation = QPropertyAnimation(self, b"color")
         self.animation.setDuration(200)
         self.default_color = QColor(127, 127, 127)
@@ -31,6 +33,15 @@ class KeyButton(QPushButton):
             ';': ':', "'": '"', ',': '<', '.': '>', '/': '?'
         }
         return char.upper() if char.isalpha() else symbol_map.get(char, char)
+
+    def get_color(self):
+        return self._color
+
+    def set_color(self, value):
+        self._color = value
+        self._update_stylesheet(value)
+
+    color = pyqtProperty(QColor, get_color, set_color)
 
     def enterEvent(self, event):
         self.animation.stop()
@@ -79,16 +90,16 @@ class KeyboardWindow(QMainWindow):
 
         # Window configuration to stay on top and prevent focus
         self.setWindowFlags(
-            Qt.WindowStaysOnTopHint |
-            Qt.FramelessWindowHint |
-            Qt.Tool |
-            Qt.WindowDoesNotAcceptFocus
+            Qt.WindowType.WindowStaysOnTopHint |
+            Qt.WindowType.FramelessWindowHint |
+            Qt.WindowType.Tool |
+            Qt.WindowType.WindowDoesNotAcceptFocus
         )
-        self.setAttribute(Qt.WA_ShowWithoutActivating, True)
+        self.setAttribute(Qt.WidgetAttribute.WA_ShowWithoutActivating, True)
 
         # Dark theme palette
         palette = QPalette()
-        palette.setColor(QPalette.Window, QColor(43, 43, 43))
+        palette.setColor(QPalette.ColorRole.Window, QColor(43, 43, 43))
         self.setPalette(palette)
 
         central_widget = QWidget()
@@ -137,7 +148,7 @@ class KeyboardWindow(QMainWindow):
     def create_shift_button(self):
         btn = QPushButton('⇧')
         btn.setCheckable(True)
-        btn.setFocusPolicy(Qt.NoFocus)
+        btn.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         btn.setStyleSheet("""
             QPushButton {
                 background-color: #004466;
@@ -161,7 +172,7 @@ class KeyboardWindow(QMainWindow):
 
     def create_special_button(self, text, key, width=None):
         btn = QPushButton(text)
-        btn.setFocusPolicy(Qt.NoFocus)
+        btn.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         if width:
             btn.setFixedWidth(width)
         btn.setStyleSheet("""
@@ -186,7 +197,6 @@ class KeyboardWindow(QMainWindow):
             char = button.get_char(self.shift_active or self.caps_lock)
             pyautogui.write(char)
 
-            # Handle shift behavior
             if self.shift_active and not self.caps_lock:
                 self.shift_active = False
                 self.update_shift_state()
@@ -198,7 +208,6 @@ class KeyboardWindow(QMainWindow):
         self.update_shift_state()
 
     def update_shift_state(self):
-        # Update shift buttons and key labels
         shift_btns = self.findChildren(QPushButton, '⇧')
         for btn in shift_btns:
             btn.setChecked(self.shift_active)
@@ -211,4 +220,4 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = KeyboardWindow()
     window.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
