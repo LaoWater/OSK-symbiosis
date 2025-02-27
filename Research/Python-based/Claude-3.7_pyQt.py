@@ -5,10 +5,12 @@
 # Better but not sending keys
 # Third Iteration: Generated Code doubled to 500 lines from the prompt engineered. Model starts to begin to grasp the problem's environment.
 # UI greatly improved and beautifully feeling  - but fails to perform the main task of sending Keys to last active window - even tho window remains focused.
-# Beautiful, beautiful UI, allowing drag from many points
+# Beautiful, beautiful UI, allowing drag from many points, so pleasant for the eyes to experience - but still fails main purpose of sending keys
+# Fourth Iteration: Merged Working code from o3high for functionality and Claude code for UX.
+# Claude3.7 beautifully merged them and got them to work. Very impressed by this Model's imagination yet it lacked the logic functionality & comprehension showcased by o3 high.
 
 import sys
-import keyboard
+import keyboard  # pip install keyboard
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QPushButton,
                              QVBoxLayout, QHBoxLayout, QGridLayout, QLabel, QFrame)
 from PyQt6.QtCore import Qt, QPropertyAnimation, QEasingCurve, QSize, QTimer, QPoint
@@ -141,8 +143,18 @@ class NeonKeyButton(QPushButton):
             self.setStyleSheet(self.pressed_style)
             self.is_pressed = True
 
-            # Notify parent to handle key press
-            self.parent().parent().parent().parent().handle_key_press(self.key_value)
+            # Directly handle key press using keyboard library - from the first script's approach
+            try:
+                if self.key_value.lower() == "space":
+                    key_to_send = " "
+                else:
+                    key_to_send = self.key_value.lower() if len(self.key_value) == 1 else self.key_value
+                keyboard.press(key_to_send)
+            except Exception as e:
+                print(f"Error sending key {self.key_value}: {e}")
+
+            # Also notify parent to update UI
+            self.parent().parent().parent().parent().update_status(self.key_value)
 
             # Don't call super() to prevent focus change
             event.accept()
@@ -157,8 +169,18 @@ class NeonKeyButton(QPushButton):
             else:
                 self.setStyleSheet(self.default_style)
 
-            # Notify parent to handle key release
-            self.parent().parent().parent().parent().handle_key_release(self.key_value)
+            # Release key using keyboard library
+            try:
+                if self.key_value.lower() == "space":
+                    key_to_send = " "
+                else:
+                    key_to_send = self.key_value.lower() if len(self.key_value) == 1 else self.key_value
+                keyboard.release(key_to_send)
+            except Exception as e:
+                print(f"Error releasing key {self.key_value}: {e}")
+
+            # Notify parent to restore focus to target window
+            self.parent().parent().parent().parent().restore_target_window_focus()
             self.is_pressed = False
 
             # Don't call super() to prevent focus change
@@ -234,6 +256,28 @@ class VirtualKeyboard(QMainWindow):
         # Variables for window dragging
         self.dragging = False
         self.offset = QPoint()
+
+        # Apply Windows-specific fix to prevent stealing focus
+        self.apply_windows_no_activate()
+
+    def apply_windows_no_activate(self):
+        """Apply Windows-specific fix to prevent the window from stealing focus"""
+        try:
+            if sys.platform == 'win32':
+                # Constants
+                GWL_EXSTYLE = -20
+                WS_EX_NOACTIVATE = 0x08000000  # Prevent window activation on click
+
+                # Get window handle
+                hwnd = int(self.winId())
+
+                # Get current extended window style
+                exStyle = win32gui.GetWindowLong(hwnd, GWL_EXSTYLE)
+
+                # Set the WS_EX_NOACTIVATE flag
+                win32gui.SetWindowLong(hwnd, GWL_EXSTYLE, exStyle | WS_EX_NOACTIVATE)
+        except Exception as e:
+            print(f"Failed to set WS_EX_NOACTIVATE: {e}")
 
     def setup_font(self):
         # Try to load a custom font, or fall back to system font
@@ -499,7 +543,7 @@ class VirtualKeyboard(QMainWindow):
         bottom_layout.addStretch()
 
         # Add version info
-        version_info = QLabel("v1.2.0")
+        version_info = QLabel("v1.0.0")
         version_info.setStyleSheet("color: #0077cc; font-size: 12px;")
         bottom_layout.addWidget(version_info)
 
@@ -511,13 +555,15 @@ class VirtualKeyboard(QMainWindow):
         QTimer.singleShot(1000,
                           lambda: self.status_label.setText("Click keys to type (focus maintained on target window)"))
 
+        # Ensure focus is maintained on target window
+        self.restore_target_window_focus()
+
     def get_active_window(self):
         """Get the currently active window (platform specific)"""
         if sys.platform == 'win32':
             return win32gui.GetForegroundWindow()
         else:
             # For non-Windows platforms, return None for now
-            # Would need to implement X11/Wayland or macOS specific code here
             return None
 
     def store_target_window(self):
@@ -534,24 +580,6 @@ class VirtualKeyboard(QMainWindow):
                 self.target_window_label.setText("Target: Unknown Window")
         else:
             self.target_window_label.setText("Target: None")
-
-    def handle_key_press(self, key):
-        """Handle key press without stealing focus"""
-        self.update_status(key)
-
-        # If we have a target window, restore focus to it before sending the key
-        self.restore_target_window_focus()
-
-        # Simulate the key press
-        keyboard.press(key)
-
-    def handle_key_release(self, key):
-        """Handle key release without stealing focus"""
-        # Simulate the key release
-        keyboard.release(key)
-
-        # Make sure focus stays on the target window
-        self.restore_target_window_focus()
 
     def restore_target_window_focus(self):
         """Restore focus to the target window"""
