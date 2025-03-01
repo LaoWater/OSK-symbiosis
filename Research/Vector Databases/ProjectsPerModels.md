@@ -1,4 +1,4 @@
-# Built on O3-mini-high 
+# Built & Refined on top of O3-mini-high 
 
 # 1. Travel Destination Recommendation System
 
@@ -53,7 +53,7 @@ This project showcases how vector databases can enhance search functionality by 
 
 
 
-# Built on Claude 3.7
+# Built & Refined on top of Claude 3.7
 
 # 1. Real Estate Property Matching System Using Vector Database
 
