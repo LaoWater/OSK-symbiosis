@@ -1,3 +1,4 @@
+import random
 import re
 
 def create_better_samples(text, window_size=10, step_size=4):
@@ -21,12 +22,31 @@ def create_better_samples(text, window_size=10, step_size=4):
 
     return samples
 
+
+def create_mixed_samples(text, window_size=10, step_size=4, trunc_prob=0.3):
+    words = re.findall(r"\b\w+\b|[^\w\s]", text)  # Tokenize words + punctuation
+    samples = []
+
+    for i in range(1, len(words)):
+        input_text = " ".join(words[max(0, i - window_size):i])
+        target_text = words[i]
+
+        # Add normal next-word prediction case
+        samples.append((input_text, target_text))
+
+        # Randomly add a truncated word sample (for mid-word prediction)
+        if random.random() < trunc_prob and len(target_text) > 2:
+            truncated_input = input_text + " " + target_text[:random.randint(1, len(target_text) - 1)]
+            samples.append((truncated_input, target_text))
+
+    return samples
+
 # Example paragraph
 paragraph = "Today was a beautiful day. The sun was shining, and the birds were singing. I went for a walk in the park."
 
 # Extract training pairs
-dataset = create_better_samples(paragraph, window_size=10, step_size=5)
+dataset = create_mixed_samples(paragraph, window_size=10, step_size=5)
 
 # Print some examples
-for inp, out in dataset[:5]:
+for inp, out in dataset[:15]:
     print(f"Input: {inp}  --> Target: {out}")
