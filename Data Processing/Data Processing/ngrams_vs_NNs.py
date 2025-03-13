@@ -31,6 +31,7 @@ for ngram in ngram_model:
             max_max_prob = max_prob
             max_max_prob_ngram = ngram  # Bigram with highest max probability
 
+
 # Function to plot next words for a given bigram
 def plot_next_words(ngram, ax, title):
     next_words = ngram_model[ngram]
@@ -45,6 +46,7 @@ def plot_next_words(ngram, ax, title):
     # Add probability labels
     for i, (word, prob) in enumerate(sorted_words):
         ax.text(prob + 0.05, i, f"{prob:.2f}", va='center', fontsize=9)
+
 
 # Set Seaborn style for better aesthetics
 sns.set_style("whitegrid")
