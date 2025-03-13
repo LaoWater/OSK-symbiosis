@@ -1,5 +1,42 @@
+"""
+Word Prediction System Architecture:
+------------------------------------
+1. Data Structures:
+   - Trie (Prefix Tree):
+     * Stores words from corpus with frequencies
+     * Enables O(k) prefix search (k = prefix length)
+     * Returns top completions for partial words
+
+2. Language Models:
+   - N-gram Model (Bigram by default):
+     * Tracks word sequences with counts
+     * Predicts next words using previous context
+     * Handles partial/complete word differentiation
+
+3. Core Components:
+   - Prediction Engine:
+     * Orchestrates trie + n-gram model
+     * Input Processing:
+       - Splits input into tokens
+       - Detects partial/complete final token
+     * Switch Logic:
+       - Partial words → Trie completions
+       - Complete words → N-gram next-word prediction
+
+4. Workflow:
+   User Input → Tokenize → Detect Completion State → Query Model → Return Top Suggestions
+
+Key Optimizations (Not Shown Here):
+- MARISA-Trie for memory efficiency
+- KenLM for production-grade n-gram modeling
+- Context window truncation
+- Frequency-based pruning
+
+"""
+
 import random
 import re
+
 
 def create_better_samples(text, window_size=10, step_size=4):
     words = re.findall(r"\b\w+\b|[^\w\s]", text)  # Tokenize properly
@@ -40,6 +77,7 @@ def create_mixed_samples(text, window_size=10, step_size=4, trunc_prob=0.3):
             samples.append((truncated_input, target_text))
 
     return samples
+
 
 # Example paragraph
 paragraph = "Today was a beautiful day. The sun was shining, and the birds were singing. I went for a walk in the park."
