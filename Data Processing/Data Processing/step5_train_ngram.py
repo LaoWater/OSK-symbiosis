@@ -3,7 +3,7 @@ from collections import defaultdict
 import pickle
 
 # Load the preprocessed diary data
-with open('preprocessed_diary.json', 'r') as f:
+with open(r'Data\preprocessed_diary.json', 'r') as f:
     preprocessed_data = json.load(f)
 
 # Initialize a defaultdict for n-gram frequencies
@@ -24,7 +24,7 @@ for ngram in ngram_model:
         ngram_model[ngram][word] /= total_count
 
 # Save the n-gram model
-with open('ngram_model.pkl', 'wb') as f:
+with open(r'Models\ngram_model.pkl', 'wb') as f:
     pickle.dump(dict(ngram_model), f)  # Convert to dict for pickling
 
 print("N-gram model trained and saved to 'ngram_model.pkl'")
