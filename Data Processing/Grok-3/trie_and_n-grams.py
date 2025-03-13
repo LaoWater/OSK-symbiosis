@@ -1,3 +1,26 @@
+"""
+WordPredictor Architecture:
+
+1. **Trie for Word Completion**:
+   - Stores vocabulary words for fast prefix lookups.
+   - Enables efficient word completion suggestions.
+
+2. **N-Gram Language Model**:
+   - Uses an (n-1)-gram context to predict the next word.
+   - Trains on text by counting occurrences of (n-1)-gram sequences.
+   - Converts counts into probabilities for ranking predictions.
+
+3. **Prediction Logic**:
+   - If input ends with a space → Predict next word using the n-gram model.
+   - If input is a partial word → Suggest completions from the trie.
+   - If context exists → Rank suggestions using n-gram probabilities.
+
+4. **Efficiency**:
+   - Uses a **trie** for fast prefix search.
+   - Uses a **default dictionary** for efficient probability storage.
+   - Supports **top-k filtering** to limit output size.
+"""
+
 import nltk
 from nltk.util import ngrams
 from collections import defaultdict
