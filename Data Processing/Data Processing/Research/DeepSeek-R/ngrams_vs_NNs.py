@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the n-gram model
-with open(r'Models\ngram_model.pkl', 'rb') as f:
+with open(r'ngram_model.pkl', 'rb') as f:
     ngram_model = pickle.load(f)
 
 # Find representative bigrams

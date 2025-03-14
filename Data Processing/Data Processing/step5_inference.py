@@ -5,7 +5,6 @@
 #
 
 
-
 import pickle
 import pygtrie as trie
 
@@ -52,7 +51,6 @@ def get_completions(prefix, context, top_k=3):
     return ranked
 
 
-
 # Function to predict the next word
 def get_next_words(context, top_k=5):
     n = 3  # Assuming trigram model
@@ -91,8 +89,6 @@ print("Running tests on trie and n-gram models:")
 for test in test_cases:
     suggestions = predict(test)
     print(f"Input: '{test}' -> Suggestions: {suggestions}")
-
-
 
 print("\nRunning tests on context-considering behavior:")
 # Test 1: With context
