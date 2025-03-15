@@ -4,13 +4,44 @@ Handles the UI layout and interaction with the system
 """
 import sys
 from PyQt6.QtWidgets import (QMainWindow, QWidget, QPushButton,
-                             QVBoxLayout, QHBoxLayout, QLabel, QFrame)
-from PyQt6.QtCore import Qt, QTimer, QPoint
+                             QVBoxLayout, QHBoxLayout, QLabel, QFrame, QApplication)
+from PyQt6.QtCore import Qt, QTimer, QPoint, QAbstractNativeEventFilter
 from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtGui import QPainter, QPen, QPainterPath, QColor, QKeySequence, QShortcut
 from ui.theme import NeonTheme
 from ui.layouts import KeyboardLayoutManager
 from utils.window_utils import WindowManager
+import win32con  # Make sure to install pywin32 (pip install pywin32)
+import ctypes
+
+
+# Windows message constant
+WM_HOTKEY = 0x0312
+
+
+class HotkeyFilter(QAbstractNativeEventFilter):
+    """Native event filter for handling global hotkeys"""
+
+    def __init__(self, hotkey_id, callback):
+        super().__init__()
+        self.hotkey_id = hotkey_id
+        self.callback = callback
+
+    def nativeEventFilter(self, eventType, message):
+        # Check if we're on Windows
+        if sys.platform == 'win32':
+            # Convert the message to a usable form
+            msg = ctypes.wintypes.MSG.from_address(int(message))
+
+            # Check if it's a hotkey message and matches our ID
+            if msg.message == WM_HOTKEY and msg.wParam == self.hotkey_id:
+                print(f"Hotkey detected in nativeEventFilter: {self.hotkey_id}")
+                self.callback()
+                return True, 0  # Event handled
+
+        # Event not handled, pass it on
+        return False, 0
+
 
 
 class VirtualKeyboard(QMainWindow):
@@ -32,20 +63,62 @@ class VirtualKeyboard(QMainWindow):
 
         self.initUI()
 
-        self.shortcut = QShortcut(QKeySequence("Ctrl+K"), self)
-        self.shortcut.activated.connect(self.toggle_minimize)
+        # Set up global hotkey for minimize/restore (Ctrl+K)
+        self.hotkey_id = 1
+        self.register_global_hotkey()
+
+        # Install native event filter for hotkey handling
+        self.event_filter = HotkeyFilter(self.hotkey_id, self.toggle_minimize)
+        QApplication.instance().installNativeEventFilter(self.event_filter)
 
         # Variables for window dragging
         self.dragging = False
         self.offset = QPoint()
 
+    def register_global_hotkey(self):
+        """Register the global hotkey Ctrl+K"""
+        if sys.platform != 'win32':
+            return False
+
+        # Register Ctrl+K globally
+        try:
+            # Get the main window handle
+            hwnd = int(self.winId())
+
+            # VK_K = 75 (ASCII code for 'K'), MOD_CONTROL = 2
+            mod_value = win32con.MOD_CONTROL
+            key_value = ord('K')  # Virtual key code for 'K'
+
+            # Register the hotkey with Windows
+            result = ctypes.windll.user32.RegisterHotKey(
+                hwnd,  # Window handle
+                self.hotkey_id,  # Hotkey ID (arbitrary unique ID)
+                mod_value,  # Modifiers (MOD_CONTROL for Ctrl key)
+                key_value  # Virtual key code
+            )
+
+            if result:
+                print(f"Global hotkey Ctrl+K registered successfully with ID {self.hotkey_id}")
+                return True
+            else:
+                error_code = ctypes.windll.kernel32.GetLastError()
+                print(f"Failed to register hotkey. Error code: {error_code}")
+                return False
+
+        except Exception as e:
+            print(f"Error registering hotkey: {e}")
+            return False
 
     def toggle_minimize(self):
-        print("Shortcut activated")
+        """Toggle between minimized and normal state"""
+        print("Hotkey activated - toggle_minimize called")
         if self.isMinimized():
             self.showNormal()
+            print("Window restored")
         else:
             self.showMinimized()
+            print("Window minimized")
+
 
     def initUI(self):
         """Initialize the user interface"""
@@ -56,7 +129,7 @@ class VirtualKeyboard(QMainWindow):
         # Set window flags to stay on top and frameless
         self.setWindowFlags(Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.FramelessWindowHint | Qt.WindowType.Tool)
 
-        # Set the window as a tool window so it doesn't show in taskbar and loses focus easily
+        # Set the window as a tool window, so it doesn't show in taskbar and loses focus easily
         if sys.platform == 'win32':
             self.setAttribute(Qt.WidgetAttribute.WA_ShowWithoutActivating)
 
@@ -292,6 +365,11 @@ class VirtualKeyboard(QMainWindow):
         """Handle window close event"""
         # Release any held modifier keys
         self.release_all_modifiers()
+
+        # Unregister global hotkey
+        if hasattr(self, 'hotkey'):
+            self.hotkey.unregister()
+
         event.accept()
 
     def mousePressEvent(self, event):
