@@ -247,79 +247,105 @@ class VirtualKeyboard(QMainWindow):
         bottom_frame = QFrame()
         bottom_frame.setMaximumHeight(30)
         bottom_frame.setStyleSheet("background-color: transparent; border: none;")
-        bottom_layout = QHBoxLayout(bottom_frame)
+        bottom_layout = QHBoxLayout(bottom_frame)  # Fix typo: should be bottom_frame
+
         bottom_layout.setContentsMargins(10, 0, 10, 0)
 
-        # Add target window display
         self.target_window_label = QLabel("Target: None")
         self.target_window_label.setStyleSheet("color: #0099ff; font-size: 12px;")
         bottom_layout.addWidget(self.target_window_label)
 
-        # Add modifier states display
+        self.modifier_states = {'alt': False, 'ctrl': False, 'shift': False}
+
         self.modifier_status_label = QLabel("ALT: Off | CTRL: Off | SHIFT: Off")
         self.modifier_status_label.setStyleSheet("color: #0099ff; font-size: 12px;")
         bottom_layout.addWidget(self.modifier_status_label)
 
-        # Add spacer
         bottom_layout.addStretch()
 
-        # Add version info
         version_info = QLabel("v1.0.0")
         version_info.setStyleSheet("color: #0077cc; font-size: 12px;")
         bottom_layout.addWidget(version_info)
 
-        main_layout.addWidget(bottom_frame)
+        main_layout.addWidget(bottom_frame)  # Fix typo: should be bottom_frame
+
 
     def toggle_modifier_key(self, key):
-        """Toggle the state of a modifier key"""
-        from utils.keyboard_utils import KeyboardController
+        """Toggle the state of a modifier key with error handling"""
+        try:
+            from utils.keyboard_utils import KeyboardController
 
-        # Convert key to lowercase for consistency
-        key = key.lower()
+            print(f"toggle_modifier_key called with key: {key}")
 
-        # Check if this is a modifier key we're tracking
-        if key in self.modifier_states:
-            # Toggle the state
-            new_state = not self.modifier_states[key]
-            self.modifier_states[key] = new_state
+            key = key.lower()
 
-            # Apply the key press or release
-            if new_state:
-                KeyboardController.press_key(key)
-                self.update_status(f"{key.upper()} locked")
+            if not hasattr(self, 'modifier_states'):
+                print("Creating modifier_states dictionary")
+                self.modifier_states = {'alt': False, 'ctrl': False, 'shift': False}
+
+            print(f"Current modifier_states: {self.modifier_states}")
+
+            if key in self.modifier_states:
+                new_state = not self.modifier_states[key]
+                self.modifier_states[key] = new_state
+                print(f"Set {key} to {new_state}")
+
+                if new_state:
+                    KeyboardController.press_key(key)
+                    self.update_status(f"{key.upper()} locked")
+                else:
+                    KeyboardController.release_key(key)
+                    self.update_status(f"{key.upper()} released")
+
+                print("Calling update_modifier_status()")
+                self.update_modifier_status()
+
+                return True
             else:
-                KeyboardController.release_key(key)
-                self.update_status(f"{key.upper()} released")
+                print(f"Key {key} not found in modifier_states: {self.modifier_states.keys()}")
 
-            # Update the modifier status display
-            self.update_modifier_status()
+            return False
+        except Exception as e:
+            print(f"Error in toggle_modifier_key: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
 
-            # Return True to indicate we handled a modifier key
-            return True
-
-        # Not a modifier key
-        return False
 
     def update_modifier_status(self):
         """Update the modifier status display"""
-        alt_status = "On" if self.modifier_states['alt'] else "Off"
-        ctrl_status = "On" if self.modifier_states['ctrl'] else "Off"
-        shift_status = "On" if self.modifier_states['shift'] else "Off"
+        try:
+            alt_state = self.modifier_states.get('alt', False)
+            ctrl_state = self.modifier_states.get('ctrl', False)
+            shift_state = self.modifier_states.get('shift', False)
 
-        self.modifier_status_label.setText(f"ALT: {alt_status} | CTRL: {ctrl_status} | SHIFT: {shift_status}")
+            print(f"update_modifier_status: alt={alt_state}, ctrl={ctrl_state}, shift={shift_state}")
+
+            alt_status = "On" if alt_state else "Off"
+            ctrl_status = "On" if ctrl_state else "Off"
+            shift_status = "On" if shift_state else "Off"
+
+            self.modifier_status_label.setText(f"ALT: {alt_status} | CTRL: {ctrl_status} | SHIFT: {shift_status}")
+            print(f"Label text set to: {self.modifier_status_label.text()}")
+
+            self.modifier_status_label.update()
+            self.update()  # Ensure main window updates
+        except Exception as e:
+            print(f"Error in update_modifier_status: {e}")
+            import traceback
+            traceback.print_exc()
+
+
 
     def handle_key_press(self, key):
         """Handle a key press from the keyboard UI"""
         from utils.keyboard_utils import KeyboardController
 
-        # Check if it's a modifier key
-        if self.toggle_modifier_key(key):
-            # Already handled by toggle_modifier_key
-            return
+        if not self.toggle_modifier_key(key):
+            # For non-modifier keys, do normal press and release
+            KeyboardController.press_and_release_key(key)
+            self.update_status(key)
 
-        # For non-modifier keys, do normal press and release
-        KeyboardController.press_and_release_key(key)
-        self.update_status(key)
 
     def update_status(self, key):
         """Update the status label with the pressed key"""
@@ -331,18 +357,18 @@ class VirtualKeyboard(QMainWindow):
         # Ensure focus is maintained on target window
         self.restore_target_window_focus()
 
-    def store_target_window(self):
-        """Store the target window before showing the keyboard"""
-        self.target_window = self.window_manager.get_active_window()
-        window_title = self.window_manager.get_window_title(self.target_window)
+    def update_current_window_label(self):
+        """Updates label with current active window information without storing it"""
+        current_window = self.window_manager.get_active_window()
+        window_title = self.window_manager.get_window_title(current_window)
 
-        if self.target_window and window_title:
+        if current_window and window_title:
             # Truncate if too long
             if len(window_title) > 30:
                 window_title = window_title[:27] + "..."
-            self.target_window_label.setText(f"Target: {window_title}")
+            self.target_window_label.setText(f"Current: {window_title}")
         else:
-            self.target_window_label.setText("Target: None")
+            self.target_window_label.setText("Current: None")
 
     def restore_target_window_focus(self):
         """Restore focus to the target window"""
@@ -358,8 +384,10 @@ class VirtualKeyboard(QMainWindow):
     def showEvent(self, event):
         """Called when the window is shown"""
         super().showEvent(event)
-        # Store the active window before we take focus
-        QTimer.singleShot(100, self.store_target_window)
+
+        # Optionally, can still update the label to show the current active window
+        # if you want to display that information
+        QTimer.singleShot(100, self.update_current_window_label)
 
     def closeEvent(self, event):
         """Handle window close event"""

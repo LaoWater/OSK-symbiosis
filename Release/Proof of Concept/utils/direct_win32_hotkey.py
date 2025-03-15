@@ -1,6 +1,6 @@
 """
 Direct Win32 Hotkey Implementation using pywin32
-This is a simpler approach that directly uses pywin32 instead of ctypes
+Module handle Hotkey across all Windwos - Making it easy to Minimize/Maximize
 """
 
 import sys
@@ -143,3 +143,4 @@ class Win32Hotkey(QObject):
     def __del__(self):
         """Cleanup when object is destroyed"""
         self.unregister()
+

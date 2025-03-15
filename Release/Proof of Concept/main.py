@@ -16,8 +16,8 @@ class KeyboardApp(QApplication):
 
         # Set up global hotkey
         self.hotkey = Win32Hotkey()
-        if self.hotkey.register(ord('K'), [win32con.MOD_CONTROL]):
-            print("Global hotkey Ctrl+K registered successfully")
+        if self.hotkey.register(win32con.VK_SPACE, [win32con.MOD_CONTROL]):
+            print("Global hotkey Ctrl+Space registered successfully")
             # Connect the hotkey signal to our toggle method
             self.hotkey.hotkey_triggered.connect(self.toggle_keyboard)
         else:
