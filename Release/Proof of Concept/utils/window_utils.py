@@ -1,69 +1,70 @@
-"""
-Window management utilities for the Neon Virtual Keyboard
-Handles getting active windows and managing focus
-"""
-
+# utils/window_utils.py
 import sys
-
-# Import platform-specific modules
-if sys.platform == 'win32':
-    import win32gui
-    import win32con
-
+import ctypes
+from PyQt6.QtWidgets import QWidget
 
 class WindowManager:
-    """Manages window interactions with the operating system"""
+    """Utility class for managing window interactions"""
 
-    @staticmethod
-    def get_active_window():
-        """Get the currently active window (platform specific)"""
+    def get_active_window(self):
+        """Get the currently active window handle"""
         if sys.platform == 'win32':
-            return win32gui.GetForegroundWindow()
-        else:
-            # For non-Windows platforms, return None for now
-            # TODO: Implement for other platforms
-            return None
+            try:
+                return ctypes.windll.user32.GetForegroundWindow()
+            except Exception:
+                return None
+        return None
 
-    @staticmethod
-    def get_window_title(window_handle):
+    def get_window_title(self, hwnd):
         """Get the title of a window from its handle"""
-        if sys.platform == 'win32' and window_handle:
+        if sys.platform == 'win32' and hwnd:
             try:
-                return win32gui.GetWindowText(window_handle)
+                length = ctypes.windll.user32.GetWindowTextLengthW(hwnd)
+                buff = ctypes.create_unicode_buffer(length + 1)
+                ctypes.windll.user32.GetWindowTextW(hwnd, buff, length + 1)
+                return buff.value
             except Exception:
-                return "Unknown Window"
-        return "None"
+                return None
+        return None
 
-    @staticmethod
-    def set_foreground_window(window_handle):
-        """Set a window as the foreground window"""
-        if sys.platform == 'win32' and window_handle:
+    def set_foreground_window(self, hwnd):
+        """Set the foreground window to the specified handle"""
+        if sys.platform == 'win32' and hwnd:
             try:
-                if win32gui.IsWindow(window_handle):
-                    win32gui.SetForegroundWindow(window_handle)
-                    return True
+                ctypes.windll.user32.SetForegroundWindow(hwnd)
+                return True
             except Exception:
-                pass
+                return False
         return False
 
-    @staticmethod
-    def apply_no_activate_style(window_id):
-        """Apply the WS_EX_NOACTIVATE style to prevent window activation"""
-        try:
-            if sys.platform == 'win32':
-                # Constants
+    def is_window_valid(self, hwnd):
+        """Check if a window handle is still valid"""
+        if sys.platform == 'win32' and hwnd:
+            try:
+                return bool(ctypes.windll.user32.IsWindow(hwnd))
+            except Exception:
+                return False
+        return False
+
+    def apply_no_activate_style(self, window):
+        """Apply the WS_EX_NOACTIVATE style to prevent the window from stealing focus"""
+        if sys.platform == 'win32':
+            try:
+                # We need the window handle, not the window object itself
+                hwnd = window.winId()
+                
+                # Define style constants
+                WS_EX_NOACTIVATE = 0x08000000
                 GWL_EXSTYLE = -20
-                WS_EX_NOACTIVATE = 0x08000000  # Prevent window activation on click
-
-                # Get window handle
-                hwnd = int(window_id)
-
-                # Get current extended window style
-                ex_style = win32gui.GetWindowLong(hwnd, GWL_EXSTYLE)
-
-                # Set the WS_EX_NOACTIVATE flag
-                win32gui.SetWindowLong(hwnd, GWL_EXSTYLE, ex_style | WS_EX_NOACTIVATE)
+                
+                # Get current extended style
+                exstyle = ctypes.windll.user32.GetWindowLongW(int(hwnd), GWL_EXSTYLE)
+                
+                # Add WS_EX_NOACTIVATE flag
+                ctypes.windll.user32.SetWindowLongW(int(hwnd), GWL_EXSTYLE, exstyle | WS_EX_NOACTIVATE)
+                
                 return True
-        except Exception as e:
-            print(f"Failed to set WS_EX_NOACTIVATE: {e}")
+            except Exception as e:
+                print(f"Failed to set WS_EX_NOACTIVATE: {e}")
+                return False
         return False

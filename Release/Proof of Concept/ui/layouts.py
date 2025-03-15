@@ -126,6 +126,7 @@ class KeyboardLayoutManager:
 
         layout.addLayout(row_layout)
 
+
     @staticmethod
     def _add_zxcv_row(layout):
         """Add ZXCV row to the layout"""
@@ -133,12 +134,12 @@ class KeyboardLayoutManager:
         row_layout.setSpacing(5)
 
         zxcv_keys = [
-            ("Shift", "shift"), ("Z", "z"), ("X", "x"), ("C", "c"), ("V", "v"),
+            ("Shift", "left shift"), ("Z", "z"), ("X", "x"), ("C", "c"), ("V", "v"),
             ("B", "b"), ("N", "n"), ("M", "m"), (",", ","), (".", "."),
-            ("/", "/"), ("Shift", "shift")
+            ("/", "/"), ("Shift", "right shift")
         ]
 
-        for i, (key_text, key_value) in enumerate(zxcv_keys):
+        for key_text, key_value in zxcv_keys:
             if key_text == "Shift":
                 key_btn = SpecialNeonKeyButton(key_text, key_value, 90)
             else:
@@ -147,6 +148,7 @@ class KeyboardLayoutManager:
 
         layout.addLayout(row_layout)
 
+
     @staticmethod
     def _add_control_row(layout):
         """Add control keys row to the layout"""
@@ -154,12 +156,12 @@ class KeyboardLayoutManager:
         row_layout.setSpacing(5)
 
         control_keys = [
-            ("Ctrl", "ctrl"), ("Win", "win"), ("Alt", "alt"),
+            ("Ctrl", "left ctrl"), ("Win", "win"), ("Alt", "left alt"),
             ("Space", "space"),
-            ("Alt", "alt"), ("Fn", "fn"), ("Ctrl", "ctrl")
+            ("Alt", "right alt"), ("Fn", "fn"), ("Ctrl", "right ctrl")
         ]
 
-        for i, (key_text, key_value) in enumerate(control_keys):
+        for key_text, key_value in control_keys:
             if key_text == "Space":
                 key_btn = SpecialNeonKeyButton(key_text, key_value, 350, 50)
             elif key_text in ["Ctrl", "Win", "Alt", "Fn"]:

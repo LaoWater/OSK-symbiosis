@@ -21,6 +21,14 @@ class VirtualKeyboard(QMainWindow):
         self.target_window = None
         self.window_manager = WindowManager()
         self.theme = NeonTheme()
+
+        # Modifier keys state tracking
+        self.modifier_states = {
+            'alt': False,
+            'ctrl': False,
+            'shift': False
+        }
+
         self.initUI()
 
         # Variables for window dragging
@@ -73,14 +81,16 @@ class VirtualKeyboard(QMainWindow):
         # Create keyboard frame with neon effect
         keyboard_frame = self.create_keyboard_frame()
 
-        # Create keyboard layout manager
+        # Create keyboard layout manager and add the standard layout to the frame
         self.keyboard_manager = KeyboardLayoutManager()
+        self.keyboard_manager.create_standard_layout(keyboard_frame)
 
         # Add keyboard to main layout
         main_layout.addWidget(keyboard_frame)
 
         # Add bottom status bar
         self.add_status_bar(main_layout)
+
 
     def add_title_bar(self, main_layout):
         """Add a custom title bar to the window"""
@@ -112,10 +122,27 @@ class VirtualKeyboard(QMainWindow):
         close_btn.setObjectName("closeButton")
         close_btn.setFixedSize(30, 25)
         close_btn.setFocusPolicy(Qt.FocusPolicy.NoFocus)
-        close_btn.clicked.connect(self.close)
+        close_btn.clicked.connect(self.handle_exit)
         title_layout.addWidget(close_btn)
 
         main_layout.addWidget(title_bar)
+
+    def handle_exit(self):
+        """Handle application exit properly"""
+        # Release any held modifier keys
+        self.release_all_modifiers()
+        # Quit the application
+        sys.exit()
+
+    def release_all_modifiers(self):
+        """Release all modifier keys that might be in pressed state"""
+        from utils.keyboard_utils import KeyboardController
+
+        # Go through all modifiers and release them if they're currently pressed
+        for mod_key, is_pressed in self.modifier_states.items():
+            if is_pressed:
+                KeyboardController.release_key(mod_key)
+                self.modifier_states[mod_key] = False
 
     def create_keyboard_frame(self):
         """Create a frame for the keyboard with neon styling"""
@@ -144,6 +171,11 @@ class VirtualKeyboard(QMainWindow):
         self.target_window_label.setStyleSheet("color: #0099ff; font-size: 12px;")
         bottom_layout.addWidget(self.target_window_label)
 
+        # Add modifier states display
+        self.modifier_status_label = QLabel("ALT: Off | CTRL: Off | SHIFT: Off")
+        self.modifier_status_label.setStyleSheet("color: #0099ff; font-size: 12px;")
+        bottom_layout.addWidget(self.modifier_status_label)
+
         # Add spacer
         bottom_layout.addStretch()
 
@@ -153,6 +185,57 @@ class VirtualKeyboard(QMainWindow):
         bottom_layout.addWidget(version_info)
 
         main_layout.addWidget(bottom_frame)
+
+    def toggle_modifier_key(self, key):
+        """Toggle the state of a modifier key"""
+        from utils.keyboard_utils import KeyboardController
+
+        # Convert key to lowercase for consistency
+        key = key.lower()
+
+        # Check if this is a modifier key we're tracking
+        if key in self.modifier_states:
+            # Toggle the state
+            new_state = not self.modifier_states[key]
+            self.modifier_states[key] = new_state
+
+            # Apply the key press or release
+            if new_state:
+                KeyboardController.press_key(key)
+                self.update_status(f"{key.upper()} locked")
+            else:
+                KeyboardController.release_key(key)
+                self.update_status(f"{key.upper()} released")
+
+            # Update the modifier status display
+            self.update_modifier_status()
+
+            # Return True to indicate we handled a modifier key
+            return True
+
+        # Not a modifier key
+        return False
+
+    def update_modifier_status(self):
+        """Update the modifier status display"""
+        alt_status = "On" if self.modifier_states['alt'] else "Off"
+        ctrl_status = "On" if self.modifier_states['ctrl'] else "Off"
+        shift_status = "On" if self.modifier_states['shift'] else "Off"
+
+        self.modifier_status_label.setText(f"ALT: {alt_status} | CTRL: {ctrl_status} | SHIFT: {shift_status}")
+
+    def handle_key_press(self, key):
+        """Handle a key press from the keyboard UI"""
+        from utils.keyboard_utils import KeyboardController
+
+        # Check if it's a modifier key
+        if self.toggle_modifier_key(key):
+            # Already handled by toggle_modifier_key
+            return
+
+        # For non-modifier keys, do normal press and release
+        KeyboardController.press_and_release_key(key)
+        self.update_status(key)
 
     def update_status(self, key):
         """Update the status label with the pressed key"""
@@ -193,6 +276,12 @@ class VirtualKeyboard(QMainWindow):
         super().showEvent(event)
         # Store the active window before we take focus
         QTimer.singleShot(100, self.store_target_window)
+
+    def closeEvent(self, event):
+        """Handle window close event"""
+        # Release any held modifier keys
+        self.release_all_modifiers()
+        event.accept()
 
     def mousePressEvent(self, event):
         """Handle mouse press events for dragging the window"""
