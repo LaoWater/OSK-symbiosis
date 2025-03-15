@@ -3,6 +3,7 @@ import sys
 import ctypes
 from PyQt6.QtWidgets import QWidget
 
+
 class WindowManager:
     """Utility class for managing window interactions"""
 
@@ -52,17 +53,17 @@ class WindowManager:
             try:
                 # We need the window handle, not the window object itself
                 hwnd = window.winId()
-                
+
                 # Define style constants
                 WS_EX_NOACTIVATE = 0x08000000
                 GWL_EXSTYLE = -20
-                
+
                 # Get current extended style
                 exstyle = ctypes.windll.user32.GetWindowLongW(int(hwnd), GWL_EXSTYLE)
-                
+
                 # Add WS_EX_NOACTIVATE flag
                 ctypes.windll.user32.SetWindowLongW(int(hwnd), GWL_EXSTYLE, exstyle | WS_EX_NOACTIVATE)
-                
+
                 return True
             except Exception as e:
                 print(f"Failed to set WS_EX_NOACTIVATE: {e}")

@@ -6,7 +6,8 @@ import sys
 from PyQt6.QtWidgets import (QMainWindow, QWidget, QPushButton,
                              QVBoxLayout, QHBoxLayout, QLabel, QFrame)
 from PyQt6.QtCore import Qt, QTimer, QPoint
-from PyQt6.QtGui import QPainter, QPen, QPainterPath, QColor
+from PyQt6 import QtCore, QtWidgets
+from PyQt6.QtGui import QPainter, QPen, QPainterPath, QColor, QKeySequence, QShortcut
 from ui.theme import NeonTheme
 from ui.layouts import KeyboardLayoutManager
 from utils.window_utils import WindowManager
@@ -31,9 +32,20 @@ class VirtualKeyboard(QMainWindow):
 
         self.initUI()
 
+        self.shortcut = QShortcut(QKeySequence("Ctrl+K"), self)
+        self.shortcut.activated.connect(self.toggle_minimize)
+
         # Variables for window dragging
         self.dragging = False
         self.offset = QPoint()
+
+
+    def toggle_minimize(self):
+        print("Shortcut activated")
+        if self.isMinimized():
+            self.showNormal()
+        else:
+            self.showMinimized()
 
     def initUI(self):
         """Initialize the user interface"""
@@ -90,7 +102,6 @@ class VirtualKeyboard(QMainWindow):
 
         # Add bottom status bar
         self.add_status_bar(main_layout)
-
 
     def add_title_bar(self, main_layout):
         """Add a custom title bar to the window"""
