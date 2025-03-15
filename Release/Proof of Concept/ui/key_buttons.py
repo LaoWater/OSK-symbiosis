@@ -27,6 +27,7 @@ class NeonKeyButton(QPushButton):
         self.setup_styles()
         self.setup_animations()
 
+
     def setup_styles(self):
         styles = NeonTheme.get_key_styles(self.width, self.height)
         self.default_style = styles['default']

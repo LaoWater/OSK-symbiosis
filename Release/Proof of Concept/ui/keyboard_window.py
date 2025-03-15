@@ -119,7 +119,6 @@ class VirtualKeyboard(QMainWindow):
             self.showMinimized()
             print("Window minimized")
 
-
     def initUI(self):
         """Initialize the user interface"""
         # Set window properties
@@ -144,6 +143,38 @@ class VirtualKeyboard(QMainWindow):
 
         # Show the window
         self.show()
+
+    def check_modifier_states(self):
+        """Check the actual state of modifier keys and update UI if changed."""
+        try:
+            from utils.keyboard_utils import KeyboardController
+
+            print("Checking modifier states...")  # Debugging print
+
+            new_states = {
+                'alt': (KeyboardController.is_key_pressed('left alt') or KeyboardController.is_key_pressed(
+                    'right alt')),
+                'ctrl': (KeyboardController.is_key_pressed('left ctrl') or KeyboardController.is_key_pressed(
+                    'right ctrl')),
+                'shift': (KeyboardController.is_key_pressed('left shift') or KeyboardController.is_key_pressed(
+                    'right shift'))
+            }
+
+            print(f"New detected states: {new_states}")  # Debugging print
+            print(f"Previous modifier states: {self.modifier_states}")  # Debugging print
+
+            if new_states != self.modifier_states:  # Only update if there's a change
+                print("State changed, updating UI...")
+                self.modifier_states = new_states
+                self.update_modifier_status()
+            else:
+                print("No change in modifier states.")
+
+        except Exception as e:
+            print(f"Error in check_modifier_states: {e}")
+            import traceback
+            traceback.print_exc()
+
 
     def setup_layout(self):
         """Create the main layout structure for the keyboard window"""
@@ -175,6 +206,15 @@ class VirtualKeyboard(QMainWindow):
 
         # Add bottom status bar
         self.add_status_bar(main_layout)
+
+        # Add timer for periodic updates - Updates the Current Active OSK Window Label.
+        self.update_timer = QTimer(self)
+        self.update_timer.timeout.connect(self.update_current_window_label)
+        self.update_timer.timeout.connect(self.check_modifier_states)
+        self.update_timer.start(2000)  # Update every 2 seconds
+
+        # Initial call (optional, since showEvent handles it)
+        self.update_current_window_label()
 
     def add_title_bar(self, main_layout):
         """Add a custom title bar to the window"""
@@ -334,7 +374,6 @@ class VirtualKeyboard(QMainWindow):
             print(f"Error in update_modifier_status: {e}")
             import traceback
             traceback.print_exc()
-
 
 
     def handle_key_press(self, key):
