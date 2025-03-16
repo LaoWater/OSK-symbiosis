@@ -5,6 +5,7 @@ Handles sending keyboard inputs to the system
 
 import keyboard
 
+
 class KeyboardController:
     """Controls keyboard input operations"""
     key_states = {}  # Stores the state of pressed keys
@@ -67,7 +68,8 @@ class KeyboardController:
             if normalized_key:
                 keyboard.press_and_release(normalized_key)
                 KeyboardController.key_states[normalized_key] = False  # Ensure it's set to released
-                print(f"Pressed and released key: {normalized_key}, key_states: {KeyboardController.key_states}")  # Debugging print
+                print(
+                    f"Pressed and released key: {normalized_key}, key_states: {KeyboardController.key_states}")  # Debugging print
                 return True
         except Exception as e:
             print(f"Error pressing and releasing key {key_value}: {e}")

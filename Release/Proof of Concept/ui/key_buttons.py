@@ -19,6 +19,8 @@ class NeonKeyButton(QPushButton):
         super().__init__(key_text, parent)
         self.key_text = key_text
         self.key_value = key_value if key_value is not None else key_text
+        self.default_width = width  # Store the default width for scaling reference
+        self.default_height = height  # Store the default height for scaling reference
         self.width = width
         self.height = height
         self.is_toggled = False
@@ -26,7 +28,7 @@ class NeonKeyButton(QPushButton):
         self.setFixedSize(width, height)
         self.setup_styles()
         self.setup_animations()
-
+        self.scale_factor = 1.0  # Default scale factor
 
     def setup_styles(self):
         styles = NeonTheme.get_key_styles(self.width, self.height)
@@ -54,6 +56,42 @@ class NeonKeyButton(QPushButton):
             self.glow_intensity = 0
         self.update()
 
+    def scale_size(self, scale_factor):
+        """Scale the button based on the provided scale factor"""
+        # Store the current scale factor
+        self.scale_factor = scale_factor
+
+        print("Scaling function entered in key_buttons.py")
+
+        # Calculate new dimensions
+        new_width = int(self.default_width * scale_factor)
+        new_height = int(self.default_height * scale_factor)
+
+        # Ensure minimum size
+        new_width = max(new_width, 20)
+        new_height = max(new_height, 20)
+
+        # Update the button's size properties
+        self.width = new_width
+        self.height = new_height
+
+        # Apply new size
+        self.setFixedSize(new_width, new_height)
+
+        # Update the styles with new dimensions
+        styles = NeonTheme.get_key_styles(new_width, new_height)
+        self.default_style = styles['default']
+        self.hover_style = styles['hover']
+        self.pressed_style = styles['pressed']
+
+        # Apply the appropriate style based on current state
+        if self.key_value in self.MODIFIER_KEYS and self.is_toggled:
+            self.setStyleSheet(self.pressed_style)
+        elif self.underMouse():
+            self.setStyleSheet(self.hover_style)
+        else:
+            self.setStyleSheet(self.default_style)
+
     def enterEvent(self, event):
         if self.key_value in self.MODIFIER_KEYS and self.is_toggled:
             self.setStyleSheet(self.pressed_style)
@@ -61,9 +99,13 @@ class NeonKeyButton(QPushButton):
             self.setStyleSheet(self.hover_style)
         cursor = QCursor(Qt.CursorShape.PointingHandCursor)
         QApplication.setOverrideCursor(cursor)
+
+        # Adjust hover animation based on current scale
         self.size_animation.setStartValue(self.size())
-        self.size_animation.setEndValue(QSize(self.width + 4, self.height + 4))
+        hover_growth = int(4 * self.scale_factor)  # Scale the hover growth effect
+        self.size_animation.setEndValue(QSize(self.width + hover_growth, self.height + hover_growth))
         self.size_animation.start()
+
         if not self.glow_animation.isActive():
             self.glow_animation.start(30)
         super().enterEvent(event)
@@ -139,18 +181,25 @@ class NeonKeyButton(QPushButton):
             painter = QPainter(self)
             painter.setRenderHint(QPainter.RenderHint.Antialiasing)
             pen = QPen(QColor(0, 170, 255, self.glow_intensity))
-            pen.setWidth(2)
+            # Scale pen width with button size
+            pen_width = max(1, int(2 * self.scale_factor))
+            pen.setWidth(pen_width)
             painter.setPen(pen)
+
             path = QPainterPath()
-            path.addRoundedRect(2, 2, self.width - 4, self.height - 4, 5, 5)
+            corner_radius = max(3, int(5 * self.scale_factor))  # Scale corner radius
+            path.addRoundedRect(2, 2, self.width - 4, self.height - 4, corner_radius, corner_radius)
             painter.drawPath(path)
+
             gradient = QLinearGradient(0, self.height - 3, self.width, self.height - 3)
             gradient.setColorAt(0, QColor(0, 170, 255, 0))
             gradient.setColorAt(0.5, QColor(0, 170, 255, self.glow_intensity * 2))
             gradient.setColorAt(1, QColor(0, 170, 255, 0))
             painter.setPen(Qt.PenStyle.NoPen)
             painter.setBrush(QBrush(gradient))
-            painter.drawRect(0, self.height - 3, self.width, 2)
+
+            glow_height = max(1, int(2 * self.scale_factor))  # Scale glow height
+            painter.drawRect(0, self.height - 3, self.width, glow_height)
 
 
 class SpecialNeonKeyButton(NeonKeyButton):

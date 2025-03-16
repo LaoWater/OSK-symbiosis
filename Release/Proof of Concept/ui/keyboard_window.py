@@ -5,17 +5,15 @@ Handles the UI layout and interaction with the system
 import sys
 from PyQt6.QtWidgets import (QMainWindow, QWidget, QPushButton,
                              QVBoxLayout, QHBoxLayout, QLabel, QFrame, QApplication)
-from PyQt6.QtCore import Qt, QTimer, QPoint, QAbstractNativeEventFilter
+from PyQt6.QtCore import Qt, QTimer, QPoint, QAbstractNativeEventFilter, QPropertyAnimation, QEasingCurve, QRect, QAbstractAnimation
 from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtGui import QPainter, QPen, QPainterPath, QColor, QKeySequence, QShortcut
 from ui.theme import NeonTheme
 from ui.layouts import KeyboardLayoutManager
 from utils.window_utils import WindowManager
-import win32con  # Make sure to install pywin32 (pip install pywin32)
 import ctypes
 
-
-# Windows message constant
+# WM_HOTKEY (value 0x0312) is a Windows message that the system sends when a registered hotkey is triggered. Applications that register hotkeys using RegisterHotKey() receive this message in their window procedure when the hotkey is pressed.
 WM_HOTKEY = 0x0312
 
 
@@ -43,7 +41,6 @@ class HotkeyFilter(QAbstractNativeEventFilter):
         return False, 0
 
 
-
 class VirtualKeyboard(QMainWindow):
     """Main window for the virtual keyboard application"""
 
@@ -66,20 +63,26 @@ class VirtualKeyboard(QMainWindow):
             'shift': False
         }
 
+        # Variables for window dragging
+        self.dragging = False
+        self.resizing = False
+        self.resize_edge = None
+        self.offset = QPoint()
+
+        # Resize border width (for detecting resize areas)
+        self.border_width = 10
+
+        # Store original size for proportional resizing
+        self.original_size = None
+
         self.initUI()
 
         # Set up global hotkey for minimize/restore (Ctrl+K)
         self.hotkey_id = 1
 
-
         # Install native event filter for hotkey handling
         self.event_filter = HotkeyFilter(self.hotkey_id, self.toggle_minimize)
         QApplication.instance().installNativeEventFilter(self.event_filter)
-
-        # Variables for window dragging
-        self.dragging = False
-        self.offset = QPoint()
-
 
     def toggle_minimize(self):
         """Toggle between minimized and normal state"""
@@ -96,6 +99,9 @@ class VirtualKeyboard(QMainWindow):
         # Set window properties
         self.setWindowTitle('Neon Virtual Keyboard')
         self.setGeometry(100, 100, 900, 350)
+
+        # Store original size for proportional scaling
+        self.original_size = self.size()
 
         # Set window flags to stay on top and frameless
         self.setWindowFlags(Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.FramelessWindowHint | Qt.WindowType.Tool)
@@ -115,6 +121,9 @@ class VirtualKeyboard(QMainWindow):
 
         # Show the window
         self.show()
+
+        # Set cursor to indicate resize areas
+        self.setCursor(Qt.CursorShape.ArrowCursor)
 
     def check_modifier_states(self):
         """Check the actual state of modifier keys and update UI if changed."""
@@ -140,7 +149,6 @@ class VirtualKeyboard(QMainWindow):
             import traceback
             traceback.print_exc()
 
-
     def setup_layout(self):
         """Create the main layout structure for the keyboard window"""
         # Create central widget and main layout
@@ -154,13 +162,17 @@ class VirtualKeyboard(QMainWindow):
         self.add_title_bar(main_layout)
 
         # Add status label
-        self.status_label = QLabel("Click keys to type (focus will be maintained on your target window)")
+        self.status_label = QLabel("Click keys to type (focus will be maintained on your Active window)")
         self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.status_label.setStyleSheet("color: #66ccff; margin-bottom: 15px;")
         main_layout.addWidget(self.status_label)
 
         # Create keyboard frame with neon effect
         keyboard_frame = self.create_keyboard_frame()
+
+        # Set a size policy that allows the frame to expand and maintain proportions
+        keyboard_frame.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding,
+                                     QtWidgets.QSizePolicy.Policy.Expanding)
 
         # Create keyboard layout manager and add the standard layout to the frame
         self.keyboard_manager = KeyboardLayoutManager()
@@ -182,6 +194,25 @@ class VirtualKeyboard(QMainWindow):
         # Initial call (optional, since showEvent handles it)
         self.update_current_window_label()
 
+
+    def paintEvent(self, event):
+        """Custom paint event to draw neon effects"""
+        # Add a custom border glow effect to the main window
+        super().paintEvent(event)
+
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+
+        # Draw outer neon border
+        pen = QPen(QColor(0, 170, 255, 60))
+        pen.setWidth(2)
+        painter.setPen(pen)
+
+        # Create rounded rectangle for the main window
+        path = QPainterPath()
+        path.addRoundedRect(1, 1, self.width() - 2, self.height() - 2, 10, 10)
+        painter.drawPath(path)
+
     def add_title_bar(self, main_layout):
         """Add a custom title bar to the window"""
         title_bar = QFrame()
@@ -192,7 +223,7 @@ class VirtualKeyboard(QMainWindow):
         title_layout.setContentsMargins(5, 0, 5, 0)
 
         # Title
-        title_label = QLabel("Neon OSK")
+        title_label = QLabel("OSK-Symbiosis")
         title_label.setStyleSheet("color: #00aaff; font-weight: bold; font-size: 16px;")
         title_layout.addWidget(title_label)
 
@@ -276,23 +307,12 @@ class VirtualKeyboard(QMainWindow):
 
         main_layout.addWidget(bottom_frame)  # Fix typo: should be bottom_frame
 
-
-    def handle_key_press(self, key):
-        """Handle a key press from the keyboard UI"""
-        from utils.keyboard_utils import KeyboardController
-
-        if not self.toggle_modifier_key(key):
-            # For non-modifier keys, do normal press and release
-            KeyboardController.press_and_release_key(key)
-            self.update_status(key)
-
-
     def update_status(self, key):
         """Update the status label with the pressed key"""
         self.status_label.setText(f"Key Pressed: {key}")
         # Reset status after 1 second
         QTimer.singleShot(1000,
-                          lambda: self.status_label.setText("Click keys to type (focus maintained on target window)"))
+                          lambda: self.status_label.setText("Click keys to type (focus maintained on Active window)"))
 
         # Ensure focus is maintained on target window
         self.restore_target_window_focus()
@@ -340,39 +360,185 @@ class VirtualKeyboard(QMainWindow):
 
         event.accept()
 
+    def get_resize_edge(self, pos):
+        """Determine if position is on a resize edge and which one"""
+        x, y = pos.x(), pos.y()
+        width, height = self.width(), self.height()
+
+        # Check corners first (they take priority)
+        if x <= self.border_width and y <= self.border_width:
+            return "top-left"
+        elif x >= width - self.border_width and y <= self.border_width:
+            return "top-right"
+        elif x <= self.border_width and y >= height - self.border_width:
+            return "bottom-left"
+        elif x >= width - self.border_width and y >= height - self.border_width:
+            return "bottom-right"
+
+        # Check edges
+        elif x <= self.border_width:
+            return "left"
+        elif x >= width - self.border_width:
+            return "right"
+        elif y <= self.border_width:
+            return "top"
+        elif y >= height - self.border_width:
+            return "bottom"
+
+        return None
+
     def mousePressEvent(self, event):
-        """Handle mouse press events for dragging the window"""
+        """Handle mouse press events for dragging and resizing the window"""
         if event.button() == Qt.MouseButton.LeftButton:
-            # Store the initial position for dragging
-            self.dragging = True
-            self.offset = event.position().toPoint()
+            # Check if we're on a resize edge
+            self.resize_edge = self.get_resize_edge(event.position().toPoint())
+
+            if self.resize_edge:
+                self.resizing = True
+                self.offset = event.position().toPoint()
+            else:
+                # Store the initial position for dragging (moving) the window
+                self.dragging = True
+                self.offset = event.position().toPoint()
 
     def mouseMoveEvent(self, event):
-        """Handle mouse move events for dragging the window"""
-        if self.dragging and event.buttons() & Qt.MouseButton.LeftButton:
-            # Move the window when dragging
-            new_pos = self.mapToGlobal(event.position().toPoint() - self.offset)
-            self.move(new_pos)
+        """Handle mouse move events for dragging and resizing the window"""
+        # Update cursor based on position
+        resize_edge = self.get_resize_edge(event.position().toPoint())
+        if resize_edge in ["left", "right"]:
+            self.setCursor(Qt.CursorShape.SizeHorCursor)
+        elif resize_edge in ["top", "bottom"]:
+            self.setCursor(Qt.CursorShape.SizeVerCursor)
+        elif resize_edge in ["top-left", "bottom-right"]:
+            self.setCursor(Qt.CursorShape.SizeFDiagCursor)
+        elif resize_edge in ["top-right", "bottom-left"]:
+            self.setCursor(Qt.CursorShape.SizeBDiagCursor)
+        else:
+            self.setCursor(Qt.CursorShape.ArrowCursor)
+
+        # Get current position
+        current_pos = event.position().toPoint()
+
+        # Handle resize operation
+        if self.resizing and event.buttons() & Qt.MouseButton.LeftButton:
+            # Throttle updates - only process every few pixels of movement
+            if not hasattr(self, 'last_resize_pos') or (current_pos - self.last_resize_pos).manhattanLength() >= 5:
+                self.last_resize_pos = current_pos
+
+                # Apply easing to the movement
+                diff = self.apply_easing(current_pos - self.offset)
+
+                new_width = self.width()
+                new_height = self.height()
+                new_x = self.x()
+                new_y = self.y()
+
+                # Calculate new size based on resize direction
+                if self.resize_edge in ["right", "top-right", "bottom-right"]:
+                    new_width += diff.x()
+                if self.resize_edge in ["bottom", "bottom-left", "bottom-right"]:
+                    new_height += diff.y()
+                if self.resize_edge in ["left", "top-left", "bottom-left"]:
+                    new_width -= diff.x()
+                    new_x += diff.x()
+                if self.resize_edge in ["top", "top-left", "top-right"]:
+                    new_height -= diff.y()
+                    new_y += diff.y()
+
+                # Enforce minimum size
+                min_width, min_height = 400, 200
+                if new_width < min_width:
+                    if self.resize_edge in ["left", "top-left", "bottom-left"]:
+                        new_x = self.x() + (self.width() - min_width)
+                    new_width = min_width
+                if new_height < min_height:
+                    if self.resize_edge in ["top", "top-left", "top-right"]:
+                        new_y = self.y() + (self.height() - min_height)
+                    new_height = min_height
+
+                # Use animation for smoother transitions
+                if hasattr(self, 'animation') and self.animation.state() == QAbstractAnimation.State.Running:
+                    self.animation.stop()
+
+                # Create property animation for smooth transition
+                self.animation = QPropertyAnimation(self, b"geometry")
+                self.animation.setDuration(50)  # Short duration for responsiveness
+                self.animation.setStartValue(self.geometry())
+                self.animation.setEndValue(QRect(new_x, new_y, new_width, new_height))
+                self.animation.setEasingCurve(QEasingCurve.Type.OutCubic)
+                self.animation.start()
+
+                # Update offset for continuous resize
+                self.offset = current_pos
+
+        # Handle dragging operation
+        elif self.dragging and event.buttons() & Qt.MouseButton.LeftButton:
+            # Throttle updates - only process every few pixels of movement
+            if not hasattr(self, 'last_drag_pos') or (current_pos - self.last_drag_pos).manhattanLength() >= 5:
+                self.last_drag_pos = current_pos
+
+                # Apply easing to the movement
+                new_pos = self.mapToGlobal(event.position().toPoint() - self.offset)
+
+                # Use animation for smoother transitions
+                if hasattr(self, 'drag_animation') and self.drag_animation.state() == QAbstractAnimation.State.Running:
+                    self.drag_animation.stop()
+
+                self.drag_animation = QPropertyAnimation(self, b"pos")
+                self.drag_animation.setDuration(50)
+                self.drag_animation.setStartValue(self.pos())
+                self.drag_animation.setEndValue(new_pos)
+                self.drag_animation.setEasingCurve(QEasingCurve.Type.OutCubic)
+                self.drag_animation.start()
+
+    def apply_easing(self, diff):
+        """Apply easing to mouse movements for smoother feel"""
+        # Use QEasingCurve for smooth interpolation
+        easing = QEasingCurve(QEasingCurve.Type.OutCubic)
+
+        # Scale the input to 0-1 range for the easing function
+        scale_factor = 10.0  # Adjust this to control sensitivity
+
+        # Apply easing separately to x and y components
+        eased_x = diff.x() * easing.valueForProgress(min(1.0, abs(diff.x()) / scale_factor))
+        eased_y = diff.y() * easing.valueForProgress(min(1.0, abs(diff.y()) / scale_factor))
+
+        # Preserve original direction while applying easing
+        return QPoint(int(eased_x), int(eased_y))
+
 
     def mouseReleaseEvent(self, event):
-        """Handle mouse release events for dragging the window"""
+        """Handle mouse release events for dragging and resizing the window"""
         if event.button() == Qt.MouseButton.LeftButton:
             self.dragging = False
+            self.resizing = False
+            self.resize_edge = None
 
-    def paintEvent(self, event):
-        """Custom paint event to draw neon effects"""
-        # Add a custom border glow effect to the main window
-        super().paintEvent(event)
+    def resizeEvent(self, event):
+        """Handle window resize events to maintain proportions of UI elements"""
 
-        painter = QPainter(self)
-        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        print("Scaling function entered in keyboard_window.py")
 
-        # Draw outer neon border
-        pen = QPen(QColor(0, 170, 255, 60))
-        pen.setWidth(2)
-        painter.setPen(pen)
+        super().resizeEvent(event)
+        # Any scaling of child widgets can be done here if needed
+        # Currently the layout system will handle most adjustments automatically
 
-        # Create rounded rectangle for the main window
-        path = QPainterPath()
-        path.addRoundedRect(1, 1, self.width() - 2, self.height() - 2, 10, 10)
-        painter.drawPath(path)
+
+
+
+
+
+
+
+
+
+    # Not used from here onwards for now, handling presses in key_buttons.py
+
+    def handle_key_press(self, key):
+        """Handle a key press from the keyboard UI"""
+        from utils.keyboard_utils import KeyboardController
+
+        if not self.toggle_modifier_key(key):
+            # For non-modifier keys, do normal press and release
+            KeyboardController.press_and_release_key(key)
+            self.update_status(key)
