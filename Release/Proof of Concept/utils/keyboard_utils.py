@@ -78,5 +78,4 @@ class KeyboardController:
         """Check if a key is currently pressed."""
         normalized_key = KeyboardController.normalize_key(key)
         state = KeyboardController.key_states.get(normalized_key, False)
-        print(f"Checking is_key_pressed({key}): {state}, key_states: {KeyboardController.key_states}")  # Debugging print
         return state

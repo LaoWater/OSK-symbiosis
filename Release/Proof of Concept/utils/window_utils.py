@@ -1,13 +1,12 @@
-# utils/window_utils.py
 import sys
 import ctypes
-from PyQt6.QtWidgets import QWidget
 
 
 class WindowManager:
     """Utility class for managing window interactions"""
 
-    def get_active_window(self):
+    @staticmethod
+    def get_active_window():
         """Get the currently active window handle"""
         if sys.platform == 'win32':
             try:
@@ -16,7 +15,8 @@ class WindowManager:
                 return None
         return None
 
-    def get_window_title(self, hwnd):
+    @staticmethod
+    def get_window_title(hwnd):
         """Get the title of a window from its handle"""
         if sys.platform == 'win32' and hwnd:
             try:
@@ -28,7 +28,8 @@ class WindowManager:
                 return None
         return None
 
-    def set_foreground_window(self, hwnd):
+    @staticmethod
+    def set_foreground_window(hwnd):
         """Set the foreground window to the specified handle"""
         if sys.platform == 'win32' and hwnd:
             try:
@@ -38,7 +39,8 @@ class WindowManager:
                 return False
         return False
 
-    def is_window_valid(self, hwnd):
+    @staticmethod
+    def is_window_valid(hwnd):
         """Check if a window handle is still valid"""
         if sys.platform == 'win32' and hwnd:
             try:
@@ -47,11 +49,11 @@ class WindowManager:
                 return False
         return False
 
-    def apply_no_activate_style(self, window):
+    @staticmethod
+    def apply_no_activate_style(window):
         """Apply the WS_EX_NOACTIVATE style to prevent the window from stealing focus"""
         if sys.platform == 'win32':
             try:
-                # We need the window handle, not the window object itself
                 hwnd = window.winId()
 
                 # Define style constants

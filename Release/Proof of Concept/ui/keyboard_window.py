@@ -50,6 +50,11 @@ class VirtualKeyboard(QMainWindow):
     def __init__(self):
         """Initialize the virtual keyboard window"""
         super().__init__()
+        self.modifier_status_label = None
+        self.update_timer = None
+        self.keyboard_manager = None
+        self.status_label = None
+        self.target_window_label = None
         self.target_window = None
         self.window_manager = WindowManager()
         self.theme = NeonTheme()
@@ -65,7 +70,7 @@ class VirtualKeyboard(QMainWindow):
 
         # Set up global hotkey for minimize/restore (Ctrl+K)
         self.hotkey_id = 1
-        self.register_global_hotkey()
+
 
         # Install native event filter for hotkey handling
         self.event_filter = HotkeyFilter(self.hotkey_id, self.toggle_minimize)
@@ -75,39 +80,6 @@ class VirtualKeyboard(QMainWindow):
         self.dragging = False
         self.offset = QPoint()
 
-    def register_global_hotkey(self):
-        """Register the global hotkey Ctrl+K"""
-        if sys.platform != 'win32':
-            return False
-
-        # Register Ctrl+K globally
-        try:
-            # Get the main window handle
-            hwnd = int(self.winId())
-
-            # VK_K = 75 (ASCII code for 'K'), MOD_CONTROL = 2
-            mod_value = win32con.MOD_CONTROL
-            key_value = ord('K')  # Virtual key code for 'K'
-
-            # Register the hotkey with Windows
-            result = ctypes.windll.user32.RegisterHotKey(
-                hwnd,  # Window handle
-                self.hotkey_id,  # Hotkey ID (arbitrary unique ID)
-                mod_value,  # Modifiers (MOD_CONTROL for Ctrl key)
-                key_value  # Virtual key code
-            )
-
-            if result:
-                print(f"Global hotkey Ctrl+K registered successfully with ID {self.hotkey_id}")
-                return True
-            else:
-                error_code = ctypes.windll.kernel32.GetLastError()
-                print(f"Failed to register hotkey. Error code: {error_code}")
-                return False
-
-        except Exception as e:
-            print(f"Error registering hotkey: {e}")
-            return False
 
     def toggle_minimize(self):
         """Toggle between minimized and normal state"""
@@ -149,8 +121,6 @@ class VirtualKeyboard(QMainWindow):
         try:
             from utils.keyboard_utils import KeyboardController
 
-            print("Checking modifier states...")  # Debugging print
-
             new_states = {
                 'alt': (KeyboardController.is_key_pressed('left alt') or KeyboardController.is_key_pressed(
                     'right alt')),
@@ -160,15 +130,10 @@ class VirtualKeyboard(QMainWindow):
                     'right shift'))
             }
 
-            print(f"New detected states: {new_states}")  # Debugging print
-            print(f"Previous modifier states: {self.modifier_states}")  # Debugging print
-
             if new_states != self.modifier_states:  # Only update if there's a change
                 print("State changed, updating UI...")
                 self.modifier_states = new_states
                 self.update_modifier_status()
-            else:
-                print("No change in modifier states.")
 
         except Exception as e:
             print(f"Error in check_modifier_states: {e}")
@@ -208,6 +173,7 @@ class VirtualKeyboard(QMainWindow):
         self.add_status_bar(main_layout)
 
         # Add timer for periodic updates - Updates the Current Active OSK Window Label.
+        # And check for modifier key states - for UI info updating
         self.update_timer = QTimer(self)
         self.update_timer.timeout.connect(self.update_current_window_label)
         self.update_timer.timeout.connect(self.check_modifier_states)
@@ -268,7 +234,8 @@ class VirtualKeyboard(QMainWindow):
                 KeyboardController.release_key(mod_key)
                 self.modifier_states[mod_key] = False
 
-    def create_keyboard_frame(self):
+    @staticmethod
+    def create_keyboard_frame():
         """Create a frame for the keyboard with neon styling"""
         keyboard_frame = QFrame()
         keyboard_frame.setFrameShape(QFrame.Shape.StyledPanel)
@@ -308,72 +275,6 @@ class VirtualKeyboard(QMainWindow):
         bottom_layout.addWidget(version_info)
 
         main_layout.addWidget(bottom_frame)  # Fix typo: should be bottom_frame
-
-
-    def toggle_modifier_key(self, key):
-        """Toggle the state of a modifier key with error handling"""
-        try:
-            from utils.keyboard_utils import KeyboardController
-
-            print(f"toggle_modifier_key called with key: {key}")
-
-            key = key.lower()
-
-            if not hasattr(self, 'modifier_states'):
-                print("Creating modifier_states dictionary")
-                self.modifier_states = {'alt': False, 'ctrl': False, 'shift': False}
-
-            print(f"Current modifier_states: {self.modifier_states}")
-
-            if key in self.modifier_states:
-                new_state = not self.modifier_states[key]
-                self.modifier_states[key] = new_state
-                print(f"Set {key} to {new_state}")
-
-                if new_state:
-                    KeyboardController.press_key(key)
-                    self.update_status(f"{key.upper()} locked")
-                else:
-                    KeyboardController.release_key(key)
-                    self.update_status(f"{key.upper()} released")
-
-                print("Calling update_modifier_status()")
-                self.update_modifier_status()
-
-                return True
-            else:
-                print(f"Key {key} not found in modifier_states: {self.modifier_states.keys()}")
-
-            return False
-        except Exception as e:
-            print(f"Error in toggle_modifier_key: {e}")
-            import traceback
-            traceback.print_exc()
-            return False
-
-
-    def update_modifier_status(self):
-        """Update the modifier status display"""
-        try:
-            alt_state = self.modifier_states.get('alt', False)
-            ctrl_state = self.modifier_states.get('ctrl', False)
-            shift_state = self.modifier_states.get('shift', False)
-
-            print(f"update_modifier_status: alt={alt_state}, ctrl={ctrl_state}, shift={shift_state}")
-
-            alt_status = "On" if alt_state else "Off"
-            ctrl_status = "On" if ctrl_state else "Off"
-            shift_status = "On" if shift_state else "Off"
-
-            self.modifier_status_label.setText(f"ALT: {alt_status} | CTRL: {ctrl_status} | SHIFT: {shift_status}")
-            print(f"Label text set to: {self.modifier_status_label.text()}")
-
-            self.modifier_status_label.update()
-            self.update()  # Ensure main window updates
-        except Exception as e:
-            print(f"Error in update_modifier_status: {e}")
-            import traceback
-            traceback.print_exc()
 
 
     def handle_key_press(self, key):
