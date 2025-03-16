@@ -26,6 +26,7 @@ class KeyboardApp(QApplication):
         # Create the keyboard window
         self.keyboard = VirtualKeyboard()
 
+
     def toggle_keyboard(self):
         """Toggle the keyboard window between minimized and normal states"""
         if not self.keyboard:
