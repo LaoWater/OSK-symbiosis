@@ -5,7 +5,9 @@ Handles the UI layout and interaction with the system
 import sys
 from PyQt6.QtWidgets import (QMainWindow, QWidget, QPushButton,
                              QVBoxLayout, QHBoxLayout, QLabel, QFrame, QApplication)
-from PyQt6.QtCore import Qt, QTimer, QPoint, QAbstractNativeEventFilter, QPropertyAnimation, QEasingCurve, QRect, QAbstractAnimation
+from PyQt6.QtCore import (Qt, QTimer, QPoint, QAbstractNativeEventFilter, 
+                         QPropertyAnimation, QEasingCurve, QRect, 
+                         QAbstractAnimation, QSize)
 from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtGui import QPainter, QPen, QPainterPath, QColor, QKeySequence, QShortcut
 from ui.theme import NeonTheme
@@ -59,37 +61,33 @@ class VirtualKeyboard(QMainWindow):
         self.window_manager = WindowManager()
         self.theme = NeonTheme()
 
-        # Modifier keys state tracking
-        self.modifier_states = {
-            'alt': False,
-            'ctrl': False,
-            'shift': False
-        }
-
+        # Initialize size variables with None to indicate they haven't been loaded yet
+        self.initial_width = None
+        self.initial_height = None
+        self.original_size = None
+        
         # Variables for window dragging
         self.dragging = False
         self.resizing = False
         self.resize_edge = None
         self.offset = QPoint()
-
-        # Resize border width (for detecting resize areas)
         self.border_width = 10
 
-        # Store original size for proportional resizing
-        self.original_size = None
+        # Load settings first, before initializing UI
+        self.load_window_settings()
+        
+        # If settings weren't loaded, use defaults
+        if self.initial_width is None:
+            self.initial_width = 900
+            self.initial_height = 350
 
+        # Initialize UI
         self.initUI()
 
-        # Set up global hotkey for minimize/restore (Ctrl+Space)
+        # Set up hotkey handling
         self.hotkey_id = 1
-
-        # Install native event filter for hotkey handling
         self.event_filter = HotkeyFilter(self.hotkey_id, self.toggle_minimize)
         QApplication.instance().installNativeEventFilter(self.event_filter)
-
-        # Store initial window dimensions for scaling calculations
-        self.initial_width = self.width()
-        self.initial_height = self.height()
 
     def toggle_minimize(self):
         """Toggle between minimized and normal state"""
@@ -105,26 +103,24 @@ class VirtualKeyboard(QMainWindow):
         """Initialize the user interface"""
         # Set window properties
         self.setWindowTitle('Neon Virtual Keyboard')
-        self.setGeometry(100, 100, 900, 350)
-
-        # Store initial dimensions for scaling calculations
-        self.initial_width = 900  # Match the initial width from setGeometry
-        self.initial_height = 350  # Match the initial height from setGeometry
-
+        
+        # Force the window size to match the loaded/default dimensions
+        print(f"Setting window size to: {self.initial_width}x{self.initial_height}")
+        self.resize(self.initial_width, self.initial_height)
+        
         # Store original size for proportional scaling
-        self.original_size = self.size()
-
-        # Set window flags to stay on top and frameless
+        self.original_size = QSize(self.initial_width, self.initial_height)
+        print(f"Original size set to: {self.original_size}")
+        
+        # Set window flags
         self.setWindowFlags(Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.FramelessWindowHint | Qt.WindowType.Tool)
 
-        # Set the window as a tool window, so it doesn't show in taskbar and loses focus easily
+        # Set the window as a tool window
         if sys.platform == 'win32':
             self.setAttribute(Qt.WidgetAttribute.WA_ShowWithoutActivating)
 
-        # Apply theme
+        # Apply theme and window manager settings
         self.theme.apply_to_window(self)
-
-        # Apply Windows-specific fix to prevent stealing focus
         self.window_manager.apply_no_activate_style(self)
 
         # Create main layout structure
@@ -133,7 +129,7 @@ class VirtualKeyboard(QMainWindow):
         # Show the window
         self.show()
 
-        # Set cursor to indicate resize areas
+        # Set cursor
         self.setCursor(Qt.CursorShape.ArrowCursor)
 
     def check_modifier_states(self):
@@ -547,6 +543,10 @@ class VirtualKeyboard(QMainWindow):
     def mouseReleaseEvent(self, event):
         """Handle mouse release events for dragging and resizing the window"""
         if event.button() == Qt.MouseButton.LeftButton:
+            if self.dragging or self.resizing:
+                # Save window settings after drag or resize
+                self.save_window_settings()
+            
             self.dragging = False
             self.resizing = False
             self.resize_edge = None
@@ -568,6 +568,83 @@ class VirtualKeyboard(QMainWindow):
         # Scale each button
         for button in key_buttons:
             button.scale_size(scale_factor)
+
+    def save_window_settings(self):
+        """Save window position and size to a JSON file"""
+        import json
+        import os
+        
+        settings = {
+            'position': {
+                'x': self.x(),
+                'y': self.y()
+            },
+            'size': {
+                'width': self.width(),
+                'height': self.height()
+            }
+        }
+        
+        try:
+            # Ensure the settings directory exists
+            os.makedirs('settings', exist_ok=True)
+            
+            settings_path = 'settings/window_settings.json'
+            with open(settings_path, 'w') as f:
+                json.dump(settings, f, indent=4)
+                
+            print(f"Window settings saved to: {os.path.abspath(settings_path)}")
+            print(f"Settings: {settings}")
+            
+        except Exception as e:
+            print(f"Error saving window settings: {e}")
+            import traceback
+            traceback.print_exc()
+
+    def load_window_settings(self):
+        """Load window position and size from JSON file"""
+        import json
+        import os
+        
+        settings_path = 'settings/window_settings.json'
+        print(f"Attempting to load settings from: {os.path.abspath(settings_path)}")
+        
+        try:
+            if os.path.exists(settings_path):
+                with open(settings_path, 'r') as f:
+                    settings = json.load(f)
+                    
+                    # Get screen geometry to ensure window appears on screen
+                    screen = QApplication.primaryScreen().geometry()
+                    
+                    # Ensure coordinates are within screen bounds
+                    x = min(max(settings['position']['x'], 0), screen.width() - 100)
+                    y = min(max(settings['position']['y'], 0), screen.height() - 100)
+                    width = min(settings['size']['width'], screen.width())
+                    height = min(settings['size']['height'], screen.height())
+                    
+                    print(f"Loading window settings - x: {x}, y: {y}, width: {width}, height: {height}")
+                    
+                    # Store the dimensions
+                    self.initial_width = width
+                    self.initial_height = height
+                    
+                    # Set window geometry
+                    self.setGeometry(x, y, width, height)
+                    
+                    return True
+                
+        except FileNotFoundError:
+            print(f"Settings file not found at: {os.path.abspath(settings_path)}")
+        except json.JSONDecodeError as e:
+            print(f"Error decoding settings JSON: {e}")
+        except Exception as e:
+            print(f"Unexpected error loading settings: {e}")
+            import traceback
+            traceback.print_exc()
+        
+        print("Using default window settings")
+        return False
 
     # Not used from here onwards for now, handling presses in key_buttons.py
 
