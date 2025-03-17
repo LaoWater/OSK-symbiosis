@@ -217,9 +217,9 @@ class KeyboardLayoutManager:
         for key_text, key_value in control_keys:
             try:
                 if key_text == "Space":
-                    key_btn = SpecialNeonKeyButton(key_text, key_value, 350, 50)
+                    key_btn = SpecialNeonKeyButton(key_text, key_value, 350, 35)
                 elif key_text in ["Ctrl", "Win", "Alt", "Fn"]:
-                    key_btn = SpecialNeonKeyButton(key_text, key_value, 60, 50)
+                    key_btn = SpecialNeonKeyButton(key_text, key_value, 60, 35)
                 else:
                     key_btn = NeonKeyButton(key_text, key_value)
                 row_layout.addWidget(key_btn)

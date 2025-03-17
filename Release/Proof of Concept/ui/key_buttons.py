@@ -15,7 +15,7 @@ from utils.keyboard_utils import KeyboardController
 class NeonKeyButton(QPushButton):
     MODIFIER_KEYS = ["left shift", "right shift", "left ctrl", "right ctrl", "left alt", "right alt"]
 
-    def __init__(self, key_text, key_value=None, width=50, height=50, parent=None):
+    def __init__(self, key_text, key_value=None, width=30, height=30, parent=None):
         super().__init__(key_text, parent)
         self.key_text = key_text
         self.key_value = key_value if key_value is not None else key_text
@@ -165,46 +165,44 @@ class NeonKeyButton(QPushButton):
             glow_height = max(1, int(2 * self.scale_factor))  # Scale glow height
             painter.drawRect(0, self.height - 3, self.width, glow_height)
 
-        def scale_size(self, scale_factor):
-            """Scale the button based on the provided scale factor"""
-            # Store the current scale factor
-            self.scale_factor = scale_factor
+    def scale_size(self, scale_factor):
+        """Scale the button based on the provided scale factor"""
+        # Store the current scale factor
+        self.scale_factor = scale_factor
 
-            print("Scaling function entered in key_buttons.py")
+        # Calculate new dimensions
+        new_width = int(self.default_width * scale_factor)
+        new_height = int(self.default_height * scale_factor)
 
-            # Calculate new dimensions
-            new_width = int(self.default_width * scale_factor)
-            new_height = int(self.default_height * scale_factor)
+        # Ensure minimum size
+        new_width = max(new_width, 20)
+        new_height = max(new_height, 20)
 
-            # Ensure minimum size
-            new_width = max(new_width, 20)
-            new_height = max(new_height, 20)
+        # Update the button's size properties
+        self.width = new_width
+        self.height = new_height
 
-            # Update the button's size properties
-            self.width = new_width
-            self.height = new_height
+        # Apply new size
+        self.setFixedSize(new_width, new_height)
 
-            # Apply new size
-            self.setFixedSize(new_width, new_height)
+        # Update the styles with new dimensions
+        styles = NeonTheme.get_key_styles(new_width, new_height)
+        self.default_style = styles['default']
+        self.hover_style = styles['hover']
+        self.pressed_style = styles['pressed']
 
-            # Update the styles with new dimensions
-            styles = NeonTheme.get_key_styles(new_width, new_height)
-            self.default_style = styles['default']
-            self.hover_style = styles['hover']
-            self.pressed_style = styles['pressed']
-
-            # Apply the appropriate style based on current state
-            if self.key_value in self.MODIFIER_KEYS and self.is_toggled:
-                self.setStyleSheet(self.pressed_style)
-            elif self.underMouse():
-                self.setStyleSheet(self.hover_style)
-            else:
-                self.setStyleSheet(self.default_style)
+        # Apply the appropriate style based on current state
+        if self.key_value in self.MODIFIER_KEYS and self.is_toggled:
+            self.setStyleSheet(self.pressed_style)
+        elif self.underMouse():
+            self.setStyleSheet(self.hover_style)
+        else:
+            self.setStyleSheet(self.default_style)
 
 
 class SpecialNeonKeyButton(NeonKeyButton):
     """Special keyboard button with different default size"""
 
-    def __init__(self, key_text, key_value=None, width=80, height=50, parent=None):
+    def __init__(self, key_text, key_value=None, width=50, height=30, parent=None):
         """Initialize a special key button with custom width"""
         super().__init__(key_text, key_value, width, height, parent)

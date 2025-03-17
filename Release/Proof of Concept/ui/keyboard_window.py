@@ -12,6 +12,7 @@ from ui.theme import NeonTheme
 from ui.layouts import KeyboardLayoutManager
 from utils.window_utils import WindowManager
 import ctypes
+from ui.key_buttons import NeonKeyButton, SpecialNeonKeyButton
 
 # WM_HOTKEY (value 0x0312) is a Windows message that the system sends when a registered hotkey is triggered.
 # Applications that register hotkeys using RegisterHotKey() receive this message in their window procedure when the hotkey is pressed.
@@ -105,6 +106,10 @@ class VirtualKeyboard(QMainWindow):
         # Set window properties
         self.setWindowTitle('Neon Virtual Keyboard')
         self.setGeometry(100, 100, 900, 350)
+
+        # Store initial dimensions for scaling calculations
+        self.initial_width = 900  # Match the initial width from setGeometry
+        self.initial_height = 350  # Match the initial height from setGeometry
 
         # Store original size for proportional scaling
         self.original_size = self.size()
@@ -548,21 +553,21 @@ class VirtualKeyboard(QMainWindow):
 
     def resizeEvent(self, event):
         """Handle window resize events to maintain proportions of UI elements"""
-
-        print("Scaling function entered in keyboard_window.py")
-
         super().resizeEvent(event)
-        # Any scaling of child widgets can be done here if needed
-        # Currently the layout system will handle most adjustments automatically
-
-
-
-
-
-
-
-
-
+        
+        # Calculate scale factor based on initial window size
+        width_scale = self.width() / self.initial_width
+        height_scale = self.height() / self.initial_height
+        
+        # Use the smaller scale to maintain aspect ratio
+        scale_factor = min(width_scale, height_scale)
+        
+        # Find all NeonKeyButton and SpecialNeonKeyButton instances
+        key_buttons = self.findChildren((NeonKeyButton, SpecialNeonKeyButton))
+        
+        # Scale each button
+        for button in key_buttons:
+            button.scale_size(scale_factor)
 
     # Not used from here onwards for now, handling presses in key_buttons.py
 
