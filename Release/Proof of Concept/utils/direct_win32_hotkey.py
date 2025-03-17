@@ -71,24 +71,23 @@ class Win32Hotkey(QObject):
                 key
             )
 
-            if result:
-                print(f"Win32 Hotkey registered: Ctrl+K (ID: {HOTKEY_ID})")
-                self.registered = True
 
-                # Set up a timer to process Windows messages
-                self.timer = QTimer(self)
-                self.timer.timeout.connect(self._process_messages)
-                self.timer.start(50)  # Check every 50ms
-
-                return True
-            else:
-                error = win32api.GetLastError()
-                print(f"Failed to register hotkey, error code: {error}")
-                return False
 
         except Exception as e:
             print(f"Error setting up hotkey: {e}")
             return False
+
+
+    def _wnd_proc(self, hwnd, msg, wparam, lparam):
+        """Window procedure to handle window messages"""
+        if msg == win32con.WM_HOTKEY and wparam == HOTKEY_ID:
+            print("Hotkey detected!")
+            # We can't emit the signal directly here because this is called from a different thread
+            # Instead, we'll set a flag that our timer will check
+            self.msg_handler = True
+
+        return win32gui.DefWindowProc(hwnd, msg, wparam, lparam)
+
 
     def unregister(self):
         """Unregister the global hotkey and clean up resources"""
@@ -116,29 +115,6 @@ class Win32Hotkey(QObject):
             print(f"Error unregistering hotkey: {e}")
             return False
 
-    def _wnd_proc(self, hwnd, msg, wparam, lparam):
-        """Window procedure to handle window messages"""
-        if msg == win32con.WM_HOTKEY and wparam == HOTKEY_ID:
-            print("Hotkey detected!")
-            # We can't emit the signal directly here because this is called from a different thread
-            # Instead, we'll set a flag that our timer will check
-            self.msg_handler = True
-
-        return win32gui.DefWindowProc(hwnd, msg, wparam, lparam)
-
-    def _process_messages(self):
-        """Process any pending Windows messages"""
-        if self.msg_handler:
-            self.msg_handler = False
-            # Now we can safely emit the signal from the Qt thread
-            self.hotkey_triggered.emit()
-
-        # Process pending messages
-        try:
-            win32gui.PumpWaitingMessages()
-        except Exception as e:
-            # Ignore any errors from PumpWaitingMessages
-            pass
 
     def __del__(self):
         """Cleanup when object is destroyed"""

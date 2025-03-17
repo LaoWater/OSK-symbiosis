@@ -56,42 +56,6 @@ class NeonKeyButton(QPushButton):
             self.glow_intensity = 0
         self.update()
 
-    def scale_size(self, scale_factor):
-        """Scale the button based on the provided scale factor"""
-        # Store the current scale factor
-        self.scale_factor = scale_factor
-
-        print("Scaling function entered in key_buttons.py")
-
-        # Calculate new dimensions
-        new_width = int(self.default_width * scale_factor)
-        new_height = int(self.default_height * scale_factor)
-
-        # Ensure minimum size
-        new_width = max(new_width, 20)
-        new_height = max(new_height, 20)
-
-        # Update the button's size properties
-        self.width = new_width
-        self.height = new_height
-
-        # Apply new size
-        self.setFixedSize(new_width, new_height)
-
-        # Update the styles with new dimensions
-        styles = NeonTheme.get_key_styles(new_width, new_height)
-        self.default_style = styles['default']
-        self.hover_style = styles['hover']
-        self.pressed_style = styles['pressed']
-
-        # Apply the appropriate style based on current state
-        if self.key_value in self.MODIFIER_KEYS and self.is_toggled:
-            self.setStyleSheet(self.pressed_style)
-        elif self.underMouse():
-            self.setStyleSheet(self.hover_style)
-        else:
-            self.setStyleSheet(self.default_style)
-
     def enterEvent(self, event):
         if self.key_value in self.MODIFIER_KEYS and self.is_toggled:
             self.setStyleSheet(self.pressed_style)
@@ -200,6 +164,42 @@ class NeonKeyButton(QPushButton):
 
             glow_height = max(1, int(2 * self.scale_factor))  # Scale glow height
             painter.drawRect(0, self.height - 3, self.width, glow_height)
+
+        def scale_size(self, scale_factor):
+            """Scale the button based on the provided scale factor"""
+            # Store the current scale factor
+            self.scale_factor = scale_factor
+
+            print("Scaling function entered in key_buttons.py")
+
+            # Calculate new dimensions
+            new_width = int(self.default_width * scale_factor)
+            new_height = int(self.default_height * scale_factor)
+
+            # Ensure minimum size
+            new_width = max(new_width, 20)
+            new_height = max(new_height, 20)
+
+            # Update the button's size properties
+            self.width = new_width
+            self.height = new_height
+
+            # Apply new size
+            self.setFixedSize(new_width, new_height)
+
+            # Update the styles with new dimensions
+            styles = NeonTheme.get_key_styles(new_width, new_height)
+            self.default_style = styles['default']
+            self.hover_style = styles['hover']
+            self.pressed_style = styles['pressed']
+
+            # Apply the appropriate style based on current state
+            if self.key_value in self.MODIFIER_KEYS and self.is_toggled:
+                self.setStyleSheet(self.pressed_style)
+            elif self.underMouse():
+                self.setStyleSheet(self.hover_style)
+            else:
+                self.setStyleSheet(self.default_style)
 
 
 class SpecialNeonKeyButton(NeonKeyButton):

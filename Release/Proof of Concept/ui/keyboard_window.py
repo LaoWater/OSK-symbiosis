@@ -13,7 +13,8 @@ from ui.layouts import KeyboardLayoutManager
 from utils.window_utils import WindowManager
 import ctypes
 
-# WM_HOTKEY (value 0x0312) is a Windows message that the system sends when a registered hotkey is triggered. Applications that register hotkeys using RegisterHotKey() receive this message in their window procedure when the hotkey is pressed.
+# WM_HOTKEY (value 0x0312) is a Windows message that the system sends when a registered hotkey is triggered.
+# Applications that register hotkeys using RegisterHotKey() receive this message in their window procedure when the hotkey is pressed.
 WM_HOTKEY = 0x0312
 
 
@@ -77,12 +78,16 @@ class VirtualKeyboard(QMainWindow):
 
         self.initUI()
 
-        # Set up global hotkey for minimize/restore (Ctrl+K)
+        # Set up global hotkey for minimize/restore (Ctrl+Space)
         self.hotkey_id = 1
 
         # Install native event filter for hotkey handling
         self.event_filter = HotkeyFilter(self.hotkey_id, self.toggle_minimize)
         QApplication.instance().installNativeEventFilter(self.event_filter)
+
+        # Store initial window dimensions for scaling calculations
+        self.initial_width = self.width()
+        self.initial_height = self.height()
 
     def toggle_minimize(self):
         """Toggle between minimized and normal state"""
@@ -148,6 +153,30 @@ class VirtualKeyboard(QMainWindow):
             print(f"Error in check_modifier_states: {e}")
             import traceback
             traceback.print_exc()
+
+    def update_modifier_status(self):
+        """Update the modifier status display"""
+        try:
+            alt_state = self.modifier_states.get('alt', False)
+            ctrl_state = self.modifier_states.get('ctrl', False)
+            shift_state = self.modifier_states.get('shift', False)
+
+            print(f"update_modifier_status: alt={alt_state}, ctrl={ctrl_state}, shift={shift_state}")
+
+            alt_status = "On" if alt_state else "Off"
+            ctrl_status = "On" if ctrl_state else "Off"
+            shift_status = "On" if shift_state else "Off"
+
+            self.modifier_status_label.setText(f"ALT: {alt_status} | CTRL: {ctrl_status} | SHIFT: {shift_status}")
+            print(f"Label text set to: {self.modifier_status_label.text()}")
+
+            self.modifier_status_label.update()
+            self.update()  # Ensure main window updates
+        except Exception as e:
+            print(f"Error in update_modifier_status: {e}")
+            import traceback
+            traceback.print_exc()
+
 
     def setup_layout(self):
         """Create the main layout structure for the keyboard window"""
@@ -491,6 +520,7 @@ class VirtualKeyboard(QMainWindow):
                 self.drag_animation.setEasingCurve(QEasingCurve.Type.OutCubic)
                 self.drag_animation.start()
 
+
     def apply_easing(self, diff):
         """Apply easing to mouse movements for smoother feel"""
         # Use QEasingCurve for smooth interpolation
@@ -505,6 +535,7 @@ class VirtualKeyboard(QMainWindow):
 
         # Preserve original direction while applying easing
         return QPoint(int(eased_x), int(eased_y))
+
 
 
     def mouseReleaseEvent(self, event):
