@@ -1,0 +1,3680 @@
+[
+  {
+    "id": 1,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "sq_ft": 527,
+    "price": 2301932,
+    "neighborhood": "Eastdale",
+    "features": [
+      "smart home features",
+      "home office space",
+      "balcony",
+      "garage",
+      "open floor plan",
+      "granite countertops",
+      "high ceilings"
+    ],
+    "description": "Beautiful 3 bedroom, 1 bathroom house in Eastdale. This 527 sq ft property features smart home features, home office space, balcony, garage, open floor plan, granite countertops and high ceilings. Modern design with attention to detail.",
+    "list_date": "2025-01-06"
+  },
+  {
+    "id": 2,
+    "type": "Duplex",
+    "bedrooms": 2,
+    "bathrooms": 4,
+    "sq_ft": 2956,
+    "price": 11208102,
+    "neighborhood": "Eastdale",
+    "features": [
+      "recently renovated",
+      "granite countertops",
+      "home office space",
+      "smart home features",
+      "high ceilings",
+      "walk-in closet",
+      "balcony",
+      "fireplace"
+    ],
+    "description": "Beautiful 2 bedroom, 4 bathroom duplex in Eastdale. This 2956 sq ft property features recently renovated, granite countertops, home office space, smart home features, high ceilings, walk-in closet, balcony and fireplace. Don't miss this opportunity!",
+    "list_date": "2025-02-18"
+  },
+  {
+    "id": 3,
+    "type": "Duplex",
+    "bedrooms": 5,
+    "bathrooms": 3,
+    "sq_ft": 1708,
+    "price": 5576147,
+    "neighborhood": "Eastdale",
+    "features": [
+      "fireplace",
+      "open floor plan",
+      "garden",
+      "walk-in closet"
+    ],
+    "description": "Beautiful 5 bedroom, 3 bathroom duplex in Eastdale. This 1708 sq ft property features fireplace, open floor plan, garden and walk-in closet. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-30"
+  },
+  {
+    "id": 4,
+    "type": "House",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sq_ft": 1888,
+    "price": 7867414,
+    "neighborhood": "Southbay",
+    "features": [
+      "recently renovated",
+      "swimming pool",
+      "fireplace",
+      "hardwood floors",
+      "garden",
+      "home office space",
+      "smart home features"
+    ],
+    "description": "Beautiful 2 bedroom, 1 bathroom house in Southbay. This 1888 sq ft property features recently renovated, swimming pool, fireplace, hardwood floors, garden, home office space and smart home features. Move-in ready with great natural light.",
+    "list_date": "2025-01-26"
+  },
+  {
+    "id": 5,
+    "type": "Townhouse",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "sq_ft": 1310,
+    "price": 6243388,
+    "neighborhood": "Westside",
+    "features": [
+      "recently renovated",
+      "balcony",
+      "swimming pool"
+    ],
+    "description": "Beautiful 4 bedroom, 3 bathroom townhouse in Westside. This 1310 sq ft property features recently renovated, balcony and swimming pool. Move-in ready with great natural light.",
+    "list_date": "2025-01-12"
+  },
+  {
+    "id": 6,
+    "type": "Townhouse",
+    "bedrooms": 4,
+    "bathrooms": 1,
+    "sq_ft": 3212,
+    "price": 15568993,
+    "neighborhood": "Southbay",
+    "features": [
+      "smart home features",
+      "home office space",
+      "balcony",
+      "backyard",
+      "swimming pool",
+      "garden",
+      "open floor plan"
+    ],
+    "description": "Beautiful 4 bedroom, 1 bathroom townhouse in Southbay. This 3212 sq ft property features smart home features, home office space, balcony, backyard, swimming pool, garden and open floor plan. Perfect for families or professionals.",
+    "list_date": "2025-02-11"
+  },
+  {
+    "id": 7,
+    "type": "House",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sq_ft": 3443,
+    "price": 16910909,
+    "neighborhood": "Downtown",
+    "features": [
+      "smart home features",
+      "backyard",
+      "fireplace",
+      "recently renovated"
+    ],
+    "description": "Beautiful 2 bedroom, 1 bathroom house in Downtown. This 3443 sq ft property features smart home features, backyard, fireplace and recently renovated. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-02"
+  },
+  {
+    "id": 8,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 3286,
+    "price": 14490520,
+    "neighborhood": "Downtown",
+    "features": [
+      "stainless steel appliances",
+      "granite countertops",
+      "walk-in closet",
+      "balcony",
+      "swimming pool",
+      "backyard",
+      "garden"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom duplex in Downtown. This 3286 sq ft property features stainless steel appliances, granite countertops, walk-in closet, balcony, swimming pool, backyard and garden. Move-in ready with great natural light.",
+    "list_date": "2025-01-14"
+  },
+  {
+    "id": 9,
+    "type": "Duplex",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sq_ft": 1812,
+    "price": 8021686,
+    "neighborhood": "Westside",
+    "features": [
+      "garden",
+      "high ceilings",
+      "recently renovated",
+      "home office space",
+      "garage",
+      "fireplace",
+      "walk-in closet",
+      "hardwood floors"
+    ],
+    "description": "Beautiful 2 bedroom, 2 bathroom duplex in Westside. This 1812 sq ft property features garden, high ceilings, recently renovated, home office space, garage, fireplace, walk-in closet and hardwood floors. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-23"
+  },
+  {
+    "id": 10,
+    "type": "Apartment",
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "sq_ft": 638,
+    "price": 1753881,
+    "neighborhood": "Westside",
+    "features": [
+      "walk-in closet",
+      "smart home features",
+      "fireplace"
+    ],
+    "description": "Beautiful 4 bedroom, 2 bathroom apartment in Westside. This 638 sq ft property features walk-in closet, smart home features and fireplace. Move-in ready with great natural light.",
+    "list_date": "2024-12-31"
+  },
+  {
+    "id": 11,
+    "type": "Condo",
+    "bedrooms": 1,
+    "bathrooms": 3,
+    "sq_ft": 2546,
+    "price": 10892395,
+    "neighborhood": "Northpark",
+    "features": [
+      "hardwood floors",
+      "stainless steel appliances",
+      "swimming pool",
+      "open floor plan",
+      "walk-in closet",
+      "balcony",
+      "garden"
+    ],
+    "description": "Beautiful 1 bedroom, 3 bathroom condo in Northpark. This 2546 sq ft property features hardwood floors, stainless steel appliances, swimming pool, open floor plan, walk-in closet, balcony and garden. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-01"
+  },
+  {
+    "id": 12,
+    "type": "House",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "sq_ft": 1737,
+    "price": 6370979,
+    "neighborhood": "Riverside",
+    "features": [
+      "garage",
+      "high ceilings",
+      "fireplace",
+      "home office space",
+      "smart home features",
+      "balcony"
+    ],
+    "description": "Beautiful 5 bedroom, 4 bathroom house in Riverside. This 1737 sq ft property features garage, high ceilings, fireplace, home office space, smart home features and balcony. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-02-20"
+  },
+  {
+    "id": 13,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 3,
+    "sq_ft": 3500,
+    "price": 11144447,
+    "neighborhood": "Eastdale",
+    "features": [
+      "smart home features",
+      "recently renovated",
+      "open floor plan",
+      "high ceilings",
+      "balcony"
+    ],
+    "description": "Beautiful 1 bedroom, 3 bathroom duplex in Eastdale. This 3500 sq ft property features smart home features, recently renovated, open floor plan, high ceilings and balcony. Don't miss this opportunity!",
+    "list_date": "2025-01-25"
+  },
+  {
+    "id": 14,
+    "type": "Condo",
+    "bedrooms": 5,
+    "bathrooms": 3,
+    "sq_ft": 2967,
+    "price": 11200225,
+    "neighborhood": "Eastdale",
+    "features": [
+      "garden",
+      "backyard",
+      "balcony",
+      "granite countertops"
+    ],
+    "description": "Beautiful 5 bedroom, 3 bathroom condo in Eastdale. This 2967 sq ft property features garden, backyard, balcony and granite countertops. Perfect for families or professionals.",
+    "list_date": "2025-01-18"
+  },
+  {
+    "id": 15,
+    "type": "House",
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "sq_ft": 3084,
+    "price": 12459868,
+    "neighborhood": "Eastdale",
+    "features": [
+      "swimming pool",
+      "walk-in closet",
+      "high ceilings",
+      "hardwood floors",
+      "balcony",
+      "recently renovated",
+      "garden"
+    ],
+    "description": "Beautiful 4 bedroom, 4 bathroom house in Eastdale. This 3084 sq ft property features swimming pool, walk-in closet, high ceilings, hardwood floors, balcony, recently renovated and garden. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-02-15"
+  },
+  {
+    "id": 16,
+    "type": "Townhouse",
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "sq_ft": 1560,
+    "price": 6669041,
+    "neighborhood": "Downtown",
+    "features": [
+      "backyard",
+      "high ceilings",
+      "granite countertops"
+    ],
+    "description": "Beautiful 4 bedroom, 2 bathroom townhouse in Downtown. This 1560 sq ft property features backyard, high ceilings and granite countertops. Modern design with attention to detail.",
+    "list_date": "2025-02-06"
+  },
+  {
+    "id": 17,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sq_ft": 2888,
+    "price": 15406705,
+    "neighborhood": "Northpark",
+    "features": [
+      "hardwood floors",
+      "fireplace",
+      "smart home features",
+      "garden"
+    ],
+    "description": "Beautiful 3 bedroom, 2 bathroom house in Northpark. This 2888 sq ft property features hardwood floors, fireplace, smart home features and garden. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-07"
+  },
+  {
+    "id": 18,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 2753,
+    "price": 7799927,
+    "neighborhood": "Southbay",
+    "features": [
+      "recently renovated",
+      "balcony",
+      "backyard",
+      "home office space",
+      "high ceilings"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom duplex in Southbay. This 2753 sq ft property features recently renovated, balcony, backyard, home office space and high ceilings. Newly listed and won't last long at this price.",
+    "list_date": "2025-02-20"
+  },
+  {
+    "id": 19,
+    "type": "Apartment",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sq_ft": 1550,
+    "price": 5500155,
+    "neighborhood": "Eastdale",
+    "features": [
+      "recently renovated",
+      "walk-in closet",
+      "balcony",
+      "stainless steel appliances",
+      "high ceilings",
+      "open floor plan",
+      "hardwood floors"
+    ],
+    "description": "Beautiful 3 bedroom, 2 bathroom apartment in Eastdale. This 1550 sq ft property features recently renovated, walk-in closet, balcony, stainless steel appliances, high ceilings, open floor plan and hardwood floors. Ideal location close to shops and restaurants.",
+    "list_date": "2025-02-27"
+  },
+  {
+    "id": 20,
+    "type": "Apartment",
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "sq_ft": 1024,
+    "price": 4232406,
+    "neighborhood": "Riverside",
+    "features": [
+      "granite countertops",
+      "open floor plan",
+      "garage",
+      "garden",
+      "stainless steel appliances",
+      "home office space"
+    ],
+    "description": "Beautiful 4 bedroom, 2 bathroom apartment in Riverside. This 1024 sq ft property features granite countertops, open floor plan, garage, garden, stainless steel appliances and home office space. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-02-21"
+  },
+  {
+    "id": 21,
+    "type": "Condo",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "sq_ft": 2312,
+    "price": 6837760,
+    "neighborhood": "Eastdale",
+    "features": [
+      "recently renovated",
+      "backyard",
+      "open floor plan"
+    ],
+    "description": "Beautiful 5 bedroom, 4 bathroom condo in Eastdale. This 2312 sq ft property features recently renovated, backyard and open floor plan. Perfect for families or professionals.",
+    "list_date": "2025-02-27"
+  },
+  {
+    "id": 22,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 4,
+    "sq_ft": 2361,
+    "price": 7921756,
+    "neighborhood": "Westside",
+    "features": [
+      "recently renovated",
+      "stainless steel appliances",
+      "garden",
+      "backyard",
+      "high ceilings",
+      "hardwood floors",
+      "garage"
+    ],
+    "description": "Beautiful 3 bedroom, 4 bathroom house in Westside. This 2361 sq ft property features recently renovated, stainless steel appliances, garden, backyard, high ceilings, hardwood floors and garage. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-02"
+  },
+  {
+    "id": 23,
+    "type": "House",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 1546,
+    "price": 9074995,
+    "neighborhood": "Riverside",
+    "features": [
+      "granite countertops",
+      "garden",
+      "balcony",
+      "swimming pool",
+      "garage",
+      "fireplace",
+      "high ceilings"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom house in Riverside. This 1546 sq ft property features granite countertops, garden, balcony, swimming pool, garage, fireplace and high ceilings. Don't miss this opportunity!",
+    "list_date": "2025-02-14"
+  },
+  {
+    "id": 24,
+    "type": "House",
+    "bedrooms": 2,
+    "bathrooms": 4,
+    "sq_ft": 2745,
+    "price": 9088631,
+    "neighborhood": "Northpark",
+    "features": [
+      "garden",
+      "garage",
+      "stainless steel appliances",
+      "backyard",
+      "walk-in closet",
+      "hardwood floors",
+      "granite countertops"
+    ],
+    "description": "Beautiful 2 bedroom, 4 bathroom house in Northpark. This 2745 sq ft property features garden, garage, stainless steel appliances, backyard, walk-in closet, hardwood floors and granite countertops. Modern design with attention to detail.",
+    "list_date": "2025-01-18"
+  },
+  {
+    "id": 25,
+    "type": "Duplex",
+    "bedrooms": 5,
+    "bathrooms": 3,
+    "sq_ft": 2384,
+    "price": 9390519,
+    "neighborhood": "Westside",
+    "features": [
+      "fireplace",
+      "open floor plan",
+      "stainless steel appliances"
+    ],
+    "description": "Beautiful 5 bedroom, 3 bathroom duplex in Westside. This 2384 sq ft property features fireplace, open floor plan and stainless steel appliances. Perfect for families or professionals.",
+    "list_date": "2025-02-20"
+  },
+  {
+    "id": 26,
+    "type": "Condo",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "sq_ft": 3419,
+    "price": 8911949,
+    "neighborhood": "Riverside",
+    "features": [
+      "recently renovated",
+      "smart home features",
+      "walk-in closet",
+      "hardwood floors",
+      "garden",
+      "backyard",
+      "swimming pool",
+      "stainless steel appliances"
+    ],
+    "description": "Beautiful 4 bedroom, 3 bathroom condo in Riverside. This 3419 sq ft property features recently renovated, smart home features, walk-in closet, hardwood floors, garden, backyard, swimming pool and stainless steel appliances. Move-in ready with great natural light.",
+    "list_date": "2025-02-16"
+  },
+  {
+    "id": 27,
+    "type": "Condo",
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "sq_ft": 3489,
+    "price": 13619858,
+    "neighborhood": "Riverside",
+    "features": [
+      "granite countertops",
+      "fireplace",
+      "open floor plan",
+      "swimming pool"
+    ],
+    "description": "Beautiful 2 bedroom, 3 bathroom condo in Riverside. This 3489 sq ft property features granite countertops, fireplace, open floor plan and swimming pool. Don't miss this opportunity!",
+    "list_date": "2025-02-21"
+  },
+  {
+    "id": 28,
+    "type": "Apartment",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sq_ft": 826,
+    "price": 3377318,
+    "neighborhood": "Riverside",
+    "features": [
+      "high ceilings",
+      "smart home features",
+      "garage",
+      "stainless steel appliances",
+      "balcony",
+      "home office space",
+      "recently renovated",
+      "granite countertops"
+    ],
+    "description": "Beautiful 3 bedroom, 2 bathroom apartment in Riverside. This 826 sq ft property features high ceilings, smart home features, garage, stainless steel appliances, balcony, home office space, recently renovated and granite countertops. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-02-05"
+  },
+  {
+    "id": 29,
+    "type": "Townhouse",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sq_ft": 2626,
+    "price": 11594439,
+    "neighborhood": "Eastdale",
+    "features": [
+      "stainless steel appliances",
+      "home office space",
+      "smart home features",
+      "open floor plan"
+    ],
+    "description": "Beautiful 1 bedroom, 1 bathroom townhouse in Eastdale. This 2626 sq ft property features stainless steel appliances, home office space, smart home features and open floor plan. Modern design with attention to detail.",
+    "list_date": "2025-02-14"
+  },
+  {
+    "id": 30,
+    "type": "Duplex",
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "sq_ft": 3479,
+    "price": 11721118,
+    "neighborhood": "Riverside",
+    "features": [
+      "stainless steel appliances",
+      "balcony",
+      "backyard",
+      "fireplace",
+      "garage",
+      "high ceilings"
+    ],
+    "description": "Beautiful 2 bedroom, 3 bathroom duplex in Riverside. This 3479 sq ft property features stainless steel appliances, balcony, backyard, fireplace, garage and high ceilings. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-07"
+  },
+  {
+    "id": 31,
+    "type": "Townhouse",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "sq_ft": 1923,
+    "price": 10768291,
+    "neighborhood": "Riverside",
+    "features": [
+      "high ceilings",
+      "recently renovated",
+      "stainless steel appliances",
+      "balcony",
+      "smart home features"
+    ],
+    "description": "Beautiful 3 bedroom, 3 bathroom townhouse in Riverside. This 1923 sq ft property features high ceilings, recently renovated, stainless steel appliances, balcony and smart home features. Ideal location close to shops and restaurants.",
+    "list_date": "2025-02-05"
+  },
+  {
+    "id": 32,
+    "type": "House",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 2886,
+    "price": 12192981,
+    "neighborhood": "Southbay",
+    "features": [
+      "home office space",
+      "recently renovated",
+      "granite countertops"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom house in Southbay. This 2886 sq ft property features home office space, recently renovated and granite countertops. Ideal location close to shops and restaurants.",
+    "list_date": "2025-02-21"
+  },
+  {
+    "id": 33,
+    "type": "Condo",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sq_ft": 1734,
+    "price": 5475800,
+    "neighborhood": "Downtown",
+    "features": [
+      "balcony",
+      "recently renovated",
+      "backyard",
+      "high ceilings"
+    ],
+    "description": "Beautiful 2 bedroom, 1 bathroom condo in Downtown. This 1734 sq ft property features balcony, recently renovated, backyard and high ceilings. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-18"
+  },
+  {
+    "id": 34,
+    "type": "Apartment",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sq_ft": 2794,
+    "price": 7264992,
+    "neighborhood": "Northpark",
+    "features": [
+      "high ceilings",
+      "garden",
+      "recently renovated",
+      "backyard",
+      "open floor plan",
+      "walk-in closet"
+    ],
+    "description": "Beautiful 2 bedroom, 1 bathroom apartment in Northpark. This 2794 sq ft property features high ceilings, garden, recently renovated, backyard, open floor plan and walk-in closet. Move-in ready with great natural light.",
+    "list_date": "2025-01-17"
+  },
+  {
+    "id": 35,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sq_ft": 2953,
+    "price": 16453383,
+    "neighborhood": "Northpark",
+    "features": [
+      "recently renovated",
+      "home office space",
+      "fireplace",
+      "backyard",
+      "granite countertops"
+    ],
+    "description": "Beautiful 3 bedroom, 2 bathroom house in Northpark. This 2953 sq ft property features recently renovated, home office space, fireplace, backyard and granite countertops. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-19"
+  },
+  {
+    "id": 36,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sq_ft": 2554,
+    "price": 9425869,
+    "neighborhood": "Riverside",
+    "features": [
+      "balcony",
+      "swimming pool",
+      "recently renovated",
+      "garden",
+      "garage",
+      "backyard",
+      "walk-in closet"
+    ],
+    "description": "Beautiful 3 bedroom, 2 bathroom house in Riverside. This 2554 sq ft property features balcony, swimming pool, recently renovated, garden, garage, backyard and walk-in closet. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-23"
+  },
+  {
+    "id": 37,
+    "type": "Townhouse",
+    "bedrooms": 5,
+    "bathrooms": 3,
+    "sq_ft": 2641,
+    "price": 15336338,
+    "neighborhood": "Westside",
+    "features": [
+      "fireplace",
+      "recently renovated",
+      "hardwood floors",
+      "granite countertops",
+      "open floor plan",
+      "garden"
+    ],
+    "description": "Beautiful 5 bedroom, 3 bathroom townhouse in Westside. This 2641 sq ft property features fireplace, recently renovated, hardwood floors, granite countertops, open floor plan and garden. Don't miss this opportunity!",
+    "list_date": "2025-01-06"
+  },
+  {
+    "id": 38,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "sq_ft": 872,
+    "price": 4824256,
+    "neighborhood": "Westside",
+    "features": [
+      "swimming pool",
+      "granite countertops",
+      "fireplace"
+    ],
+    "description": "Beautiful 3 bedroom, 3 bathroom house in Westside. This 872 sq ft property features swimming pool, granite countertops and fireplace. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-05"
+  },
+  {
+    "id": 39,
+    "type": "Condo",
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "sq_ft": 701,
+    "price": 2326613,
+    "neighborhood": "Riverside",
+    "features": [
+      "recently renovated",
+      "high ceilings",
+      "stainless steel appliances",
+      "smart home features",
+      "open floor plan"
+    ],
+    "description": "Beautiful 2 bedroom, 3 bathroom condo in Riverside. This 701 sq ft property features recently renovated, high ceilings, stainless steel appliances, smart home features and open floor plan. Perfect for families or professionals.",
+    "list_date": "2025-01-29"
+  },
+  {
+    "id": 40,
+    "type": "Apartment",
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "sq_ft": 2940,
+    "price": 10783131,
+    "neighborhood": "Downtown",
+    "features": [
+      "walk-in closet",
+      "granite countertops",
+      "stainless steel appliances"
+    ],
+    "description": "Beautiful 4 bedroom, 4 bathroom apartment in Downtown. This 2940 sq ft property features walk-in closet, granite countertops and stainless steel appliances. Perfect for families or professionals.",
+    "list_date": "2025-01-03"
+  },
+  {
+    "id": 41,
+    "type": "Apartment",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 982,
+    "price": 3221390,
+    "neighborhood": "Riverside",
+    "features": [
+      "swimming pool",
+      "stainless steel appliances",
+      "backyard",
+      "granite countertops",
+      "fireplace",
+      "home office space"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom apartment in Riverside. This 982 sq ft property features swimming pool, stainless steel appliances, backyard, granite countertops, fireplace and home office space. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-14"
+  },
+  {
+    "id": 42,
+    "type": "Apartment",
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "sq_ft": 1189,
+    "price": 3853045,
+    "neighborhood": "Eastdale",
+    "features": [
+      "open floor plan",
+      "swimming pool",
+      "hardwood floors"
+    ],
+    "description": "Beautiful 4 bedroom, 2 bathroom apartment in Eastdale. This 1189 sq ft property features open floor plan, swimming pool and hardwood floors. Perfect for families or professionals.",
+    "list_date": "2025-01-20"
+  },
+  {
+    "id": 43,
+    "type": "Apartment",
+    "bedrooms": 4,
+    "bathrooms": 1,
+    "sq_ft": 1996,
+    "price": 8299382,
+    "neighborhood": "Southbay",
+    "features": [
+      "recently renovated",
+      "balcony",
+      "open floor plan",
+      "smart home features",
+      "backyard"
+    ],
+    "description": "Beautiful 4 bedroom, 1 bathroom apartment in Southbay. This 1996 sq ft property features recently renovated, balcony, open floor plan, smart home features and backyard. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-10"
+  },
+  {
+    "id": 44,
+    "type": "Townhouse",
+    "bedrooms": 3,
+    "bathrooms": 4,
+    "sq_ft": 536,
+    "price": 1819284,
+    "neighborhood": "Northpark",
+    "features": [
+      "walk-in closet",
+      "high ceilings",
+      "swimming pool",
+      "home office space",
+      "open floor plan"
+    ],
+    "description": "Beautiful 3 bedroom, 4 bathroom townhouse in Northpark. This 536 sq ft property features walk-in closet, high ceilings, swimming pool, home office space and open floor plan. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-17"
+  },
+  {
+    "id": 45,
+    "type": "Condo",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sq_ft": 1127,
+    "price": 3683008,
+    "neighborhood": "Southbay",
+    "features": [
+      "backyard",
+      "smart home features",
+      "open floor plan",
+      "balcony",
+      "fireplace"
+    ],
+    "description": "Beautiful 1 bedroom, 1 bathroom condo in Southbay. This 1127 sq ft property features backyard, smart home features, open floor plan, balcony and fireplace. Modern design with attention to detail.",
+    "list_date": "2024-12-31"
+  },
+  {
+    "id": 46,
+    "type": "Apartment",
+    "bedrooms": 5,
+    "bathrooms": 3,
+    "sq_ft": 1903,
+    "price": 6574948,
+    "neighborhood": "Eastdale",
+    "features": [
+      "garage",
+      "garden",
+      "granite countertops",
+      "high ceilings",
+      "home office space"
+    ],
+    "description": "Beautiful 5 bedroom, 3 bathroom apartment in Eastdale. This 1903 sq ft property features garage, garden, granite countertops, high ceilings and home office space. Move-in ready with great natural light.",
+    "list_date": "2025-01-15"
+  },
+  {
+    "id": 47,
+    "type": "Apartment",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sq_ft": 982,
+    "price": 2693609,
+    "neighborhood": "Downtown",
+    "features": [
+      "smart home features",
+      "hardwood floors",
+      "high ceilings",
+      "open floor plan",
+      "recently renovated",
+      "backyard"
+    ],
+    "description": "Beautiful 3 bedroom, 2 bathroom apartment in Downtown. This 982 sq ft property features smart home features, hardwood floors, high ceilings, open floor plan, recently renovated and backyard. Ideal location close to shops and restaurants.",
+    "list_date": "2025-02-04"
+  },
+  {
+    "id": 48,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sq_ft": 1908,
+    "price": 8935646,
+    "neighborhood": "Downtown",
+    "features": [
+      "backyard",
+      "garage",
+      "open floor plan",
+      "fireplace",
+      "granite countertops",
+      "recently renovated",
+      "balcony"
+    ],
+    "description": "Beautiful 3 bedroom, 2 bathroom house in Downtown. This 1908 sq ft property features backyard, garage, open floor plan, fireplace, granite countertops, recently renovated and balcony. Modern design with attention to detail.",
+    "list_date": "2025-02-03"
+  },
+  {
+    "id": 49,
+    "type": "Townhouse",
+    "bedrooms": 5,
+    "bathrooms": 1,
+    "sq_ft": 1079,
+    "price": 5069794,
+    "neighborhood": "Westside",
+    "features": [
+      "swimming pool",
+      "home office space",
+      "stainless steel appliances"
+    ],
+    "description": "Beautiful 5 bedroom, 1 bathroom townhouse in Westside. This 1079 sq ft property features swimming pool, home office space and stainless steel appliances. Perfect for families or professionals.",
+    "list_date": "2025-02-20"
+  },
+  {
+    "id": 50,
+    "type": "Apartment",
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "sq_ft": 3341,
+    "price": 9166988,
+    "neighborhood": "Eastdale",
+    "features": [
+      "balcony",
+      "walk-in closet",
+      "smart home features",
+      "garden",
+      "fireplace",
+      "garage",
+      "granite countertops"
+    ],
+    "description": "Beautiful 2 bedroom, 3 bathroom apartment in Eastdale. This 3341 sq ft property features balcony, walk-in closet, smart home features, garden, fireplace, garage and granite countertops. Don't miss this opportunity!",
+    "list_date": "2025-01-21"
+  },
+  {
+    "id": 51,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sq_ft": 2683,
+    "price": 10639241,
+    "neighborhood": "Downtown",
+    "features": [
+      "open floor plan",
+      "garden",
+      "swimming pool",
+      "high ceilings",
+      "stainless steel appliances",
+      "granite countertops"
+    ],
+    "description": "Beautiful 3 bedroom, 2 bathroom house in Downtown. This 2683 sq ft property features open floor plan, garden, swimming pool, high ceilings, stainless steel appliances and granite countertops. Perfect for families or professionals.",
+    "list_date": "2025-01-10"
+  },
+  {
+    "id": 52,
+    "type": "House",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 2134,
+    "price": 9211508,
+    "neighborhood": "Downtown",
+    "features": [
+      "walk-in closet",
+      "swimming pool",
+      "fireplace",
+      "recently renovated",
+      "high ceilings"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom house in Downtown. This 2134 sq ft property features walk-in closet, swimming pool, fireplace, recently renovated and high ceilings. Don't miss this opportunity!",
+    "list_date": "2025-02-15"
+  },
+  {
+    "id": 53,
+    "type": "House",
+    "bedrooms": 1,
+    "bathrooms": 3,
+    "sq_ft": 1424,
+    "price": 7567739,
+    "neighborhood": "Eastdale",
+    "features": [
+      "balcony",
+      "open floor plan",
+      "recently renovated",
+      "hardwood floors",
+      "stainless steel appliances",
+      "high ceilings",
+      "walk-in closet"
+    ],
+    "description": "Beautiful 1 bedroom, 3 bathroom house in Eastdale. This 1424 sq ft property features balcony, open floor plan, recently renovated, hardwood floors, stainless steel appliances, high ceilings and walk-in closet. Move-in ready with great natural light.",
+    "list_date": "2025-02-07"
+  },
+  {
+    "id": 54,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "sq_ft": 2449,
+    "price": 11099813,
+    "neighborhood": "Eastdale",
+    "features": [
+      "smart home features",
+      "stainless steel appliances",
+      "home office space",
+      "walk-in closet",
+      "granite countertops",
+      "garage"
+    ],
+    "description": "Beautiful 3 bedroom, 3 bathroom house in Eastdale. This 2449 sq ft property features smart home features, stainless steel appliances, home office space, walk-in closet, granite countertops and garage. Newly listed and won't last long at this price.",
+    "list_date": "2025-01-29"
+  },
+  {
+    "id": 55,
+    "type": "House",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sq_ft": 1208,
+    "price": 5386645,
+    "neighborhood": "Riverside",
+    "features": [
+      "fireplace",
+      "garden",
+      "high ceilings",
+      "granite countertops",
+      "smart home features",
+      "balcony",
+      "hardwood floors"
+    ],
+    "description": "Beautiful 2 bedroom, 1 bathroom house in Riverside. This 1208 sq ft property features fireplace, garden, high ceilings, granite countertops, smart home features, balcony and hardwood floors. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-02-26"
+  },
+  {
+    "id": 56,
+    "type": "House",
+    "bedrooms": 1,
+    "bathrooms": 4,
+    "sq_ft": 1739,
+    "price": 10107406,
+    "neighborhood": "Eastdale",
+    "features": [
+      "balcony",
+      "fireplace",
+      "granite countertops",
+      "open floor plan"
+    ],
+    "description": "Beautiful 1 bedroom, 4 bathroom house in Eastdale. This 1739 sq ft property features balcony, fireplace, granite countertops and open floor plan. Perfect for families or professionals.",
+    "list_date": "2025-01-16"
+  },
+  {
+    "id": 57,
+    "type": "Condo",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "sq_ft": 3118,
+    "price": 11344562,
+    "neighborhood": "Eastdale",
+    "features": [
+      "balcony",
+      "swimming pool",
+      "fireplace",
+      "granite countertops",
+      "recently renovated",
+      "smart home features",
+      "walk-in closet",
+      "open floor plan"
+    ],
+    "description": "Beautiful 3 bedroom, 3 bathroom condo in Eastdale. This 3118 sq ft property features balcony, swimming pool, fireplace, granite countertops, recently renovated, smart home features, walk-in closet and open floor plan. Newly listed and won't last long at this price.",
+    "list_date": "2025-02-14"
+  },
+  {
+    "id": 58,
+    "type": "Townhouse",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "sq_ft": 1242,
+    "price": 6054515,
+    "neighborhood": "Downtown",
+    "features": [
+      "balcony",
+      "walk-in closet",
+      "garage",
+      "swimming pool",
+      "home office space"
+    ],
+    "description": "Beautiful 5 bedroom, 4 bathroom townhouse in Downtown. This 1242 sq ft property features balcony, walk-in closet, garage, swimming pool and home office space. Perfect for families or professionals.",
+    "list_date": "2025-02-19"
+  },
+  {
+    "id": 59,
+    "type": "Condo",
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "sq_ft": 2149,
+    "price": 7664027,
+    "neighborhood": "Westside",
+    "features": [
+      "balcony",
+      "hardwood floors",
+      "high ceilings",
+      "smart home features",
+      "granite countertops"
+    ],
+    "description": "Beautiful 4 bedroom, 4 bathroom condo in Westside. This 2149 sq ft property features balcony, hardwood floors, high ceilings, smart home features and granite countertops. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-01"
+  },
+  {
+    "id": 60,
+    "type": "Apartment",
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "sq_ft": 814,
+    "price": 3301695,
+    "neighborhood": "Eastdale",
+    "features": [
+      "high ceilings",
+      "balcony",
+      "open floor plan",
+      "home office space",
+      "backyard",
+      "smart home features",
+      "stainless steel appliances",
+      "garden"
+    ],
+    "description": "Beautiful 4 bedroom, 4 bathroom apartment in Eastdale. This 814 sq ft property features high ceilings, balcony, open floor plan, home office space, backyard, smart home features, stainless steel appliances and garden. Perfect for families or professionals.",
+    "list_date": "2025-01-16"
+  },
+  {
+    "id": 61,
+    "type": "Apartment",
+    "bedrooms": 5,
+    "bathrooms": 1,
+    "sq_ft": 2181,
+    "price": 5921332,
+    "neighborhood": "Northpark",
+    "features": [
+      "smart home features",
+      "granite countertops",
+      "stainless steel appliances",
+      "home office space",
+      "walk-in closet",
+      "swimming pool"
+    ],
+    "description": "Beautiful 5 bedroom, 1 bathroom apartment in Northpark. This 2181 sq ft property features smart home features, granite countertops, stainless steel appliances, home office space, walk-in closet and swimming pool. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-02-11"
+  },
+  {
+    "id": 62,
+    "type": "Townhouse",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "sq_ft": 958,
+    "price": 4446920,
+    "neighborhood": "Eastdale",
+    "features": [
+      "swimming pool",
+      "high ceilings",
+      "home office space",
+      "smart home features"
+    ],
+    "description": "Beautiful 3 bedroom, 3 bathroom townhouse in Eastdale. This 958 sq ft property features swimming pool, high ceilings, home office space and smart home features. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-21"
+  },
+  {
+    "id": 63,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 3,
+    "sq_ft": 2253,
+    "price": 6110035,
+    "neighborhood": "Southbay",
+    "features": [
+      "high ceilings",
+      "swimming pool",
+      "garage",
+      "hardwood floors",
+      "open floor plan",
+      "smart home features"
+    ],
+    "description": "Beautiful 1 bedroom, 3 bathroom duplex in Southbay. This 2253 sq ft property features high ceilings, swimming pool, garage, hardwood floors, open floor plan and smart home features. Perfect for families or professionals.",
+    "list_date": "2025-01-20"
+  },
+  {
+    "id": 64,
+    "type": "Townhouse",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "sq_ft": 1066,
+    "price": 5203060,
+    "neighborhood": "Eastdale",
+    "features": [
+      "recently renovated",
+      "high ceilings",
+      "stainless steel appliances",
+      "granite countertops"
+    ],
+    "description": "Beautiful 5 bedroom, 4 bathroom townhouse in Eastdale. This 1066 sq ft property features recently renovated, high ceilings, stainless steel appliances and granite countertops. Move-in ready with great natural light.",
+    "list_date": "2025-01-02"
+  },
+  {
+    "id": 65,
+    "type": "Townhouse",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "sq_ft": 2220,
+    "price": 12647001,
+    "neighborhood": "Eastdale",
+    "features": [
+      "garage",
+      "granite countertops",
+      "home office space",
+      "balcony",
+      "backyard"
+    ],
+    "description": "Beautiful 5 bedroom, 4 bathroom townhouse in Eastdale. This 2220 sq ft property features garage, granite countertops, home office space, balcony and backyard. Newly listed and won't last long at this price.",
+    "list_date": "2025-01-09"
+  },
+  {
+    "id": 66,
+    "type": "Apartment",
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "sq_ft": 1846,
+    "price": 7163767,
+    "neighborhood": "Westside",
+    "features": [
+      "hardwood floors",
+      "smart home features",
+      "open floor plan",
+      "garage",
+      "granite countertops",
+      "garden",
+      "home office space",
+      "walk-in closet"
+    ],
+    "description": "Beautiful 3 bedroom, 1 bathroom apartment in Westside. This 1846 sq ft property features hardwood floors, smart home features, open floor plan, garage, granite countertops, garden, home office space and walk-in closet. Move-in ready with great natural light.",
+    "list_date": "2025-02-23"
+  },
+  {
+    "id": 67,
+    "type": "House",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sq_ft": 3282,
+    "price": 19005644,
+    "neighborhood": "Eastdale",
+    "features": [
+      "walk-in closet",
+      "backyard",
+      "granite countertops",
+      "balcony"
+    ],
+    "description": "Beautiful 2 bedroom, 1 bathroom house in Eastdale. This 3282 sq ft property features walk-in closet, backyard, granite countertops and balcony. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-22"
+  },
+  {
+    "id": 68,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "sq_ft": 763,
+    "price": 3469939,
+    "neighborhood": "Westside",
+    "features": [
+      "recently renovated",
+      "fireplace",
+      "home office space",
+      "walk-in closet"
+    ],
+    "description": "Beautiful 3 bedroom, 1 bathroom house in Westside. This 763 sq ft property features recently renovated, fireplace, home office space and walk-in closet. Move-in ready with great natural light.",
+    "list_date": "2025-01-03"
+  },
+  {
+    "id": 69,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 4,
+    "sq_ft": 1366,
+    "price": 4319097,
+    "neighborhood": "Downtown",
+    "features": [
+      "swimming pool",
+      "hardwood floors",
+      "recently renovated"
+    ],
+    "description": "Beautiful 1 bedroom, 4 bathroom duplex in Downtown. This 1366 sq ft property features swimming pool, hardwood floors and recently renovated. Don't miss this opportunity!",
+    "list_date": "2025-02-07"
+  },
+  {
+    "id": 70,
+    "type": "Condo",
+    "bedrooms": 4,
+    "bathrooms": 1,
+    "sq_ft": 875,
+    "price": 2755531,
+    "neighborhood": "Westside",
+    "features": [
+      "stainless steel appliances",
+      "backyard",
+      "recently renovated",
+      "open floor plan",
+      "home office space",
+      "garage",
+      "balcony"
+    ],
+    "description": "Beautiful 4 bedroom, 1 bathroom condo in Westside. This 875 sq ft property features stainless steel appliances, backyard, recently renovated, open floor plan, home office space, garage and balcony. Don't miss this opportunity!",
+    "list_date": "2025-01-04"
+  },
+  {
+    "id": 71,
+    "type": "Townhouse",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sq_ft": 2606,
+    "price": 12079461,
+    "neighborhood": "Downtown",
+    "features": [
+      "recently renovated",
+      "smart home features",
+      "open floor plan",
+      "backyard",
+      "garden",
+      "balcony"
+    ],
+    "description": "Beautiful 2 bedroom, 2 bathroom townhouse in Downtown. This 2606 sq ft property features recently renovated, smart home features, open floor plan, backyard, garden and balcony. Modern design with attention to detail.",
+    "list_date": "2025-02-12"
+  },
+  {
+    "id": 72,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sq_ft": 1349,
+    "price": 4482865,
+    "neighborhood": "Westside",
+    "features": [
+      "swimming pool",
+      "garden",
+      "stainless steel appliances",
+      "walk-in closet",
+      "open floor plan",
+      "smart home features"
+    ],
+    "description": "Beautiful 1 bedroom, 1 bathroom duplex in Westside. This 1349 sq ft property features swimming pool, garden, stainless steel appliances, walk-in closet, open floor plan and smart home features. Modern design with attention to detail.",
+    "list_date": "2025-01-13"
+  },
+  {
+    "id": 73,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 2329,
+    "price": 8040664,
+    "neighborhood": "Northpark",
+    "features": [
+      "walk-in closet",
+      "smart home features",
+      "high ceilings",
+      "garden",
+      "fireplace",
+      "recently renovated"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom duplex in Northpark. This 2329 sq ft property features walk-in closet, smart home features, high ceilings, garden, fireplace and recently renovated. Don't miss this opportunity!",
+    "list_date": "2025-01-23"
+  },
+  {
+    "id": 74,
+    "type": "Condo",
+    "bedrooms": 1,
+    "bathrooms": 3,
+    "sq_ft": 1746,
+    "price": 6794541,
+    "neighborhood": "Riverside",
+    "features": [
+      "open floor plan",
+      "walk-in closet",
+      "garage",
+      "high ceilings",
+      "smart home features",
+      "fireplace",
+      "recently renovated"
+    ],
+    "description": "Beautiful 1 bedroom, 3 bathroom condo in Riverside. This 1746 sq ft property features open floor plan, walk-in closet, garage, high ceilings, smart home features, fireplace and recently renovated. Ideal location close to shops and restaurants.",
+    "list_date": "2025-02-06"
+  },
+  {
+    "id": 75,
+    "type": "Apartment",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sq_ft": 2535,
+    "price": 8240693,
+    "neighborhood": "Downtown",
+    "features": [
+      "backyard",
+      "fireplace",
+      "high ceilings",
+      "smart home features",
+      "granite countertops",
+      "hardwood floors",
+      "garage"
+    ],
+    "description": "Beautiful 1 bedroom, 1 bathroom apartment in Downtown. This 2535 sq ft property features backyard, fireplace, high ceilings, smart home features, granite countertops, hardwood floors and garage. Ideal location close to shops and restaurants.",
+    "list_date": "2025-02-08"
+  },
+  {
+    "id": 76,
+    "type": "Duplex",
+    "bedrooms": 5,
+    "bathrooms": 3,
+    "sq_ft": 2868,
+    "price": 7956621,
+    "neighborhood": "Downtown",
+    "features": [
+      "recently renovated",
+      "walk-in closet",
+      "swimming pool",
+      "backyard",
+      "balcony",
+      "garage",
+      "open floor plan"
+    ],
+    "description": "Beautiful 5 bedroom, 3 bathroom duplex in Downtown. This 2868 sq ft property features recently renovated, walk-in closet, swimming pool, backyard, balcony, garage and open floor plan. Don't miss this opportunity!",
+    "list_date": "2025-01-15"
+  },
+  {
+    "id": 77,
+    "type": "Apartment",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "sq_ft": 1156,
+    "price": 4171851,
+    "neighborhood": "Downtown",
+    "features": [
+      "granite countertops",
+      "backyard",
+      "home office space"
+    ],
+    "description": "Beautiful 5 bedroom, 4 bathroom apartment in Downtown. This 1156 sq ft property features granite countertops, backyard and home office space. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-05"
+  },
+  {
+    "id": 78,
+    "type": "Duplex",
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "sq_ft": 1189,
+    "price": 4511746,
+    "neighborhood": "Eastdale",
+    "features": [
+      "garden",
+      "open floor plan",
+      "recently renovated",
+      "granite countertops",
+      "swimming pool",
+      "balcony",
+      "stainless steel appliances",
+      "hardwood floors"
+    ],
+    "description": "Beautiful 5 bedroom, 2 bathroom duplex in Eastdale. This 1189 sq ft property features garden, open floor plan, recently renovated, granite countertops, swimming pool, balcony, stainless steel appliances and hardwood floors. Perfect for families or professionals.",
+    "list_date": "2025-02-17"
+  },
+  {
+    "id": 79,
+    "type": "House",
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "sq_ft": 2640,
+    "price": 11536097,
+    "neighborhood": "Downtown",
+    "features": [
+      "walk-in closet",
+      "granite countertops",
+      "home office space",
+      "open floor plan",
+      "recently renovated",
+      "hardwood floors"
+    ],
+    "description": "Beautiful 4 bedroom, 2 bathroom house in Downtown. This 2640 sq ft property features walk-in closet, granite countertops, home office space, open floor plan, recently renovated and hardwood floors. Move-in ready with great natural light.",
+    "list_date": "2025-02-26"
+  },
+  {
+    "id": 80,
+    "type": "Apartment",
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "sq_ft": 1292,
+    "price": 4305533,
+    "neighborhood": "Riverside",
+    "features": [
+      "garden",
+      "fireplace",
+      "backyard",
+      "balcony",
+      "garage"
+    ],
+    "description": "Beautiful 5 bedroom, 2 bathroom apartment in Riverside. This 1292 sq ft property features garden, fireplace, backyard, balcony and garage. Perfect for families or professionals.",
+    "list_date": "2025-01-22"
+  },
+  {
+    "id": 81,
+    "type": "House",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "sq_ft": 2024,
+    "price": 7747333,
+    "neighborhood": "Eastdale",
+    "features": [
+      "fireplace",
+      "balcony",
+      "home office space",
+      "recently renovated"
+    ],
+    "description": "Beautiful 5 bedroom, 4 bathroom house in Eastdale. This 2024 sq ft property features fireplace, balcony, home office space and recently renovated. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-06"
+  },
+  {
+    "id": 82,
+    "type": "Townhouse",
+    "bedrooms": 5,
+    "bathrooms": 1,
+    "sq_ft": 3158,
+    "price": 15874413,
+    "neighborhood": "Westside",
+    "features": [
+      "hardwood floors",
+      "granite countertops",
+      "balcony",
+      "walk-in closet",
+      "garden",
+      "home office space",
+      "backyard",
+      "open floor plan"
+    ],
+    "description": "Beautiful 5 bedroom, 1 bathroom townhouse in Westside. This 3158 sq ft property features hardwood floors, granite countertops, balcony, walk-in closet, garden, home office space, backyard and open floor plan. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-30"
+  },
+  {
+    "id": 83,
+    "type": "Duplex",
+    "bedrooms": 2,
+    "bathrooms": 4,
+    "sq_ft": 3130,
+    "price": 9910725,
+    "neighborhood": "Eastdale",
+    "features": [
+      "fireplace",
+      "stainless steel appliances",
+      "garden"
+    ],
+    "description": "Beautiful 2 bedroom, 4 bathroom duplex in Eastdale. This 3130 sq ft property features fireplace, stainless steel appliances and garden. Newly listed and won't last long at this price.",
+    "list_date": "2025-02-28"
+  },
+  {
+    "id": 84,
+    "type": "Condo",
+    "bedrooms": 2,
+    "bathrooms": 4,
+    "sq_ft": 2109,
+    "price": 7839107,
+    "neighborhood": "Northpark",
+    "features": [
+      "walk-in closet",
+      "garden",
+      "fireplace",
+      "stainless steel appliances",
+      "open floor plan",
+      "garage",
+      "high ceilings"
+    ],
+    "description": "Beautiful 2 bedroom, 4 bathroom condo in Northpark. This 2109 sq ft property features walk-in closet, garden, fireplace, stainless steel appliances, open floor plan, garage and high ceilings. Perfect for families or professionals.",
+    "list_date": "2025-02-13"
+  },
+  {
+    "id": 85,
+    "type": "Townhouse",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 1734,
+    "price": 6088308,
+    "neighborhood": "Northpark",
+    "features": [
+      "hardwood floors",
+      "high ceilings",
+      "walk-in closet",
+      "stainless steel appliances",
+      "fireplace",
+      "smart home features",
+      "balcony",
+      "garden"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom townhouse in Northpark. This 1734 sq ft property features hardwood floors, high ceilings, walk-in closet, stainless steel appliances, fireplace, smart home features, balcony and garden. Modern design with attention to detail.",
+    "list_date": "2025-02-23"
+  },
+  {
+    "id": 86,
+    "type": "Condo",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sq_ft": 1862,
+    "price": 5974958,
+    "neighborhood": "Downtown",
+    "features": [
+      "garden",
+      "backyard",
+      "garage",
+      "walk-in closet",
+      "swimming pool",
+      "granite countertops"
+    ],
+    "description": "Beautiful 1 bedroom, 1 bathroom condo in Downtown. This 1862 sq ft property features garden, backyard, garage, walk-in closet, swimming pool and granite countertops. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-12"
+  },
+  {
+    "id": 87,
+    "type": "Duplex",
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "sq_ft": 1905,
+    "price": 8124490,
+    "neighborhood": "Westside",
+    "features": [
+      "recently renovated",
+      "hardwood floors",
+      "backyard"
+    ],
+    "description": "Beautiful 5 bedroom, 2 bathroom duplex in Westside. This 1905 sq ft property features recently renovated, hardwood floors and backyard. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-19"
+  },
+  {
+    "id": 88,
+    "type": "House",
+    "bedrooms": 1,
+    "bathrooms": 4,
+    "sq_ft": 2317,
+    "price": 11552590,
+    "neighborhood": "Downtown",
+    "features": [
+      "stainless steel appliances",
+      "balcony",
+      "recently renovated",
+      "granite countertops"
+    ],
+    "description": "Beautiful 1 bedroom, 4 bathroom house in Downtown. This 2317 sq ft property features stainless steel appliances, balcony, recently renovated and granite countertops. Perfect for families or professionals.",
+    "list_date": "2025-01-16"
+  },
+  {
+    "id": 89,
+    "type": "Apartment",
+    "bedrooms": 2,
+    "bathrooms": 4,
+    "sq_ft": 2290,
+    "price": 9042741,
+    "neighborhood": "Downtown",
+    "features": [
+      "home office space",
+      "high ceilings",
+      "garage"
+    ],
+    "description": "Beautiful 2 bedroom, 4 bathroom apartment in Downtown. This 2290 sq ft property features home office space, high ceilings and garage. Modern design with attention to detail.",
+    "list_date": "2025-02-06"
+  },
+  {
+    "id": 90,
+    "type": "House",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sq_ft": 3317,
+    "price": 18610956,
+    "neighborhood": "Downtown",
+    "features": [
+      "balcony",
+      "granite countertops",
+      "walk-in closet",
+      "high ceilings",
+      "home office space"
+    ],
+    "description": "Beautiful 2 bedroom, 1 bathroom house in Downtown. This 3317 sq ft property features balcony, granite countertops, walk-in closet, high ceilings and home office space. Move-in ready with great natural light.",
+    "list_date": "2025-02-17"
+  },
+  {
+    "id": 91,
+    "type": "Duplex",
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "sq_ft": 2551,
+    "price": 9026495,
+    "neighborhood": "Riverside",
+    "features": [
+      "stainless steel appliances",
+      "smart home features",
+      "garage",
+      "open floor plan",
+      "recently renovated",
+      "balcony",
+      "granite countertops"
+    ],
+    "description": "Beautiful 5 bedroom, 2 bathroom duplex in Riverside. This 2551 sq ft property features stainless steel appliances, smart home features, garage, open floor plan, recently renovated, balcony and granite countertops. Move-in ready with great natural light.",
+    "list_date": "2025-02-24"
+  },
+  {
+    "id": 92,
+    "type": "Condo",
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "sq_ft": 1707,
+    "price": 7173722,
+    "neighborhood": "Eastdale",
+    "features": [
+      "open floor plan",
+      "swimming pool",
+      "balcony",
+      "fireplace",
+      "home office space",
+      "granite countertops",
+      "backyard",
+      "garage"
+    ],
+    "description": "Beautiful 4 bedroom, 4 bathroom condo in Eastdale. This 1707 sq ft property features open floor plan, swimming pool, balcony, fireplace, home office space, granite countertops, backyard and garage. Move-in ready with great natural light.",
+    "list_date": "2025-01-31"
+  },
+  {
+    "id": 93,
+    "type": "Townhouse",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 1495,
+    "price": 5588080,
+    "neighborhood": "Westside",
+    "features": [
+      "swimming pool",
+      "recently renovated",
+      "garage"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom townhouse in Westside. This 1495 sq ft property features swimming pool, recently renovated and garage. Newly listed and won't last long at this price.",
+    "list_date": "2025-01-28"
+  },
+  {
+    "id": 94,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sq_ft": 1385,
+    "price": 3958339,
+    "neighborhood": "Southbay",
+    "features": [
+      "garden",
+      "walk-in closet",
+      "recently renovated"
+    ],
+    "description": "Beautiful 1 bedroom, 1 bathroom duplex in Southbay. This 1385 sq ft property features garden, walk-in closet and recently renovated. Modern design with attention to detail.",
+    "list_date": "2025-01-05"
+  },
+  {
+    "id": 95,
+    "type": "Condo",
+    "bedrooms": 3,
+    "bathrooms": 4,
+    "sq_ft": 2261,
+    "price": 7978335,
+    "neighborhood": "Eastdale",
+    "features": [
+      "swimming pool",
+      "fireplace",
+      "home office space",
+      "high ceilings"
+    ],
+    "description": "Beautiful 3 bedroom, 4 bathroom condo in Eastdale. This 2261 sq ft property features swimming pool, fireplace, home office space and high ceilings. Perfect for families or professionals.",
+    "list_date": "2025-02-28"
+  },
+  {
+    "id": 96,
+    "type": "House",
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "sq_ft": 2342,
+    "price": 8526331,
+    "neighborhood": "Eastdale",
+    "features": [
+      "recently renovated",
+      "home office space",
+      "high ceilings"
+    ],
+    "description": "Beautiful 4 bedroom, 4 bathroom house in Eastdale. This 2342 sq ft property features recently renovated, home office space and high ceilings. Don't miss this opportunity!",
+    "list_date": "2025-01-04"
+  },
+  {
+    "id": 97,
+    "type": "Townhouse",
+    "bedrooms": 1,
+    "bathrooms": 3,
+    "sq_ft": 3008,
+    "price": 12955645,
+    "neighborhood": "Downtown",
+    "features": [
+      "backyard",
+      "recently renovated",
+      "hardwood floors",
+      "high ceilings",
+      "garage",
+      "balcony",
+      "granite countertops",
+      "swimming pool"
+    ],
+    "description": "Beautiful 1 bedroom, 3 bathroom townhouse in Downtown. This 3008 sq ft property features backyard, recently renovated, hardwood floors, high ceilings, garage, balcony, granite countertops and swimming pool. Move-in ready with great natural light.",
+    "list_date": "2025-01-27"
+  },
+  {
+    "id": 98,
+    "type": "House",
+    "bedrooms": 4,
+    "bathrooms": 1,
+    "sq_ft": 1945,
+    "price": 8184291,
+    "neighborhood": "Riverside",
+    "features": [
+      "hardwood floors",
+      "backyard",
+      "garage",
+      "walk-in closet",
+      "home office space",
+      "open floor plan",
+      "granite countertops"
+    ],
+    "description": "Beautiful 4 bedroom, 1 bathroom house in Riverside. This 1945 sq ft property features hardwood floors, backyard, garage, walk-in closet, home office space, open floor plan and granite countertops. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-19"
+  },
+  {
+    "id": 99,
+    "type": "Townhouse",
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "sq_ft": 3348,
+    "price": 12384505,
+    "neighborhood": "Westside",
+    "features": [
+      "open floor plan",
+      "smart home features",
+      "garden",
+      "balcony",
+      "granite countertops",
+      "high ceilings",
+      "home office space"
+    ],
+    "description": "Beautiful 5 bedroom, 2 bathroom townhouse in Westside. This 3348 sq ft property features open floor plan, smart home features, garden, balcony, granite countertops, high ceilings and home office space. Move-in ready with great natural light.",
+    "list_date": "2025-02-12"
+  },
+  {
+    "id": 100,
+    "type": "House",
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "sq_ft": 3386,
+    "price": 12463585,
+    "neighborhood": "Eastdale",
+    "features": [
+      "stainless steel appliances",
+      "swimming pool",
+      "hardwood floors",
+      "home office space",
+      "backyard",
+      "recently renovated",
+      "smart home features",
+      "garage"
+    ],
+    "description": "Beautiful 4 bedroom, 4 bathroom house in Eastdale. This 3386 sq ft property features stainless steel appliances, swimming pool, hardwood floors, home office space, backyard, recently renovated, smart home features and garage. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-25"
+  },
+  {
+    "id": 101,
+    "type": "Condo",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "sq_ft": 1577,
+    "price": 5548296,
+    "neighborhood": "Downtown",
+    "features": [
+      "smart home features",
+      "backyard",
+      "garden",
+      "open floor plan",
+      "swimming pool"
+    ],
+    "description": "Beautiful 3 bedroom, 3 bathroom condo in Downtown. This 1577 sq ft property features smart home features, backyard, garden, open floor plan and swimming pool. Ideal location close to shops and restaurants.",
+    "list_date": "2025-02-26"
+  },
+  {
+    "id": 102,
+    "type": "Townhouse",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 2943,
+    "price": 17187775,
+    "neighborhood": "Southbay",
+    "features": [
+      "walk-in closet",
+      "home office space",
+      "balcony",
+      "granite countertops",
+      "high ceilings",
+      "stainless steel appliances"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom townhouse in Southbay. This 2943 sq ft property features walk-in closet, home office space, balcony, granite countertops, high ceilings and stainless steel appliances. Perfect for families or professionals.",
+    "list_date": "2025-01-07"
+  },
+  {
+    "id": 103,
+    "type": "Duplex",
+    "bedrooms": 5,
+    "bathrooms": 3,
+    "sq_ft": 3074,
+    "price": 10073789,
+    "neighborhood": "Downtown",
+    "features": [
+      "swimming pool",
+      "fireplace",
+      "granite countertops"
+    ],
+    "description": "Beautiful 5 bedroom, 3 bathroom duplex in Downtown. This 3074 sq ft property features swimming pool, fireplace and granite countertops. Modern design with attention to detail.",
+    "list_date": "2025-01-26"
+  },
+  {
+    "id": 104,
+    "type": "Condo",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "sq_ft": 1652,
+    "price": 6091994,
+    "neighborhood": "Southbay",
+    "features": [
+      "garage",
+      "open floor plan",
+      "home office space",
+      "stainless steel appliances",
+      "walk-in closet",
+      "balcony",
+      "high ceilings",
+      "recently renovated"
+    ],
+    "description": "Beautiful 3 bedroom, 3 bathroom condo in Southbay. This 1652 sq ft property features garage, open floor plan, home office space, stainless steel appliances, walk-in closet, balcony, high ceilings and recently renovated. Move-in ready with great natural light.",
+    "list_date": "2025-01-13"
+  },
+  {
+    "id": 105,
+    "type": "Duplex",
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "sq_ft": 2507,
+    "price": 9965766,
+    "neighborhood": "Southbay",
+    "features": [
+      "hardwood floors",
+      "granite countertops",
+      "stainless steel appliances",
+      "open floor plan",
+      "home office space",
+      "smart home features"
+    ],
+    "description": "Beautiful 2 bedroom, 3 bathroom duplex in Southbay. This 2507 sq ft property features hardwood floors, granite countertops, stainless steel appliances, open floor plan, home office space and smart home features. Don't miss this opportunity!",
+    "list_date": "2025-02-25"
+  },
+  {
+    "id": 106,
+    "type": "House",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sq_ft": 1361,
+    "price": 5662394,
+    "neighborhood": "Southbay",
+    "features": [
+      "hardwood floors",
+      "garden",
+      "open floor plan"
+    ],
+    "description": "Beautiful 2 bedroom, 2 bathroom house in Southbay. This 1361 sq ft property features hardwood floors, garden and open floor plan. Move-in ready with great natural light.",
+    "list_date": "2024-12-31"
+  },
+  {
+    "id": 107,
+    "type": "Apartment",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sq_ft": 648,
+    "price": 2406265,
+    "neighborhood": "Westside",
+    "features": [
+      "stainless steel appliances",
+      "backyard",
+      "high ceilings",
+      "garden",
+      "recently renovated",
+      "swimming pool",
+      "walk-in closet",
+      "balcony"
+    ],
+    "description": "Beautiful 2 bedroom, 1 bathroom apartment in Westside. This 648 sq ft property features stainless steel appliances, backyard, high ceilings, garden, recently renovated, swimming pool, walk-in closet and balcony. Move-in ready with great natural light.",
+    "list_date": "2025-02-21"
+  },
+  {
+    "id": 108,
+    "type": "Townhouse",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 2597,
+    "price": 10576967,
+    "neighborhood": "Westside",
+    "features": [
+      "stainless steel appliances",
+      "smart home features",
+      "high ceilings",
+      "balcony",
+      "backyard",
+      "walk-in closet"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom townhouse in Westside. This 2597 sq ft property features stainless steel appliances, smart home features, high ceilings, balcony, backyard and walk-in closet. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-05"
+  },
+  {
+    "id": 109,
+    "type": "Condo",
+    "bedrooms": 3,
+    "bathrooms": 4,
+    "sq_ft": 2589,
+    "price": 8092244,
+    "neighborhood": "Northpark",
+    "features": [
+      "smart home features",
+      "home office space",
+      "garage",
+      "fireplace"
+    ],
+    "description": "Beautiful 3 bedroom, 4 bathroom condo in Northpark. This 2589 sq ft property features smart home features, home office space, garage and fireplace. Modern design with attention to detail.",
+    "list_date": "2025-01-02"
+  },
+  {
+    "id": 110,
+    "type": "Apartment",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "sq_ft": 2414,
+    "price": 10549697,
+    "neighborhood": "Riverside",
+    "features": [
+      "balcony",
+      "swimming pool",
+      "recently renovated"
+    ],
+    "description": "Beautiful 4 bedroom, 3 bathroom apartment in Riverside. This 2414 sq ft property features balcony, swimming pool and recently renovated. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-03"
+  },
+  {
+    "id": 111,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 4,
+    "sq_ft": 3308,
+    "price": 14843363,
+    "neighborhood": "Downtown",
+    "features": [
+      "balcony",
+      "swimming pool",
+      "high ceilings",
+      "granite countertops"
+    ],
+    "description": "Beautiful 3 bedroom, 4 bathroom house in Downtown. This 3308 sq ft property features balcony, swimming pool, high ceilings and granite countertops. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-06"
+  },
+  {
+    "id": 112,
+    "type": "Townhouse",
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "sq_ft": 2474,
+    "price": 8928509,
+    "neighborhood": "Southbay",
+    "features": [
+      "stainless steel appliances",
+      "garden",
+      "home office space"
+    ],
+    "description": "Beautiful 4 bedroom, 2 bathroom townhouse in Southbay. This 2474 sq ft property features stainless steel appliances, garden and home office space. Newly listed and won't last long at this price.",
+    "list_date": "2025-02-03"
+  },
+  {
+    "id": 113,
+    "type": "Condo",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sq_ft": 2839,
+    "price": 11340078,
+    "neighborhood": "Northpark",
+    "features": [
+      "high ceilings",
+      "recently renovated",
+      "garage",
+      "walk-in closet",
+      "stainless steel appliances",
+      "smart home features"
+    ],
+    "description": "Beautiful 2 bedroom, 2 bathroom condo in Northpark. This 2839 sq ft property features high ceilings, recently renovated, garage, walk-in closet, stainless steel appliances and smart home features. Don't miss this opportunity!",
+    "list_date": "2025-02-28"
+  },
+  {
+    "id": 114,
+    "type": "Duplex",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sq_ft": 2182,
+    "price": 8775760,
+    "neighborhood": "Westside",
+    "features": [
+      "smart home features",
+      "fireplace",
+      "walk-in closet",
+      "hardwood floors"
+    ],
+    "description": "Beautiful 3 bedroom, 2 bathroom duplex in Westside. This 2182 sq ft property features smart home features, fireplace, walk-in closet and hardwood floors. Newly listed and won't last long at this price.",
+    "list_date": "2025-02-05"
+  },
+  {
+    "id": 115,
+    "type": "House",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sq_ft": 1720,
+    "price": 9276429,
+    "neighborhood": "Northpark",
+    "features": [
+      "balcony",
+      "recently renovated",
+      "stainless steel appliances",
+      "smart home features",
+      "high ceilings",
+      "home office space",
+      "walk-in closet",
+      "garage"
+    ],
+    "description": "Beautiful 2 bedroom, 2 bathroom house in Northpark. This 1720 sq ft property features balcony, recently renovated, stainless steel appliances, smart home features, high ceilings, home office space, walk-in closet and garage. Perfect for families or professionals.",
+    "list_date": "2025-02-11"
+  },
+  {
+    "id": 116,
+    "type": "House",
+    "bedrooms": 5,
+    "bathrooms": 1,
+    "sq_ft": 1401,
+    "price": 5936426,
+    "neighborhood": "Downtown",
+    "features": [
+      "high ceilings",
+      "recently renovated",
+      "walk-in closet",
+      "balcony",
+      "hardwood floors",
+      "stainless steel appliances"
+    ],
+    "description": "Beautiful 5 bedroom, 1 bathroom house in Downtown. This 1401 sq ft property features high ceilings, recently renovated, walk-in closet, balcony, hardwood floors and stainless steel appliances. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-13"
+  },
+  {
+    "id": 117,
+    "type": "Duplex",
+    "bedrooms": 3,
+    "bathrooms": 4,
+    "sq_ft": 2019,
+    "price": 7839748,
+    "neighborhood": "Eastdale",
+    "features": [
+      "fireplace",
+      "balcony",
+      "walk-in closet",
+      "granite countertops",
+      "garage",
+      "recently renovated",
+      "swimming pool"
+    ],
+    "description": "Beautiful 3 bedroom, 4 bathroom duplex in Eastdale. This 2019 sq ft property features fireplace, balcony, walk-in closet, granite countertops, garage, recently renovated and swimming pool. Don't miss this opportunity!",
+    "list_date": "2025-02-09"
+  },
+  {
+    "id": 118,
+    "type": "Duplex",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sq_ft": 1717,
+    "price": 4305980,
+    "neighborhood": "Downtown",
+    "features": [
+      "garage",
+      "stainless steel appliances",
+      "swimming pool",
+      "granite countertops",
+      "balcony"
+    ],
+    "description": "Beautiful 2 bedroom, 2 bathroom duplex in Downtown. This 1717 sq ft property features garage, stainless steel appliances, swimming pool, granite countertops and balcony. Newly listed and won't last long at this price.",
+    "list_date": "2025-01-27"
+  },
+  {
+    "id": 119,
+    "type": "House",
+    "bedrooms": 5,
+    "bathrooms": 1,
+    "sq_ft": 2130,
+    "price": 8296798,
+    "neighborhood": "Southbay",
+    "features": [
+      "stainless steel appliances",
+      "garden",
+      "open floor plan",
+      "garage",
+      "granite countertops",
+      "home office space"
+    ],
+    "description": "Beautiful 5 bedroom, 1 bathroom house in Southbay. This 2130 sq ft property features stainless steel appliances, garden, open floor plan, garage, granite countertops and home office space. Don't miss this opportunity!",
+    "list_date": "2025-02-07"
+  },
+  {
+    "id": 120,
+    "type": "Condo",
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "sq_ft": 1733,
+    "price": 5083984,
+    "neighborhood": "Downtown",
+    "features": [
+      "open floor plan",
+      "hardwood floors",
+      "home office space",
+      "stainless steel appliances",
+      "high ceilings",
+      "recently renovated"
+    ],
+    "description": "Beautiful 4 bedroom, 2 bathroom condo in Downtown. This 1733 sq ft property features open floor plan, hardwood floors, home office space, stainless steel appliances, high ceilings and recently renovated. Perfect for families or professionals.",
+    "list_date": "2025-02-17"
+  },
+  {
+    "id": 121,
+    "type": "House",
+    "bedrooms": 5,
+    "bathrooms": 1,
+    "sq_ft": 1561,
+    "price": 5552588,
+    "neighborhood": "Northpark",
+    "features": [
+      "garden",
+      "granite countertops",
+      "recently renovated",
+      "walk-in closet"
+    ],
+    "description": "Beautiful 5 bedroom, 1 bathroom house in Northpark. This 1561 sq ft property features garden, granite countertops, recently renovated and walk-in closet. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-14"
+  },
+  {
+    "id": 122,
+    "type": "Condo",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sq_ft": 2845,
+    "price": 7386094,
+    "neighborhood": "Southbay",
+    "features": [
+      "recently renovated",
+      "hardwood floors",
+      "smart home features",
+      "granite countertops",
+      "walk-in closet",
+      "high ceilings"
+    ],
+    "description": "Beautiful 1 bedroom, 1 bathroom condo in Southbay. This 2845 sq ft property features recently renovated, hardwood floors, smart home features, granite countertops, walk-in closet and high ceilings. Don't miss this opportunity!",
+    "list_date": "2025-01-24"
+  },
+  {
+    "id": 123,
+    "type": "Condo",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "sq_ft": 2934,
+    "price": 12206419,
+    "neighborhood": "Southbay",
+    "features": [
+      "fireplace",
+      "stainless steel appliances",
+      "walk-in closet",
+      "recently renovated",
+      "swimming pool",
+      "balcony",
+      "open floor plan"
+    ],
+    "description": "Beautiful 5 bedroom, 4 bathroom condo in Southbay. This 2934 sq ft property features fireplace, stainless steel appliances, walk-in closet, recently renovated, swimming pool, balcony and open floor plan. Move-in ready with great natural light.",
+    "list_date": "2025-02-08"
+  },
+  {
+    "id": 124,
+    "type": "Townhouse",
+    "bedrooms": 1,
+    "bathrooms": 3,
+    "sq_ft": 2126,
+    "price": 7028246,
+    "neighborhood": "Downtown",
+    "features": [
+      "high ceilings",
+      "walk-in closet",
+      "swimming pool"
+    ],
+    "description": "Beautiful 1 bedroom, 3 bathroom townhouse in Downtown. This 2126 sq ft property features high ceilings, walk-in closet and swimming pool. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-04"
+  },
+  {
+    "id": 125,
+    "type": "Townhouse",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sq_ft": 629,
+    "price": 2328483,
+    "neighborhood": "Riverside",
+    "features": [
+      "garage",
+      "fireplace",
+      "balcony",
+      "granite countertops",
+      "smart home features",
+      "swimming pool",
+      "walk-in closet"
+    ],
+    "description": "Beautiful 3 bedroom, 2 bathroom townhouse in Riverside. This 629 sq ft property features garage, fireplace, balcony, granite countertops, smart home features, swimming pool and walk-in closet. Modern design with attention to detail.",
+    "list_date": "2025-02-10"
+  },
+  {
+    "id": 126,
+    "type": "Duplex",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sq_ft": 2509,
+    "price": 10444115,
+    "neighborhood": "Downtown",
+    "features": [
+      "backyard",
+      "hardwood floors",
+      "garage",
+      "high ceilings",
+      "balcony",
+      "recently renovated",
+      "swimming pool"
+    ],
+    "description": "Beautiful 2 bedroom, 2 bathroom duplex in Downtown. This 2509 sq ft property features backyard, hardwood floors, garage, high ceilings, balcony, recently renovated and swimming pool. Modern design with attention to detail.",
+    "list_date": "2025-02-23"
+  },
+  {
+    "id": 127,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 4,
+    "sq_ft": 1650,
+    "price": 6963128,
+    "neighborhood": "Westside",
+    "features": [
+      "hardwood floors",
+      "walk-in closet",
+      "garden"
+    ],
+    "description": "Beautiful 1 bedroom, 4 bathroom duplex in Westside. This 1650 sq ft property features hardwood floors, walk-in closet and garden. Move-in ready with great natural light.",
+    "list_date": "2025-01-11"
+  },
+  {
+    "id": 128,
+    "type": "Duplex",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sq_ft": 1174,
+    "price": 3345198,
+    "neighborhood": "Riverside",
+    "features": [
+      "balcony",
+      "fireplace",
+      "walk-in closet",
+      "hardwood floors"
+    ],
+    "description": "Beautiful 2 bedroom, 2 bathroom duplex in Riverside. This 1174 sq ft property features balcony, fireplace, walk-in closet and hardwood floors. Perfect for families or professionals.",
+    "list_date": "2025-02-06"
+  },
+  {
+    "id": 129,
+    "type": "House",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 758,
+    "price": 2898309,
+    "neighborhood": "Eastdale",
+    "features": [
+      "recently renovated",
+      "stainless steel appliances",
+      "balcony"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom house in Eastdale. This 758 sq ft property features recently renovated, stainless steel appliances and balcony. Newly listed and won't last long at this price.",
+    "list_date": "2025-01-19"
+  },
+  {
+    "id": 130,
+    "type": "Condo",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sq_ft": 2747,
+    "price": 6839068,
+    "neighborhood": "Westside",
+    "features": [
+      "balcony",
+      "fireplace",
+      "walk-in closet",
+      "granite countertops",
+      "backyard",
+      "high ceilings"
+    ],
+    "description": "Beautiful 1 bedroom, 1 bathroom condo in Westside. This 2747 sq ft property features balcony, fireplace, walk-in closet, granite countertops, backyard and high ceilings. Don't miss this opportunity!",
+    "list_date": "2025-01-04"
+  },
+  {
+    "id": 131,
+    "type": "Condo",
+    "bedrooms": 1,
+    "bathrooms": 3,
+    "sq_ft": 1837,
+    "price": 5999453,
+    "neighborhood": "Northpark",
+    "features": [
+      "recently renovated",
+      "walk-in closet",
+      "open floor plan",
+      "garage",
+      "swimming pool"
+    ],
+    "description": "Beautiful 1 bedroom, 3 bathroom condo in Northpark. This 1837 sq ft property features recently renovated, walk-in closet, open floor plan, garage and swimming pool. Don't miss this opportunity!",
+    "list_date": "2025-02-14"
+  },
+  {
+    "id": 132,
+    "type": "Townhouse",
+    "bedrooms": 2,
+    "bathrooms": 4,
+    "sq_ft": 1448,
+    "price": 7641880,
+    "neighborhood": "Riverside",
+    "features": [
+      "high ceilings",
+      "stainless steel appliances",
+      "backyard",
+      "garden",
+      "walk-in closet",
+      "recently renovated",
+      "smart home features",
+      "hardwood floors"
+    ],
+    "description": "Beautiful 2 bedroom, 4 bathroom townhouse in Riverside. This 1448 sq ft property features high ceilings, stainless steel appliances, backyard, garden, walk-in closet, recently renovated, smart home features and hardwood floors. Modern design with attention to detail.",
+    "list_date": "2025-02-02"
+  },
+  {
+    "id": 133,
+    "type": "Townhouse",
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "sq_ft": 524,
+    "price": 1808009,
+    "neighborhood": "Westside",
+    "features": [
+      "walk-in closet",
+      "garage",
+      "garden",
+      "smart home features",
+      "fireplace",
+      "hardwood floors",
+      "recently renovated",
+      "high ceilings"
+    ],
+    "description": "Beautiful 5 bedroom, 2 bathroom townhouse in Westside. This 524 sq ft property features walk-in closet, garage, garden, smart home features, fireplace, hardwood floors, recently renovated and high ceilings. Ideal location close to shops and restaurants.",
+    "list_date": "2025-02-17"
+  },
+  {
+    "id": 134,
+    "type": "Condo",
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "sq_ft": 2583,
+    "price": 9143349,
+    "neighborhood": "Westside",
+    "features": [
+      "home office space",
+      "fireplace",
+      "garden",
+      "garage"
+    ],
+    "description": "Beautiful 5 bedroom, 2 bathroom condo in Westside. This 2583 sq ft property features home office space, fireplace, garden and garage. Don't miss this opportunity!",
+    "list_date": "2025-01-11"
+  },
+  {
+    "id": 135,
+    "type": "House",
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "sq_ft": 1719,
+    "price": 6989945,
+    "neighborhood": "Eastdale",
+    "features": [
+      "open floor plan",
+      "balcony",
+      "backyard",
+      "high ceilings"
+    ],
+    "description": "Beautiful 5 bedroom, 2 bathroom house in Eastdale. This 1719 sq ft property features open floor plan, balcony, backyard and high ceilings. Newly listed and won't last long at this price.",
+    "list_date": "2025-01-31"
+  },
+  {
+    "id": 136,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 801,
+    "price": 2345558,
+    "neighborhood": "Southbay",
+    "features": [
+      "open floor plan",
+      "garage",
+      "fireplace",
+      "walk-in closet",
+      "granite countertops"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom duplex in Southbay. This 801 sq ft property features open floor plan, garage, fireplace, walk-in closet and granite countertops. Perfect for families or professionals.",
+    "list_date": "2025-02-08"
+  },
+  {
+    "id": 137,
+    "type": "Townhouse",
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "sq_ft": 701,
+    "price": 3802031,
+    "neighborhood": "Riverside",
+    "features": [
+      "recently renovated",
+      "garage",
+      "hardwood floors",
+      "stainless steel appliances",
+      "backyard"
+    ],
+    "description": "Beautiful 4 bedroom, 4 bathroom townhouse in Riverside. This 701 sq ft property features recently renovated, garage, hardwood floors, stainless steel appliances and backyard. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-04"
+  },
+  {
+    "id": 138,
+    "type": "Condo",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "sq_ft": 2096,
+    "price": 8603757,
+    "neighborhood": "Westside",
+    "features": [
+      "swimming pool",
+      "open floor plan",
+      "stainless steel appliances"
+    ],
+    "description": "Beautiful 4 bedroom, 3 bathroom condo in Westside. This 2096 sq ft property features swimming pool, open floor plan and stainless steel appliances. Perfect for families or professionals.",
+    "list_date": "2025-01-14"
+  },
+  {
+    "id": 139,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 3,
+    "sq_ft": 1431,
+    "price": 4424331,
+    "neighborhood": "Westside",
+    "features": [
+      "granite countertops",
+      "walk-in closet",
+      "high ceilings",
+      "home office space",
+      "hardwood floors"
+    ],
+    "description": "Beautiful 1 bedroom, 3 bathroom duplex in Westside. This 1431 sq ft property features granite countertops, walk-in closet, high ceilings, home office space and hardwood floors. Newly listed and won't last long at this price.",
+    "list_date": "2025-01-13"
+  },
+  {
+    "id": 140,
+    "type": "Townhouse",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sq_ft": 1144,
+    "price": 5051613,
+    "neighborhood": "Downtown",
+    "features": [
+      "fireplace",
+      "backyard",
+      "balcony",
+      "smart home features",
+      "stainless steel appliances",
+      "home office space",
+      "granite countertops"
+    ],
+    "description": "Beautiful 2 bedroom, 1 bathroom townhouse in Downtown. This 1144 sq ft property features fireplace, backyard, balcony, smart home features, stainless steel appliances, home office space and granite countertops. Ideal location close to shops and restaurants.",
+    "list_date": "2025-02-11"
+  },
+  {
+    "id": 141,
+    "type": "Duplex",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "sq_ft": 1021,
+    "price": 2684854,
+    "neighborhood": "Westside",
+    "features": [
+      "backyard",
+      "walk-in closet",
+      "recently renovated",
+      "home office space"
+    ],
+    "description": "Beautiful 3 bedroom, 3 bathroom duplex in Westside. This 1021 sq ft property features backyard, walk-in closet, recently renovated and home office space. Perfect for families or professionals.",
+    "list_date": "2025-02-16"
+  },
+  {
+    "id": 142,
+    "type": "House",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sq_ft": 1322,
+    "price": 7542228,
+    "neighborhood": "Westside",
+    "features": [
+      "smart home features",
+      "granite countertops",
+      "fireplace"
+    ],
+    "description": "Beautiful 2 bedroom, 1 bathroom house in Westside. This 1322 sq ft property features smart home features, granite countertops and fireplace. Perfect for families or professionals.",
+    "list_date": "2025-02-13"
+  },
+  {
+    "id": 143,
+    "type": "Duplex",
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "sq_ft": 910,
+    "price": 2999794,
+    "neighborhood": "Westside",
+    "features": [
+      "garage",
+      "walk-in closet",
+      "garden",
+      "granite countertops"
+    ],
+    "description": "Beautiful 5 bedroom, 2 bathroom duplex in Westside. This 910 sq ft property features garage, walk-in closet, garden and granite countertops. Modern design with attention to detail.",
+    "list_date": "2025-02-28"
+  },
+  {
+    "id": 144,
+    "type": "Apartment",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sq_ft": 1587,
+    "price": 5050586,
+    "neighborhood": "Southbay",
+    "features": [
+      "balcony",
+      "granite countertops",
+      "swimming pool",
+      "high ceilings",
+      "backyard",
+      "open floor plan",
+      "garage"
+    ],
+    "description": "Beautiful 3 bedroom, 2 bathroom apartment in Southbay. This 1587 sq ft property features balcony, granite countertops, swimming pool, high ceilings, backyard, open floor plan and garage. Modern design with attention to detail.",
+    "list_date": "2025-02-04"
+  },
+  {
+    "id": 145,
+    "type": "Apartment",
+    "bedrooms": 1,
+    "bathrooms": 4,
+    "sq_ft": 989,
+    "price": 2635435,
+    "neighborhood": "Westside",
+    "features": [
+      "hardwood floors",
+      "smart home features",
+      "granite countertops"
+    ],
+    "description": "Beautiful 1 bedroom, 4 bathroom apartment in Westside. This 989 sq ft property features hardwood floors, smart home features and granite countertops. Perfect for families or professionals.",
+    "list_date": "2025-01-08"
+  },
+  {
+    "id": 146,
+    "type": "Townhouse",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sq_ft": 3381,
+    "price": 11433751,
+    "neighborhood": "Downtown",
+    "features": [
+      "stainless steel appliances",
+      "garden",
+      "home office space",
+      "backyard",
+      "garage",
+      "balcony",
+      "high ceilings",
+      "granite countertops"
+    ],
+    "description": "Beautiful 2 bedroom, 2 bathroom townhouse in Downtown. This 3381 sq ft property features stainless steel appliances, garden, home office space, backyard, garage, balcony, high ceilings and granite countertops. Modern design with attention to detail.",
+    "list_date": "2025-01-01"
+  },
+  {
+    "id": 147,
+    "type": "Townhouse",
+    "bedrooms": 5,
+    "bathrooms": 3,
+    "sq_ft": 3412,
+    "price": 13589248,
+    "neighborhood": "Southbay",
+    "features": [
+      "high ceilings",
+      "home office space",
+      "smart home features",
+      "granite countertops",
+      "fireplace",
+      "garden",
+      "recently renovated",
+      "swimming pool"
+    ],
+    "description": "Beautiful 5 bedroom, 3 bathroom townhouse in Southbay. This 3412 sq ft property features high ceilings, home office space, smart home features, granite countertops, fireplace, garden, recently renovated and swimming pool. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-12"
+  },
+  {
+    "id": 148,
+    "type": "Townhouse",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "sq_ft": 2969,
+    "price": 11720411,
+    "neighborhood": "Northpark",
+    "features": [
+      "walk-in closet",
+      "fireplace",
+      "granite countertops",
+      "backyard"
+    ],
+    "description": "Beautiful 5 bedroom, 4 bathroom townhouse in Northpark. This 2969 sq ft property features walk-in closet, fireplace, granite countertops and backyard. Move-in ready with great natural light.",
+    "list_date": "2025-02-09"
+  },
+  {
+    "id": 149,
+    "type": "Duplex",
+    "bedrooms": 5,
+    "bathrooms": 3,
+    "sq_ft": 574,
+    "price": 2224407,
+    "neighborhood": "Northpark",
+    "features": [
+      "recently renovated",
+      "balcony",
+      "stainless steel appliances",
+      "walk-in closet"
+    ],
+    "description": "Beautiful 5 bedroom, 3 bathroom duplex in Northpark. This 574 sq ft property features recently renovated, balcony, stainless steel appliances and walk-in closet. Modern design with attention to detail.",
+    "list_date": "2025-01-27"
+  },
+  {
+    "id": 150,
+    "type": "Townhouse",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 2046,
+    "price": 11436068,
+    "neighborhood": "Westside",
+    "features": [
+      "garage",
+      "fireplace",
+      "walk-in closet"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom townhouse in Westside. This 2046 sq ft property features garage, fireplace and walk-in closet. Newly listed and won't last long at this price.",
+    "list_date": "2025-02-11"
+  },
+  {
+    "id": 151,
+    "type": "House",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sq_ft": 641,
+    "price": 3106986,
+    "neighborhood": "Eastdale",
+    "features": [
+      "walk-in closet",
+      "home office space",
+      "fireplace",
+      "open floor plan",
+      "high ceilings",
+      "recently renovated"
+    ],
+    "description": "Beautiful 1 bedroom, 1 bathroom house in Eastdale. This 641 sq ft property features walk-in closet, home office space, fireplace, open floor plan, high ceilings and recently renovated. Newly listed and won't last long at this price.",
+    "list_date": "2025-01-11"
+  },
+  {
+    "id": 152,
+    "type": "Townhouse",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "sq_ft": 513,
+    "price": 1882686,
+    "neighborhood": "Westside",
+    "features": [
+      "hardwood floors",
+      "open floor plan",
+      "granite countertops",
+      "walk-in closet",
+      "garden"
+    ],
+    "description": "Beautiful 5 bedroom, 4 bathroom townhouse in Westside. This 513 sq ft property features hardwood floors, open floor plan, granite countertops, walk-in closet and garden. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-03"
+  },
+  {
+    "id": 153,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 3,
+    "sq_ft": 2318,
+    "price": 8789251,
+    "neighborhood": "Eastdale",
+    "features": [
+      "stainless steel appliances",
+      "home office space",
+      "balcony",
+      "recently renovated"
+    ],
+    "description": "Beautiful 1 bedroom, 3 bathroom duplex in Eastdale. This 2318 sq ft property features stainless steel appliances, home office space, balcony and recently renovated. Modern design with attention to detail.",
+    "list_date": "2025-02-25"
+  },
+  {
+    "id": 154,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 3,
+    "sq_ft": 2216,
+    "price": 8880373,
+    "neighborhood": "Southbay",
+    "features": [
+      "garden",
+      "granite countertops",
+      "stainless steel appliances",
+      "high ceilings",
+      "smart home features",
+      "fireplace",
+      "balcony"
+    ],
+    "description": "Beautiful 1 bedroom, 3 bathroom duplex in Southbay. This 2216 sq ft property features garden, granite countertops, stainless steel appliances, high ceilings, smart home features, fireplace and balcony. Move-in ready with great natural light.",
+    "list_date": "2025-02-24"
+  },
+  {
+    "id": 155,
+    "type": "Townhouse",
+    "bedrooms": 5,
+    "bathrooms": 3,
+    "sq_ft": 3225,
+    "price": 17514118,
+    "neighborhood": "Downtown",
+    "features": [
+      "backyard",
+      "garage",
+      "garden",
+      "open floor plan",
+      "balcony",
+      "walk-in closet",
+      "hardwood floors",
+      "swimming pool"
+    ],
+    "description": "Beautiful 5 bedroom, 3 bathroom townhouse in Downtown. This 3225 sq ft property features backyard, garage, garden, open floor plan, balcony, walk-in closet, hardwood floors and swimming pool. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-16"
+  },
+  {
+    "id": 156,
+    "type": "Duplex",
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "sq_ft": 3083,
+    "price": 8939952,
+    "neighborhood": "Southbay",
+    "features": [
+      "fireplace",
+      "smart home features",
+      "walk-in closet",
+      "granite countertops",
+      "recently renovated",
+      "garage",
+      "high ceilings",
+      "open floor plan"
+    ],
+    "description": "Beautiful 2 bedroom, 3 bathroom duplex in Southbay. This 3083 sq ft property features fireplace, smart home features, walk-in closet, granite countertops, recently renovated, garage, high ceilings and open floor plan. Perfect for families or professionals.",
+    "list_date": "2025-02-17"
+  },
+  {
+    "id": 157,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 3,
+    "sq_ft": 2529,
+    "price": 6455970,
+    "neighborhood": "Downtown",
+    "features": [
+      "fireplace",
+      "smart home features",
+      "granite countertops",
+      "garage",
+      "backyard"
+    ],
+    "description": "Beautiful 1 bedroom, 3 bathroom duplex in Downtown. This 2529 sq ft property features fireplace, smart home features, granite countertops, garage and backyard. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-02-26"
+  },
+  {
+    "id": 158,
+    "type": "House",
+    "bedrooms": 5,
+    "bathrooms": 1,
+    "sq_ft": 2833,
+    "price": 10276497,
+    "neighborhood": "Downtown",
+    "features": [
+      "granite countertops",
+      "garage",
+      "fireplace",
+      "walk-in closet",
+      "backyard",
+      "smart home features"
+    ],
+    "description": "Beautiful 5 bedroom, 1 bathroom house in Downtown. This 2833 sq ft property features granite countertops, garage, fireplace, walk-in closet, backyard and smart home features. Move-in ready with great natural light.",
+    "list_date": "2025-01-25"
+  },
+  {
+    "id": 159,
+    "type": "House",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "sq_ft": 2105,
+    "price": 10652415,
+    "neighborhood": "Westside",
+    "features": [
+      "home office space",
+      "smart home features",
+      "fireplace",
+      "high ceilings"
+    ],
+    "description": "Beautiful 4 bedroom, 3 bathroom house in Westside. This 2105 sq ft property features home office space, smart home features, fireplace and high ceilings. Don't miss this opportunity!",
+    "list_date": "2025-02-11"
+  },
+  {
+    "id": 160,
+    "type": "Condo",
+    "bedrooms": 5,
+    "bathrooms": 3,
+    "sq_ft": 1924,
+    "price": 6525471,
+    "neighborhood": "Westside",
+    "features": [
+      "garage",
+      "walk-in closet",
+      "granite countertops",
+      "garden",
+      "balcony",
+      "fireplace",
+      "hardwood floors",
+      "home office space"
+    ],
+    "description": "Beautiful 5 bedroom, 3 bathroom condo in Westside. This 1924 sq ft property features garage, walk-in closet, granite countertops, garden, balcony, fireplace, hardwood floors and home office space. Newly listed and won't last long at this price.",
+    "list_date": "2025-02-22"
+  },
+  {
+    "id": 161,
+    "type": "Duplex",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sq_ft": 1707,
+    "price": 4615461,
+    "neighborhood": "Eastdale",
+    "features": [
+      "swimming pool",
+      "granite countertops",
+      "fireplace",
+      "recently renovated",
+      "walk-in closet",
+      "smart home features",
+      "backyard"
+    ],
+    "description": "Beautiful 1 bedroom, 1 bathroom duplex in Eastdale. This 1707 sq ft property features swimming pool, granite countertops, fireplace, recently renovated, walk-in closet, smart home features and backyard. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-04"
+  },
+  {
+    "id": 162,
+    "type": "Apartment",
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "sq_ft": 888,
+    "price": 2891905,
+    "neighborhood": "Northpark",
+    "features": [
+      "smart home features",
+      "walk-in closet",
+      "open floor plan",
+      "recently renovated",
+      "high ceilings"
+    ],
+    "description": "Beautiful 4 bedroom, 4 bathroom apartment in Northpark. This 888 sq ft property features smart home features, walk-in closet, open floor plan, recently renovated and high ceilings. Don't miss this opportunity!",
+    "list_date": "2025-01-05"
+  },
+  {
+    "id": 163,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 4,
+    "sq_ft": 1363,
+    "price": 7182722,
+    "neighborhood": "Southbay",
+    "features": [
+      "garden",
+      "smart home features",
+      "stainless steel appliances",
+      "garage",
+      "walk-in closet",
+      "home office space",
+      "backyard",
+      "hardwood floors"
+    ],
+    "description": "Beautiful 3 bedroom, 4 bathroom house in Southbay. This 1363 sq ft property features garden, smart home features, stainless steel appliances, garage, walk-in closet, home office space, backyard and hardwood floors. Move-in ready with great natural light.",
+    "list_date": "2025-02-19"
+  },
+  {
+    "id": 164,
+    "type": "Apartment",
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "sq_ft": 2773,
+    "price": 10939649,
+    "neighborhood": "Riverside",
+    "features": [
+      "recently renovated",
+      "backyard",
+      "swimming pool"
+    ],
+    "description": "Beautiful 2 bedroom, 3 bathroom apartment in Riverside. This 2773 sq ft property features recently renovated, backyard and swimming pool. Perfect for families or professionals.",
+    "list_date": "2025-02-28"
+  },
+  {
+    "id": 165,
+    "type": "Condo",
+    "bedrooms": 3,
+    "bathrooms": 4,
+    "sq_ft": 2678,
+    "price": 6774209,
+    "neighborhood": "Downtown",
+    "features": [
+      "walk-in closet",
+      "smart home features",
+      "swimming pool",
+      "open floor plan",
+      "hardwood floors",
+      "garage"
+    ],
+    "description": "Beautiful 3 bedroom, 4 bathroom condo in Downtown. This 2678 sq ft property features walk-in closet, smart home features, swimming pool, open floor plan, hardwood floors and garage. Newly listed and won't last long at this price.",
+    "list_date": "2025-01-25"
+  },
+  {
+    "id": 166,
+    "type": "Townhouse",
+    "bedrooms": 2,
+    "bathrooms": 4,
+    "sq_ft": 746,
+    "price": 3905757,
+    "neighborhood": "Northpark",
+    "features": [
+      "home office space",
+      "fireplace",
+      "stainless steel appliances",
+      "open floor plan",
+      "hardwood floors"
+    ],
+    "description": "Beautiful 2 bedroom, 4 bathroom townhouse in Northpark. This 746 sq ft property features home office space, fireplace, stainless steel appliances, open floor plan and hardwood floors. Don't miss this opportunity!",
+    "list_date": "2025-01-05"
+  },
+  {
+    "id": 167,
+    "type": "Duplex",
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "sq_ft": 1167,
+    "price": 3726168,
+    "neighborhood": "Riverside",
+    "features": [
+      "backyard",
+      "swimming pool",
+      "recently renovated",
+      "garden",
+      "fireplace",
+      "garage",
+      "hardwood floors",
+      "walk-in closet"
+    ],
+    "description": "Beautiful 2 bedroom, 3 bathroom duplex in Riverside. This 1167 sq ft property features backyard, swimming pool, recently renovated, garden, fireplace, garage, hardwood floors and walk-in closet. Move-in ready with great natural light.",
+    "list_date": "2025-01-26"
+  },
+  {
+    "id": 168,
+    "type": "House",
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "sq_ft": 2625,
+    "price": 11950314,
+    "neighborhood": "Westside",
+    "features": [
+      "backyard",
+      "garage",
+      "swimming pool",
+      "walk-in closet",
+      "home office space",
+      "balcony",
+      "hardwood floors",
+      "granite countertops"
+    ],
+    "description": "Beautiful 5 bedroom, 2 bathroom house in Westside. This 2625 sq ft property features backyard, garage, swimming pool, walk-in closet, home office space, balcony, hardwood floors and granite countertops. Don't miss this opportunity!",
+    "list_date": "2025-02-27"
+  },
+  {
+    "id": 169,
+    "type": "Townhouse",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sq_ft": 3235,
+    "price": 15074309,
+    "neighborhood": "Downtown",
+    "features": [
+      "garden",
+      "balcony",
+      "garage"
+    ],
+    "description": "Beautiful 2 bedroom, 1 bathroom townhouse in Downtown. This 3235 sq ft property features garden, balcony and garage. Move-in ready with great natural light.",
+    "list_date": "2025-02-06"
+  },
+  {
+    "id": 170,
+    "type": "Duplex",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sq_ft": 581,
+    "price": 2226092,
+    "neighborhood": "Northpark",
+    "features": [
+      "garage",
+      "home office space",
+      "open floor plan",
+      "smart home features"
+    ],
+    "description": "Beautiful 3 bedroom, 2 bathroom duplex in Northpark. This 581 sq ft property features garage, home office space, open floor plan and smart home features. Newly listed and won't last long at this price.",
+    "list_date": "2025-02-13"
+  },
+  {
+    "id": 171,
+    "type": "House",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 3337,
+    "price": 13850438,
+    "neighborhood": "Southbay",
+    "features": [
+      "garden",
+      "backyard",
+      "open floor plan",
+      "home office space"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom house in Southbay. This 3337 sq ft property features garden, backyard, open floor plan and home office space. Perfect for families or professionals.",
+    "list_date": "2025-01-10"
+  },
+  {
+    "id": 172,
+    "type": "Townhouse",
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "sq_ft": 2141,
+    "price": 7760087,
+    "neighborhood": "Southbay",
+    "features": [
+      "smart home features",
+      "garden",
+      "recently renovated",
+      "home office space",
+      "balcony",
+      "open floor plan",
+      "hardwood floors"
+    ],
+    "description": "Beautiful 3 bedroom, 1 bathroom townhouse in Southbay. This 2141 sq ft property features smart home features, garden, recently renovated, home office space, balcony, open floor plan and hardwood floors. Modern design with attention to detail.",
+    "list_date": "2025-01-26"
+  },
+  {
+    "id": 173,
+    "type": "Condo",
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "sq_ft": 980,
+    "price": 2965879,
+    "neighborhood": "Northpark",
+    "features": [
+      "balcony",
+      "recently renovated",
+      "smart home features",
+      "hardwood floors",
+      "open floor plan",
+      "fireplace",
+      "high ceilings",
+      "garden"
+    ],
+    "description": "Beautiful 4 bedroom, 4 bathroom condo in Northpark. This 980 sq ft property features balcony, recently renovated, smart home features, hardwood floors, open floor plan, fireplace, high ceilings and garden. Modern design with attention to detail.",
+    "list_date": "2025-01-26"
+  },
+  {
+    "id": 174,
+    "type": "House",
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "sq_ft": 754,
+    "price": 3549434,
+    "neighborhood": "Riverside",
+    "features": [
+      "stainless steel appliances",
+      "backyard",
+      "garage",
+      "smart home features"
+    ],
+    "description": "Beautiful 5 bedroom, 2 bathroom house in Riverside. This 754 sq ft property features stainless steel appliances, backyard, garage and smart home features. Ideal location close to shops and restaurants.",
+    "list_date": "2024-12-31"
+  },
+  {
+    "id": 175,
+    "type": "Duplex",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sq_ft": 2524,
+    "price": 9298828,
+    "neighborhood": "Northpark",
+    "features": [
+      "garden",
+      "home office space",
+      "high ceilings",
+      "garage"
+    ],
+    "description": "Beautiful 2 bedroom, 2 bathroom duplex in Northpark. This 2524 sq ft property features garden, home office space, high ceilings and garage. Don't miss this opportunity!",
+    "list_date": "2025-01-08"
+  },
+  {
+    "id": 176,
+    "type": "Townhouse",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "sq_ft": 2041,
+    "price": 6969768,
+    "neighborhood": "Riverside",
+    "features": [
+      "smart home features",
+      "backyard",
+      "home office space"
+    ],
+    "description": "Beautiful 4 bedroom, 3 bathroom townhouse in Riverside. This 2041 sq ft property features smart home features, backyard and home office space. Modern design with attention to detail.",
+    "list_date": "2025-02-10"
+  },
+  {
+    "id": 177,
+    "type": "Condo",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "sq_ft": 1978,
+    "price": 6549773,
+    "neighborhood": "Westside",
+    "features": [
+      "home office space",
+      "smart home features",
+      "granite countertops"
+    ],
+    "description": "Beautiful 3 bedroom, 2 bathroom condo in Westside. This 1978 sq ft property features home office space, smart home features and granite countertops. Don't miss this opportunity!",
+    "list_date": "2025-01-12"
+  },
+  {
+    "id": 178,
+    "type": "Condo",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "sq_ft": 879,
+    "price": 3400077,
+    "neighborhood": "Northpark",
+    "features": [
+      "recently renovated",
+      "stainless steel appliances",
+      "fireplace",
+      "swimming pool"
+    ],
+    "description": "Beautiful 2 bedroom, 1 bathroom condo in Northpark. This 879 sq ft property features recently renovated, stainless steel appliances, fireplace and swimming pool. Newly listed and won't last long at this price.",
+    "list_date": "2025-01-28"
+  },
+  {
+    "id": 179,
+    "type": "Townhouse",
+    "bedrooms": 2,
+    "bathrooms": 4,
+    "sq_ft": 1193,
+    "price": 5527597,
+    "neighborhood": "Westside",
+    "features": [
+      "garage",
+      "granite countertops",
+      "home office space"
+    ],
+    "description": "Beautiful 2 bedroom, 4 bathroom townhouse in Westside. This 1193 sq ft property features garage, granite countertops and home office space. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2024-12-31"
+  },
+  {
+    "id": 180,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "sq_ft": 808,
+    "price": 2998083,
+    "neighborhood": "Downtown",
+    "features": [
+      "walk-in closet",
+      "home office space",
+      "fireplace",
+      "swimming pool",
+      "high ceilings"
+    ],
+    "description": "Beautiful 3 bedroom, 3 bathroom house in Downtown. This 808 sq ft property features walk-in closet, home office space, fireplace, swimming pool and high ceilings. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-01-22"
+  },
+  {
+    "id": 181,
+    "type": "Townhouse",
+    "bedrooms": 4,
+    "bathrooms": 1,
+    "sq_ft": 1023,
+    "price": 3654805,
+    "neighborhood": "Eastdale",
+    "features": [
+      "granite countertops",
+      "backyard",
+      "home office space",
+      "garage"
+    ],
+    "description": "Beautiful 4 bedroom, 1 bathroom townhouse in Eastdale. This 1023 sq ft property features granite countertops, backyard, home office space and garage. Ideal location close to shops and restaurants.",
+    "list_date": "2025-02-24"
+  },
+  {
+    "id": 182,
+    "type": "Apartment",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "sq_ft": 2429,
+    "price": 6810497,
+    "neighborhood": "Eastdale",
+    "features": [
+      "garden",
+      "open floor plan",
+      "hardwood floors",
+      "garage",
+      "backyard"
+    ],
+    "description": "Beautiful 1 bedroom, 1 bathroom apartment in Eastdale. This 2429 sq ft property features garden, open floor plan, hardwood floors, garage and backyard. Modern design with attention to detail.",
+    "list_date": "2025-01-27"
+  },
+  {
+    "id": 183,
+    "type": "Condo",
+    "bedrooms": 2,
+    "bathrooms": 4,
+    "sq_ft": 3450,
+    "price": 13963354,
+    "neighborhood": "Eastdale",
+    "features": [
+      "high ceilings",
+      "garden",
+      "backyard",
+      "walk-in closet",
+      "smart home features",
+      "open floor plan"
+    ],
+    "description": "Beautiful 2 bedroom, 4 bathroom condo in Eastdale. This 3450 sq ft property features high ceilings, garden, backyard, walk-in closet, smart home features and open floor plan. Move-in ready with great natural light.",
+    "list_date": "2025-02-28"
+  },
+  {
+    "id": 184,
+    "type": "Condo",
+    "bedrooms": 3,
+    "bathrooms": 4,
+    "sq_ft": 1306,
+    "price": 3734894,
+    "neighborhood": "Southbay",
+    "features": [
+      "swimming pool",
+      "open floor plan",
+      "granite countertops",
+      "smart home features",
+      "fireplace",
+      "garage",
+      "garden"
+    ],
+    "description": "Beautiful 3 bedroom, 4 bathroom condo in Southbay. This 1306 sq ft property features swimming pool, open floor plan, granite countertops, smart home features, fireplace, garage and garden. Move-in ready with great natural light.",
+    "list_date": "2025-01-14"
+  },
+  {
+    "id": 185,
+    "type": "Apartment",
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "sq_ft": 946,
+    "price": 3535917,
+    "neighborhood": "Northpark",
+    "features": [
+      "garage",
+      "home office space",
+      "open floor plan",
+      "smart home features",
+      "walk-in closet",
+      "recently renovated",
+      "garden"
+    ],
+    "description": "Beautiful 3 bedroom, 1 bathroom apartment in Northpark. This 946 sq ft property features garage, home office space, open floor plan, smart home features, walk-in closet, recently renovated and garden. Modern design with attention to detail.",
+    "list_date": "2025-02-20"
+  },
+  {
+    "id": 186,
+    "type": "Condo",
+    "bedrooms": 5,
+    "bathrooms": 2,
+    "sq_ft": 3387,
+    "price": 14720368,
+    "neighborhood": "Eastdale",
+    "features": [
+      "walk-in closet",
+      "swimming pool",
+      "granite countertops",
+      "hardwood floors",
+      "stainless steel appliances"
+    ],
+    "description": "Beautiful 5 bedroom, 2 bathroom condo in Eastdale. This 3387 sq ft property features walk-in closet, swimming pool, granite countertops, hardwood floors and stainless steel appliances. Newly listed and won't last long at this price.",
+    "list_date": "2025-02-19"
+  },
+  {
+    "id": 187,
+    "type": "Apartment",
+    "bedrooms": 5,
+    "bathrooms": 3,
+    "sq_ft": 3268,
+    "price": 13974273,
+    "neighborhood": "Downtown",
+    "features": [
+      "stainless steel appliances",
+      "walk-in closet",
+      "smart home features",
+      "garden"
+    ],
+    "description": "Beautiful 5 bedroom, 3 bathroom apartment in Downtown. This 3268 sq ft property features stainless steel appliances, walk-in closet, smart home features and garden. Perfect for families or professionals.",
+    "list_date": "2025-02-02"
+  },
+  {
+    "id": 188,
+    "type": "Apartment",
+    "bedrooms": 5,
+    "bathrooms": 3,
+    "sq_ft": 571,
+    "price": 1528765,
+    "neighborhood": "Westside",
+    "features": [
+      "stainless steel appliances",
+      "hardwood floors",
+      "open floor plan",
+      "granite countertops",
+      "fireplace"
+    ],
+    "description": "Beautiful 5 bedroom, 3 bathroom apartment in Westside. This 571 sq ft property features stainless steel appliances, hardwood floors, open floor plan, granite countertops and fireplace. Move-in ready with great natural light.",
+    "list_date": "2025-01-05"
+  },
+  {
+    "id": 189,
+    "type": "Duplex",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "sq_ft": 2424,
+    "price": 9386496,
+    "neighborhood": "Northpark",
+    "features": [
+      "granite countertops",
+      "high ceilings",
+      "open floor plan",
+      "home office space",
+      "backyard",
+      "stainless steel appliances"
+    ],
+    "description": "Beautiful 4 bedroom, 3 bathroom duplex in Northpark. This 2424 sq ft property features granite countertops, high ceilings, open floor plan, home office space, backyard and stainless steel appliances. Perfect for families or professionals.",
+    "list_date": "2025-02-20"
+  },
+  {
+    "id": 190,
+    "type": "House",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "sq_ft": 1962,
+    "price": 10241766,
+    "neighborhood": "Downtown",
+    "features": [
+      "garage",
+      "recently renovated",
+      "balcony",
+      "walk-in closet",
+      "fireplace"
+    ],
+    "description": "Beautiful 3 bedroom, 3 bathroom house in Downtown. This 1962 sq ft property features garage, recently renovated, balcony, walk-in closet and fireplace. Newly listed and won't last long at this price.",
+    "list_date": "2025-02-08"
+  },
+  {
+    "id": 191,
+    "type": "House",
+    "bedrooms": 2,
+    "bathrooms": 4,
+    "sq_ft": 534,
+    "price": 2140536,
+    "neighborhood": "Riverside",
+    "features": [
+      "smart home features",
+      "walk-in closet",
+      "recently renovated",
+      "open floor plan",
+      "swimming pool",
+      "balcony",
+      "home office space",
+      "stainless steel appliances"
+    ],
+    "description": "Beautiful 2 bedroom, 4 bathroom house in Riverside. This 534 sq ft property features smart home features, walk-in closet, recently renovated, open floor plan, swimming pool, balcony, home office space and stainless steel appliances. Don't miss this opportunity!",
+    "list_date": "2025-01-15"
+  },
+  {
+    "id": 192,
+    "type": "Duplex",
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "sq_ft": 3230,
+    "price": 10873080,
+    "neighborhood": "Westside",
+    "features": [
+      "fireplace",
+      "walk-in closet",
+      "home office space",
+      "balcony",
+      "granite countertops",
+      "garden",
+      "backyard"
+    ],
+    "description": "Beautiful 2 bedroom, 3 bathroom duplex in Westside. This 3230 sq ft property features fireplace, walk-in closet, home office space, balcony, granite countertops, garden and backyard. Modern design with attention to detail.",
+    "list_date": "2025-01-26"
+  },
+  {
+    "id": 193,
+    "type": "House",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 3359,
+    "price": 11819517,
+    "neighborhood": "Westside",
+    "features": [
+      "hardwood floors",
+      "open floor plan",
+      "balcony",
+      "fireplace",
+      "smart home features"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom house in Westside. This 3359 sq ft property features hardwood floors, open floor plan, balcony, fireplace and smart home features. Nestled in a quiet, friendly neighborhood.",
+    "list_date": "2025-02-22"
+  },
+  {
+    "id": 194,
+    "type": "Townhouse",
+    "bedrooms": 1,
+    "bathrooms": 2,
+    "sq_ft": 2160,
+    "price": 7075042,
+    "neighborhood": "Downtown",
+    "features": [
+      "swimming pool",
+      "walk-in closet",
+      "recently renovated",
+      "balcony",
+      "smart home features"
+    ],
+    "description": "Beautiful 1 bedroom, 2 bathroom townhouse in Downtown. This 2160 sq ft property features swimming pool, walk-in closet, recently renovated, balcony and smart home features. Ideal location close to shops and restaurants.",
+    "list_date": "2025-01-23"
+  },
+  {
+    "id": 195,
+    "type": "Apartment",
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "sq_ft": 2849,
+    "price": 11043807,
+    "neighborhood": "Downtown",
+    "features": [
+      "recently renovated",
+      "granite countertops",
+      "garage",
+      "home office space"
+    ],
+    "description": "Beautiful 2 bedroom, 3 bathroom apartment in Downtown. This 2849 sq ft property features recently renovated, granite countertops, garage and home office space. Perfect for families or professionals.",
+    "list_date": "2025-01-28"
+  },
+  {
+    "id": 196,
+    "type": "House",
+    "bedrooms": 5,
+    "bathrooms": 1,
+    "sq_ft": 2219,
+    "price": 9867117,
+    "neighborhood": "Riverside",
+    "features": [
+      "stainless steel appliances",
+      "walk-in closet",
+      "fireplace",
+      "recently renovated",
+      "garden"
+    ],
+    "description": "Beautiful 5 bedroom, 1 bathroom house in Riverside. This 2219 sq ft property features stainless steel appliances, walk-in closet, fireplace, recently renovated and garden. Move-in ready with great natural light.",
+    "list_date": "2025-02-09"
+  },
+  {
+    "id": 197,
+    "type": "Townhouse",
+    "bedrooms": 1,
+    "bathrooms": 3,
+    "sq_ft": 1272,
+    "price": 7296321,
+    "neighborhood": "Downtown",
+    "features": [
+      "backyard",
+      "garden",
+      "recently renovated",
+      "open floor plan",
+      "granite countertops"
+    ],
+    "description": "Beautiful 1 bedroom, 3 bathroom townhouse in Downtown. This 1272 sq ft property features backyard, garden, recently renovated, open floor plan and granite countertops. Move-in ready with great natural light.",
+    "list_date": "2025-01-28"
+  },
+  {
+    "id": 198,
+    "type": "House",
+    "bedrooms": 4,
+    "bathrooms": 1,
+    "sq_ft": 1674,
+    "price": 6606014,
+    "neighborhood": "Northpark",
+    "features": [
+      "hardwood floors",
+      "high ceilings",
+      "walk-in closet",
+      "smart home features",
+      "balcony",
+      "recently renovated",
+      "home office space"
+    ],
+    "description": "Beautiful 4 bedroom, 1 bathroom house in Northpark. This 1674 sq ft property features hardwood floors, high ceilings, walk-in closet, smart home features, balcony, recently renovated and home office space. Move-in ready with great natural light.",
+    "list_date": "2025-01-05"
+  },
+  {
+    "id": 199,
+    "type": "House",
+    "bedrooms": 2,
+    "bathrooms": 3,
+    "sq_ft": 2840,
+    "price": 10900780,
+    "neighborhood": "Downtown",
+    "features": [
+      "recently renovated",
+      "garage",
+      "high ceilings"
+    ],
+    "description": "Beautiful 2 bedroom, 3 bathroom house in Downtown. This 2840 sq ft property features recently renovated, garage and high ceilings. Move-in ready with great natural light.",
+    "list_date": "2025-01-28"
+  },
+  {
+    "id": 200,
+    "type": "Duplex",
+    "bedrooms": 2,
+    "bathrooms": 4,
+    "sq_ft": 2867,
+    "price": 10649518,
+    "neighborhood": "Southbay",
+    "features": [
+      "fireplace",
+      "home office space",
+      "recently renovated"
+    ],
+    "description": "Beautiful 2 bedroom, 4 bathroom duplex in Southbay. This 2867 sq ft property features fireplace, home office space and recently renovated. Newly listed and won't last long at this price.",
+    "list_date": "2025-01-31"
+  }
+]

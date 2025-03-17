@@ -42,6 +42,7 @@ class HotkeyFilter(QAbstractNativeEventFilter):
         return False, 0
 
 
+
 class VirtualKeyboard(QMainWindow):
     """Main window for the virtual keyboard application"""
 
