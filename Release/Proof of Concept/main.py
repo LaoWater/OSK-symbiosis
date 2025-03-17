@@ -22,6 +22,8 @@ class KeyboardApp(QApplication):
         # Create the keyboard window
         self.keyboard = VirtualKeyboard()
 
+
+
     def exec(self):
         """Override exec to ensure proper cleanup"""
         result = super().exec()

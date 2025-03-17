@@ -22,6 +22,7 @@ class Win32Hotkey(QObject):
 
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.hwnd = None
         self.registered = False
         self.msg_handler = None
         self.timer = None
