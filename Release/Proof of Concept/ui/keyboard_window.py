@@ -434,6 +434,11 @@ class VirtualKeyboard(QMainWindow):
 
     def mouseMoveEvent(self, event):
         """Handle mouse move events for dragging and resizing the window"""
+
+        print("Scaling from key_window.py")
+
+        print(f"Current Width & Height: {self.width()}, {self.height()}")
+
         # Update cursor based on position
         resize_edge = self.get_resize_edge(event.position().toPoint())
         if resize_edge in ["left", "right"]:
@@ -529,11 +534,11 @@ class VirtualKeyboard(QMainWindow):
         easing = QEasingCurve(QEasingCurve.Type.OutCubic)
 
         # Scale the input to 0-1 range for the easing function
-        scale_factor = 10.0  # Adjust this to control sensitivity
+        scale_factor_easing = 1.0  # Adjust this to control sensitivity
 
         # Apply easing separately to x and y components
-        eased_x = diff.x() * easing.valueForProgress(min(1.0, abs(diff.x()) / scale_factor))
-        eased_y = diff.y() * easing.valueForProgress(min(1.0, abs(diff.y()) / scale_factor))
+        eased_x = diff.x() * easing.valueForProgress(min(1.0, abs(diff.x()) / scale_factor_easing))
+        eased_y = diff.y() * easing.valueForProgress(min(1.0, abs(diff.y()) / scale_factor_easing))
 
         # Preserve original direction while applying easing
         return QPoint(int(eased_x), int(eased_y))
@@ -552,7 +557,8 @@ class VirtualKeyboard(QMainWindow):
             self.resize_edge = None
 
     def resizeEvent(self, event):
-        """Handle window resize events to maintain proportions of UI elements"""
+        """Handle window resize events to maintain proportions of UI elements
+        Reizing UI Buttons - calling scale_size in key_buttons.py """
         super().resizeEvent(event)
         
         # Calculate scale factor based on initial window size
@@ -646,13 +652,15 @@ class VirtualKeyboard(QMainWindow):
         print("Using default window settings")
         return False
 
-    # Not used from here onwards for now, handling presses in key_buttons.py
 
-    def handle_key_press(self, key):
-        """Handle a key press from the keyboard UI"""
-        from utils.keyboard_utils import KeyboardController
 
-        if not self.toggle_modifier_key(key):
-            # For non-modifier keys, do normal press and release
-            KeyboardController.press_and_release_key(key)
-            self.update_status(key)
+    # # Not used from here onwards for now, handling presses in key_buttons.py
+    #
+    # def handle_key_press(self, key):
+    #     """Handle a key press from the keyboard UI"""
+    #     from utils.keyboard_utils import KeyboardController
+    #
+    #     if not self.toggle_modifier_key(key):
+    #         # For non-modifier keys, do normal press and release
+    #         KeyboardController.press_and_release_key(key)
+    #         self.update_status(key)

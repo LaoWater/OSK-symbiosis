@@ -165,8 +165,10 @@ class NeonKeyButton(QPushButton):
             glow_height = max(1, int(2 * self.scale_factor))  # Scale glow height
             painter.drawRect(0, self.height - 3, self.width, glow_height)
 
-    def scale_size(self, scale_factor):
+    def scale_size(self, scale_factor=0.7):
         """Scale the button based on the provided scale factor"""
+
+        print("Scaling from key_buttons.py")
         # Store the current scale factor
         self.scale_factor = scale_factor
 
