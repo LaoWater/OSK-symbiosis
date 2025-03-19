@@ -18,7 +18,7 @@ class KeyboardLayoutManager:
         self.layout = None
         self.row_layouts = []
 
-    def create_keyboard(self, layout_type="standard", scale_factor=1.0):
+    def create_keyboard(self, layout_type="standard", scale_factor=1):
         """
         Create a complete keyboard with the specified layout
 
@@ -58,7 +58,7 @@ class KeyboardLayoutManager:
             QFrame {
                 background-color: #1a1a1a;
                 border: 1px solid #0077cc;
-                border-radius: 10px;
+                border-radius: 5px;
             }
         """)
         return keyboard_frame
@@ -66,8 +66,8 @@ class KeyboardLayoutManager:
     def create_standard_layout(self, parent_frame):
         """Create a standard QWERTY keyboard layout"""
         keyboard_layout = QVBoxLayout(parent_frame)
-        keyboard_layout.setSpacing(8)
-        keyboard_layout.setContentsMargins(10, 10, 10, 10)
+        keyboard_layout.setSpacing(2)
+        keyboard_layout.setContentsMargins(5, 5, 5, 5)
 
         # Initialize row layouts list
         self.row_layouts = []
@@ -88,7 +88,7 @@ class KeyboardLayoutManager:
     def _add_function_row(self, layout):
         """Add function keys row to the layout"""
         row_layout = QHBoxLayout()
-        row_layout.setSpacing(5)
+        row_layout.setSpacing(3)
 
         function_keys = [
             ("ESC", "esc"),
@@ -110,7 +110,7 @@ class KeyboardLayoutManager:
     def _add_number_row(self, layout):
         """Add number keys row to the layout"""
         row_layout = QHBoxLayout()
-        row_layout.setSpacing(5)
+        row_layout.setSpacing(1)
 
         number_keys = [
             ("`", "`"), ("1", "1"), ("2", "2"), ("3", "3"), ("4", "4"),
@@ -121,9 +121,9 @@ class KeyboardLayoutManager:
         for i, (key_text, key_value) in enumerate(number_keys):
             try:
                 if key_text == "⌫":
-                    key_btn = SpecialNeonKeyButton(key_text, key_value, 80)
+                    key_btn = SpecialNeonKeyButton(key_text, key_value, 75)
                 else:
-                    key_btn = NeonKeyButton(key_text, key_value)
+                    key_btn = NeonKeyButton(key_text, key_value, 33)
                 row_layout.addWidget(key_btn)
             except Exception as e:
                 print(f"Error creating key {key_text}: {e}")
@@ -134,7 +134,7 @@ class KeyboardLayoutManager:
     def _add_qwerty_row(self, layout):
         """Add QWERTY row to the layout"""
         row_layout = QHBoxLayout()
-        row_layout.setSpacing(5)
+        row_layout.setSpacing(1)
 
         qwerty_keys = [
             ("Tab", "tab"), ("Q", "q"), ("W", "w"), ("E", "e"), ("R", "r"),
@@ -145,7 +145,7 @@ class KeyboardLayoutManager:
         for i, (key_text, key_value) in enumerate(qwerty_keys):
             try:
                 if key_text == "Tab":
-                    key_btn = SpecialNeonKeyButton(key_text, key_value, 70)
+                    key_btn = SpecialNeonKeyButton(key_text, key_value, 64)
                 else:
                     key_btn = NeonKeyButton(key_text, key_value)
                 row_layout.addWidget(key_btn)
@@ -158,7 +158,7 @@ class KeyboardLayoutManager:
     def _add_asdf_row(self, layout):
         """Add ASDF row to the layout"""
         row_layout = QHBoxLayout()
-        row_layout.setSpacing(5)
+        row_layout.setSpacing(1)
 
         asdf_keys = [
             ("Caps", "caps lock"), ("A", "a"), ("S", "s"), ("D", "d"), ("F", "f"),
@@ -169,7 +169,7 @@ class KeyboardLayoutManager:
         for i, (key_text, key_value) in enumerate(asdf_keys):
             try:
                 if key_text in ["Caps", "Enter"]:
-                    key_btn = SpecialNeonKeyButton(key_text, key_value, 80)
+                    key_btn = SpecialNeonKeyButton(key_text, key_value, 70)
                 else:
                     key_btn = NeonKeyButton(key_text, key_value)
                 row_layout.addWidget(key_btn)
@@ -182,7 +182,7 @@ class KeyboardLayoutManager:
     def _add_zxcv_row(self, layout):
         """Add ZXCV row to the layout"""
         row_layout = QHBoxLayout()
-        row_layout.setSpacing(5)
+        row_layout.setSpacing(1)
 
         zxcv_keys = [
             ("Shift", "left shift"), ("Z", "z"), ("X", "x"), ("C", "c"), ("V", "v"),
@@ -206,7 +206,7 @@ class KeyboardLayoutManager:
     def _add_control_row(self, layout):
         """Add control keys row to the layout"""
         row_layout = QHBoxLayout()
-        row_layout.setSpacing(5)
+        row_layout.setSpacing(1)
 
         control_keys = [
             ("Ctrl", "left ctrl"), ("Win", "win"), ("Alt", "left alt"),
@@ -217,9 +217,9 @@ class KeyboardLayoutManager:
         for key_text, key_value in control_keys:
             try:
                 if key_text == "Space":
-                    key_btn = SpecialNeonKeyButton(key_text, key_value, 350, 35)
+                    key_btn = SpecialNeonKeyButton(key_text, key_value, 300, 20)
                 elif key_text in ["Ctrl", "Win", "Alt", "Fn"]:
-                    key_btn = SpecialNeonKeyButton(key_text, key_value, 60, 35)
+                    key_btn = SpecialNeonKeyButton(key_text, key_value, 54, 20)
                 else:
                     key_btn = NeonKeyButton(key_text, key_value)
                 row_layout.addWidget(key_btn)
@@ -235,8 +235,8 @@ class KeyboardLayoutManager:
         print("Scaling function entered in layous.py")
 
         # Scale the spacing between keys
-        horizontal_spacing = max(2, int(5 * scale_factor))
-        vertical_spacing = max(2, int(8 * scale_factor))
+        horizontal_spacing = max(2, int(2 * scale_factor))
+        vertical_spacing = max(2, int(3 * scale_factor))
 
         self.layout.setSpacing(vertical_spacing)
         self.layout.setContentsMargins(
@@ -249,4 +249,4 @@ class KeyboardLayoutManager:
         # If you stored row layouts, you could iterate through them here
         if hasattr(self, 'row_layouts'):
             for row_layout in self.row_layouts:
-                row_layout.setSpacing(int(5 * scale_factor))
+                row_layout.setSpacing(int(2 * scale_factor))

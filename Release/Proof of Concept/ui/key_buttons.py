@@ -15,7 +15,7 @@ from utils.keyboard_utils import KeyboardController
 class NeonKeyButton(QPushButton):
     MODIFIER_KEYS = ["left shift", "right shift", "left ctrl", "right ctrl", "left alt", "right alt"]
 
-    def __init__(self, key_text, key_value=None, width=30, height=30, parent=None):
+    def __init__(self, key_text, key_value=None, width=37, height=16, parent=None):
         super().__init__(key_text, parent)
         self.key_text = key_text
         self.key_value = key_value if key_value is not None else key_text
@@ -165,7 +165,7 @@ class NeonKeyButton(QPushButton):
             glow_height = max(1, int(2 * self.scale_factor))  # Scale glow height
             painter.drawRect(0, self.height - 3, self.width, glow_height)
 
-    def scale_size(self, scale_factor=0.7):
+    def scale_size(self, scale_factor=1):
         """Scale the button based on the provided scale factor"""
 
         print("Scaling from key_buttons.py")
@@ -177,12 +177,14 @@ class NeonKeyButton(QPushButton):
         new_height = int(self.default_height * scale_factor)
 
         # Ensure minimum size
-        new_width = max(new_width, 20)
-        new_height = max(new_height, 20)
+        new_width = max(new_width, 13)
+        new_height = max(new_height, 13)
 
         # Update the button's size properties
         self.width = new_width
         self.height = new_height
+
+        print("Key Buttons scaled Width & Height: ", self.key_text, new_width, new_height)
 
         # Apply new size
         self.setFixedSize(new_width, new_height)
@@ -205,6 +207,6 @@ class NeonKeyButton(QPushButton):
 class SpecialNeonKeyButton(NeonKeyButton):
     """Special keyboard button with different default size"""
 
-    def __init__(self, key_text, key_value=None, width=50, height=30, parent=None):
+    def __init__(self, key_text, key_value=None, width=47, height=16, parent=None):
         """Initialize a special key button with custom width"""
         super().__init__(key_text, key_value, width, height, parent)

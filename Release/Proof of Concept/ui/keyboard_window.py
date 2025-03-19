@@ -99,6 +99,23 @@ class VirtualKeyboard(QMainWindow):
             self.showMinimized()
             print("Window minimized")
 
+    def scale_buttons(self):
+        """Scale all keyboard buttons according to the current window size"""
+        # Calculate scale factor based on initial window size
+        width_scale = self.width() / self.initial_width
+        height_scale = self.height() / self.initial_height
+        
+        # Use the smaller scale to maintain aspect ratio
+        scale_factor = min(width_scale, height_scale)
+        
+        # Find all NeonKeyButton and SpecialNeonKeyButton instances
+        key_buttons = self.findChildren((NeonKeyButton, SpecialNeonKeyButton))
+        
+        # Scale each button
+        for button in key_buttons:
+            button.scale_size(scale_factor)
+
+
     def initUI(self):
         """Initialize the user interface"""
         # Set window properties
@@ -107,6 +124,9 @@ class VirtualKeyboard(QMainWindow):
         # Force the window size to match the loaded/default dimensions
         print(f"Setting window size to: {self.initial_width}x{self.initial_height}")
         self.resize(self.initial_width, self.initial_height)
+
+        # Apply initial scaling to buttons
+        self.scale_buttons()
         
         # Store original size for proportional scaling
         self.original_size = QSize(self.initial_width, self.initial_height)
@@ -195,7 +215,7 @@ class VirtualKeyboard(QMainWindow):
         # Add status label
         self.status_label = QLabel("Click keys to type (focus will be maintained on your Active window)")
         self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.status_label.setStyleSheet("color: #66ccff; margin-bottom: 15px;")
+        self.status_label.setStyleSheet("color: #66ccff; margin-bottom: 3px;")
         main_layout.addWidget(self.status_label)
 
         # Create keyboard frame with neon effect
@@ -557,23 +577,11 @@ class VirtualKeyboard(QMainWindow):
             self.resize_edge = None
 
     def resizeEvent(self, event):
-        """Handle window resize events to maintain proportions of UI elements
-        Reizing UI Buttons - calling scale_size in key_buttons.py """
+        """Handle window resize events to maintain proportions of UI elements"""
         super().resizeEvent(event)
+        self.scale_buttons()
         
-        # Calculate scale factor based on initial window size
-        width_scale = self.width() / self.initial_width
-        height_scale = self.height() / self.initial_height
-        
-        # Use the smaller scale to maintain aspect ratio
-        scale_factor = min(width_scale, height_scale)
-        
-        # Find all NeonKeyButton and SpecialNeonKeyButton instances
-        key_buttons = self.findChildren((NeonKeyButton, SpecialNeonKeyButton))
-        
-        # Scale each button
-        for button in key_buttons:
-            button.scale_size(scale_factor)
+
 
     def save_window_settings(self):
         """Save window position and size to a JSON file"""
