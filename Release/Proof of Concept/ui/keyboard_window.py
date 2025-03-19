@@ -9,7 +9,7 @@ from PyQt6.QtCore import (Qt, QTimer, QPoint, QAbstractNativeEventFilter,
                          QPropertyAnimation, QEasingCurve, QRect, 
                          QAbstractAnimation, QSize)
 from PyQt6 import QtCore, QtWidgets
-from PyQt6.QtGui import QPainter, QPen, QPainterPath, QColor, QKeySequence, QShortcut
+from PyQt6.QtGui import QPainter, QPen, QPainterPath, QColor, QKeySequence, QShortcut, QIcon
 from ui.theme import NeonTheme
 from ui.layouts import KeyboardLayoutManager
 from utils.window_utils import WindowManager
@@ -72,6 +72,9 @@ class VirtualKeyboard(QMainWindow):
         self.resize_edge = None
         self.offset = QPoint()
         self.border_width = 10
+
+        # Initialize audio Recording button
+        self.audio_recording = None
 
         # Load settings first, before initializing UI
         self.load_window_settings()
@@ -350,7 +353,12 @@ class VirtualKeyboard(QMainWindow):
         self.modifier_status_label.setStyleSheet("color: #0099ff; font-size: 12px;")
         bottom_layout.addWidget(self.modifier_status_label)
 
-        bottom_layout.addStretch()
+        # bottom_layout.addStretch()
+
+        from ui.audio_recording_functionality import add_audio_recording
+        # Add the recording button instead of stretch
+        add_audio_recording(self, bottom_layout)
+
 
         version_info = QLabel("v1.0.0")
         version_info.setStyleSheet("color: #0077cc; font-size: 12px;")
@@ -377,9 +385,9 @@ class VirtualKeyboard(QMainWindow):
             # Truncate if too long
             if len(window_title) > 30:
                 window_title = window_title[:27] + "..."
-            self.target_window_label.setText(f"Current: {window_title}")
+            self.target_window_label.setText(f"Current Window: {window_title}")
         else:
-            self.target_window_label.setText("Current: None")
+            self.target_window_label.setText("Current Window: None")
 
     def restore_target_window_focus(self):
         """Restore focus to the target window"""
