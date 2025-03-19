@@ -7,6 +7,33 @@ from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtGui import QPainter, QPen, QPainterPath, QColor, QKeySequence, QShortcut, QIcon
 
 
+def create_recording_button(icon_path):
+    """Creates a styled recording button with different styles for AI and normal buttons."""
+    is_ai_button = "ai" in icon_path.lower()
+
+    border_color = "#0099ff" if not is_ai_button else "#bb00ff"  # Blue for normal, neon purple for AI
+    hover_border_color = "#00bbff" if not is_ai_button else "#dd00ff"
+
+    button = QPushButton()
+    button.setFixedSize(24, 24)
+    button.setIcon(QIcon(icon_path))
+    button.setIconSize(QSize(18, 18))
+    button.setStyleSheet(f"""
+        QPushButton {{
+            background-color: #2a2a2a;
+            border-radius: 12px;
+            border: 1px solid {border_color};
+        }}
+        QPushButton:hover {{
+            background-color: #3a3a3a;
+            border: 1px solid {hover_border_color};
+        }}
+        QPushButton:pressed {{
+            background-color: #444444;
+        }}
+    """)
+    return button
+
 def add_audio_recording(parent, bottom_layout):
     """Add an audio recording button to the status bar"""
     # Create a container for the recording button to center it
@@ -15,25 +42,9 @@ def add_audio_recording(parent, bottom_layout):
     recording_layout = QHBoxLayout(recording_container)
     recording_layout.setContentsMargins(0, 0, 0, 0)
 
-    # Create the recording button with microphone icon
-    parent.recording_button = QPushButton()
-    parent.recording_button.setFixedSize(24, 24)
-    parent.recording_button.setIcon(QIcon("icons/microphone.png"))
-    parent.recording_button.setIconSize(QSize(18, 18))
-    parent.recording_button.setStyleSheet("""
-        QPushButton {
-            background-color: #2a2a2a;
-            border-radius: 12px;
-            border: 1px solid #0099ff;
-        }
-        QPushButton:hover {
-            background-color: #3a3a3a;
-            border: 1px solid #00bbff;
-        }
-        QPushButton:pressed {
-            background-color: #444444;
-        }
-    """)
+    # Create buttons using the helper function
+    parent.recording_button = create_recording_button("icons/microphone.png")
+    parent.ai_recording_button = create_recording_button("icons/ai_microphone.png")
 
     # Create status message label
     parent.status_message = QLabel("")
@@ -68,11 +79,13 @@ def add_audio_recording(parent, bottom_layout):
 
     # Connect the button to a function
     parent.recording_button.clicked.connect(lambda: toggle_recording(parent))
+    parent.ai_recording_button.clicked.connect(lambda: toggle_ai_recording(parent))
 
     # Add the button to the container with stretch on both sides for centering
     recording_layout.addStretch()
     recording_layout.addStretch()
     recording_layout.addWidget(parent.recording_button)
+    recording_layout.addWidget(parent.ai_recording_button)
     recording_layout.addStretch()
 
     # Add the container and the message label to the bottom layout
@@ -80,10 +93,12 @@ def add_audio_recording(parent, bottom_layout):
     bottom_layout.addWidget(indicator_container)
 
     # Initialize recording state
-    parent.is_recording = False
+    parent.is_normal_recording = False
+    parent.is_ai_recording = False
 
     # Setup animation for the button
     setup_recording_animation(parent)
+    setup_ai_recording_animation(parent)
 
     # Setup blinking animation for the red dot
     setup_blinking_animation(parent)
@@ -130,6 +145,42 @@ def setup_recording_animation(parent):
     parent.pulse_animation.setEndValue(recording_style)
 
 
+def setup_ai_recording_animation(parent):
+    ai_normal_style = """
+        QPushButton {
+            background-color: #2a2a2a;
+            border-radius: 12px;
+            border: 1px solid #bb00ff;
+        }
+        QPushButton:hover {
+            background-color: #3a3a3a;
+            border: 1px solid #dd00ff;
+        }
+        QPushButton:pressed {
+            background-color: #444444;
+        }
+    """
+    ai_recording_style = """
+        QPushButton {
+            background-color: #cc0000;
+            border-radius: 12px;
+            border: 1px solid #ff3333;
+        }
+        QPushButton:hover {
+            background-color: #dd0000;
+            border: 1px solid #ff5555;
+        }
+        QPushButton:pressed {
+            background-color: #aa0000;
+        }
+    """
+    parent.ai_pulse_animation = QPropertyAnimation(parent.ai_recording_button, b"styleSheet")
+    parent.ai_pulse_animation.setDuration(1000)
+    parent.ai_pulse_animation.setLoopCount(-1)
+    parent.ai_pulse_animation.setStartValue(ai_normal_style)
+    parent.ai_pulse_animation.setEndValue(ai_recording_style)
+
+
 def setup_blinking_animation(parent):
     """Set up the blinking animation for the red indicator dot"""
     # Create a timer for blinking the recording indicator
@@ -156,9 +207,9 @@ def toggle_indicator_visibility(parent):
 
 def toggle_recording(parent):
     """Toggle the recording state"""
-    parent.is_recording = not parent.is_recording
+    parent.is_normal_recording = not parent.is_normal_recording
 
-    if parent.is_recording:
+    if parent.is_normal_recording:
         # Start recording
         parent.status_message.setText("Recording started...")
         parent.message_opacity.setOpacity(1.0)  # Reset opacity before starting fade
@@ -172,7 +223,7 @@ def toggle_recording(parent):
         parent.pulse_animation.start()
         parent.recording_button.setIcon(QIcon("icons/stop.png"))
 
-        print("Recording started")
+        print("Recording for Transcript started")
     else:
         # Stop recording
         parent.status_message.setText("Recording stopped.")
@@ -204,4 +255,47 @@ def toggle_recording(parent):
         parent.recording_button.setStyleSheet(normal_style)
         parent.recording_button.setIcon(QIcon("icons/microphone.png"))
 
-        print("Recording stopped")
+        print("Recording for Transcript stopped")
+
+
+
+
+
+
+
+def toggle_ai_recording(parent):
+    parent.is_ai_recording = not parent.is_ai_recording
+    if parent.is_ai_recording:
+        parent.status_message.setText("Recording for LLM Inference started...")
+        parent.message_opacity.setOpacity(1.0)
+        parent.fade_animation.start()
+        parent.recording_indicator.setVisible(True)
+        parent.blink_timer.start()
+        parent.ai_pulse_animation.start()
+        parent.ai_recording_button.setIcon(QIcon("icons/stop.png"))
+        print("Recording started")
+    else:
+        if not parent.is_normal_recording:
+            parent.status_message.setText("Recording stopped.")
+            parent.message_opacity.setOpacity(1.0)
+            parent.fade_animation.start()
+            parent.blink_timer.stop()
+            parent.recording_indicator.setVisible(False)
+        parent.ai_pulse_animation.stop()
+        ai_normal_style = """
+            QPushButton {
+                background-color: #2a2a2a;
+                border-radius: 12px;
+                border: 1px solid #bb00ff;
+            }
+            QPushButton:hover {
+                background-color: #3a3a3a;
+                border: 1px solid #dd00ff;
+            }
+            QPushButton:pressed {
+                background-color: #444444;
+            }
+        """
+        parent.ai_recording_button.setStyleSheet(ai_normal_style)
+        parent.ai_recording_button.setIcon(QIcon("icons/ai_microphone.png"))
+        print("Recording for LLM Inference stopped")
