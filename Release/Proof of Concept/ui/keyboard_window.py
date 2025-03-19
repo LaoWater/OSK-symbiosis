@@ -604,6 +604,10 @@ class VirtualKeyboard(QMainWindow):
             'size': {
                 'width': self.width(),
                 'height': self.height()
+            },
+            'default stable size': {
+                'width': 761,
+                'height': 317
             }
         }
         

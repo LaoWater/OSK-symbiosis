@@ -71,6 +71,7 @@ def add_audio_recording(parent, bottom_layout):
 
     # Add the button to the container with stretch on both sides for centering
     recording_layout.addStretch()
+    recording_layout.addStretch()
     recording_layout.addWidget(parent.recording_button)
     recording_layout.addStretch()
 
