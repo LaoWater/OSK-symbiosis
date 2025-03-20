@@ -83,8 +83,8 @@ def add_audio_recording(parent, bottom_layout):
 
     # Add the button to the container with stretch on both sides for centering
     recording_layout.addStretch()
-    recording_layout.addStretch()
     recording_layout.addWidget(parent.recording_button)
+    recording_layout.addStretch()
     recording_layout.addWidget(parent.ai_recording_button)
     recording_layout.addStretch()
 
@@ -266,14 +266,14 @@ def toggle_recording(parent):
 def toggle_ai_recording(parent):
     parent.is_ai_recording = not parent.is_ai_recording
     if parent.is_ai_recording:
-        parent.status_message.setText("Recording for LLM Inference started...")
+        parent.status_message.setText("Recording for Inference...")
         parent.message_opacity.setOpacity(1.0)
         parent.fade_animation.start()
         parent.recording_indicator.setVisible(True)
         parent.blink_timer.start()
         parent.ai_pulse_animation.start()
         parent.ai_recording_button.setIcon(QIcon("icons/stop.png"))
-        print("Recording started")
+        print("Recording for LLM Inference started...")
     else:
         if not parent.is_normal_recording:
             parent.status_message.setText("Recording stopped.")
@@ -299,3 +299,4 @@ def toggle_ai_recording(parent):
         parent.ai_recording_button.setStyleSheet(ai_normal_style)
         parent.ai_recording_button.setIcon(QIcon("icons/ai_microphone.png"))
         print("Recording for LLM Inference stopped")
+
