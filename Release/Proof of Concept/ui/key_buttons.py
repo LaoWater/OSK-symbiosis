@@ -15,7 +15,7 @@ from utils.keyboard_utils import KeyboardController
 class NeonKeyButton(QPushButton):
     MODIFIER_KEYS = ["left shift", "right shift", "left ctrl", "right ctrl", "left alt", "right alt"]
 
-    def __init__(self, key_text, key_value=None, width=37, height=16, parent=None):
+    def __init__(self, key_text, key_value=None, width=34, height=16, parent=None):
         super().__init__(key_text, parent)
         self.key_text = key_text
         self.key_value = key_value if key_value is not None else key_text
@@ -207,6 +207,6 @@ class NeonKeyButton(QPushButton):
 class SpecialNeonKeyButton(NeonKeyButton):
     """Special keyboard button with different default size"""
 
-    def __init__(self, key_text, key_value=None, width=47, height=16, parent=None):
+    def __init__(self, key_text, key_value=None, width=41, height=16, parent=None):
         """Initialize a special key button with custom width"""
         super().__init__(key_text, key_value, width, height, parent)

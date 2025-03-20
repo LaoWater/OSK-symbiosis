@@ -5,36 +5,33 @@ Contains styling definitions and theme application functions
 
 from PyQt6.QtGui import QFont, QFontDatabase
 
-
 class NeonTheme:
     """Manages theme settings for the Neon Virtual Keyboard"""
 
-    # Color definitions
+    # Color definitions with refined aesthetics
     COLORS = {
-        'background': '#121212',
-        'secondary_bg': '#1a1a1a',
-        'accent': '#0077cc',
-        'accent_light': '#00aaff',
-        'accent_bright': '#33ccff',
-        'text': '#e0e0e0',
-        'text_bright': '#ffffff',
-        'text_dim': '#cccccc',
-        'error': '#cc0000',
-        'hover_bg': '#2a2a2a',
-        'press_bg': '#003366',
-        'press_border': '#66ccff',
+        'background': '#181818',  # Smooth dark gray instead of full black
+        'secondary_bg': '#222222',  # Slightly lighter gray for contrast
+        'accent': '#0088dd',  # Vibrant but slightly softened neon blue
+        'accent_light': '#00b3ff',  # A touch brighter than original
+        'accent_bright': '#33ddff',  # More luminescent blue for emphasis
+        'text': '#e5e5e5',  # Warmer and softer white
+        'text_bright': '#ffffff',  # Pure white for high contrast
+        'text_dim': '#bbbbbb',  # Slightly softened dim text
+        'error': '#ff4444',  # More vibrant red for better contrast
+        'hover_bg': '#2e2e2e',  # Slightly lighter hover effect
+        'press_bg': '#005588',  # Softer blue for press state
+        'press_border': '#77ddff',  # Gentle neon glow
     }
 
     @staticmethod
     def setup_font(app):
         """Set up application font"""
-        # Try to load a custom font, or fall back to system font
         font_id = QFontDatabase.addApplicationFont("resources/fonts/Hack-Regular.ttf")
         if font_id != -1:
             font_families = QFontDatabase.applicationFontFamilies(font_id)
             font = QFont(font_families[0], 11)
         else:
-            # Fallback to system monospace font
             font = QFont("Monospace", 11)
 
         app.setFont(font)
@@ -45,27 +42,30 @@ class NeonTheme:
         """Return the stylesheet for the main window"""
         return f"""
             QMainWindow {{
-                background-color: {NeonTheme.COLORS['background']};
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 {NeonTheme.COLORS['secondary_bg']}, stop:1 {NeonTheme.COLORS['secondary_bg']});
                 border: 1px solid {NeonTheme.COLORS['accent']};
-                border-radius: 10px;
+                border-radius: 12px;
             }}
             QLabel {{
                 color: {NeonTheme.COLORS['accent_light']};
-                font-size: 14px;
+                font-size: 13px;
+                font-weight: normal;
             }}
             QFrame {{
                 background-color: {NeonTheme.COLORS['secondary_bg']};
                 border: 1px solid {NeonTheme.COLORS['accent']};
-                border-radius: 10px;
+                border-radius: 12px;
             }}
             QPushButton#titleButton {{
                 background-color: transparent;
                 color: {NeonTheme.COLORS['accent_light']};
                 border: none;
                 font-size: 16px;
+                font-weight: bold;
             }}
             QPushButton#titleButton:hover {{
                 color: {NeonTheme.COLORS['accent_bright']};
+                text-shadow: 0px 0px 8px {NeonTheme.COLORS['accent_bright']};
             }}
             QPushButton#minimizeButton {{
                 background-color: transparent;
@@ -75,7 +75,7 @@ class NeonTheme:
             }}
             QPushButton#minimizeButton:hover {{
                 color: {NeonTheme.COLORS['text_bright']};
-                background-color: #444444;
+                background-color: rgba(255, 255, 255, 0.1);
             }}
             QPushButton#closeButton {{
                 background-color: transparent;
@@ -95,11 +95,11 @@ class NeonTheme:
         return {
             'default': f"""
                 QPushButton {{
-                    background-color: {NeonTheme.COLORS['secondary_bg']};
+                    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 {NeonTheme.COLORS['secondary_bg']}, stop:1 {NeonTheme.COLORS['hover_bg']});
                     color: {NeonTheme.COLORS['text']};
                     border: 1px solid {NeonTheme.COLORS['accent']};
-                    border-radius: 5px;
-                    padding: 5px;
+                    border-radius: 8px;
+                    padding: 6px;
                     font-size: 14px;
                     min-width: {width}px;
                     min-height: {height}px;
@@ -107,11 +107,11 @@ class NeonTheme:
             """,
             'hover': f"""
                 QPushButton {{
-                    background-color: {NeonTheme.COLORS['hover_bg']};
+                    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 {NeonTheme.COLORS['hover_bg']}, stop:1 {NeonTheme.COLORS['press_border']});
                     color: {NeonTheme.COLORS['text_bright']};
-                    border: 2px solid {NeonTheme.COLORS['accent_light']};
-                    border-radius: 5px;
-                    padding: 5px;
+                    border: 1px solid {NeonTheme.COLORS['accent_light']};
+                    border-radius: 8px;
+                    padding: 6px;
                     font-size: 14px;
                     min-width: {width}px;
                     min-height: {height}px;
@@ -119,11 +119,11 @@ class NeonTheme:
             """,
             'pressed': f"""
                 QPushButton {{
-                    background-color: {NeonTheme.COLORS['press_bg']};
+                    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 {NeonTheme.COLORS['press_bg']}, stop:1 {NeonTheme.COLORS['press_border']});
                     color: {NeonTheme.COLORS['text_bright']};
                     border: 2px solid {NeonTheme.COLORS['press_border']};
-                    border-radius: 5px;
-                    padding: 5px;
+                    border-radius: 8px;
+                    padding: 6px;
                     font-size: 14px;
                     min-width: {width}px;
                     min-height: {height}px;

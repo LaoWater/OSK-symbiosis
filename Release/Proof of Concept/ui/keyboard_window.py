@@ -71,7 +71,7 @@ class VirtualKeyboard(QMainWindow):
         self.resizing = False
         self.resize_edge = None
         self.offset = QPoint()
-        self.border_width = 10
+        self.border_width = 5
 
         # Initialize audio Recording button
         self.audio_recording = None
@@ -215,7 +215,7 @@ class VirtualKeyboard(QMainWindow):
         # Add custom title bar
         self.add_title_bar(main_layout)
 
-        # Add status label
+        # Add status label (Word prediction Logic here)
         self.status_label = QLabel("Click keys to type (focus will be maintained on your Active window)")
         self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.status_label.setStyleSheet("color: #66ccff; margin-bottom: 3px;")
@@ -278,7 +278,7 @@ class VirtualKeyboard(QMainWindow):
 
         # Title
         title_label = QLabel("OSK-Symbiosis")
-        title_label.setStyleSheet("color: #00aaff; font-weight: bold; font-size: 16px;")
+        title_label.setStyleSheet("color: #00aaff; font-weight: bold; font-size: 13px;")
         title_layout.addWidget(title_label)
 
         # Spacer
@@ -327,9 +327,10 @@ class VirtualKeyboard(QMainWindow):
         keyboard_frame.setFrameShadow(QFrame.Shadow.Raised)
         keyboard_frame.setStyleSheet("""
             QFrame {
-                background-color: #1a1a1a;
-                border: 1px solid #0077cc;
-                border-radius: 10px;
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #2a2a2a, stop:1 #1a1a1a);
+            border: 1px solid #0077cc;
+            border-radius: 5px;
             }
         """)
         return keyboard_frame
@@ -350,7 +351,7 @@ class VirtualKeyboard(QMainWindow):
         self.modifier_states = {'alt': False, 'ctrl': False, 'shift': False}
 
         self.modifier_status_label = QLabel("ALT: Off | CTRL: Off | SHIFT: Off")
-        self.modifier_status_label.setStyleSheet("color: #0099ff; font-size: 12px;")
+        self.modifier_status_label.setStyleSheet("color: #0099ff; font-size: 11px; font-weight: normal;")
         bottom_layout.addWidget(self.modifier_status_label)
 
         # bottom_layout.addStretch()

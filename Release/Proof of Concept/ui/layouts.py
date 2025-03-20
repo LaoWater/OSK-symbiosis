@@ -56,9 +56,10 @@ class KeyboardLayoutManager:
         keyboard_frame.setFrameShadow(QFrame.Shadow.Raised)
         keyboard_frame.setStyleSheet("""
             QFrame {
-                background-color: #1a1a1a;
-                border: 1px solid #0077cc;
-                border-radius: 5px;
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #2a2a2a, stop:1 #1a1a1a);
+            border: 1px solid #0077cc;
+            border-radius: 5px;
             }
         """)
         return keyboard_frame
@@ -193,7 +194,7 @@ class KeyboardLayoutManager:
         for key_text, key_value in zxcv_keys:
             try:
                 if key_text == "Shift":
-                    key_btn = SpecialNeonKeyButton(key_text, key_value, 90)
+                    key_btn = SpecialNeonKeyButton(key_text, key_value, 70)
                 else:
                     key_btn = NeonKeyButton(key_text, key_value)
                 row_layout.addWidget(key_btn)
@@ -217,9 +218,9 @@ class KeyboardLayoutManager:
         for key_text, key_value in control_keys:
             try:
                 if key_text == "Space":
-                    key_btn = SpecialNeonKeyButton(key_text, key_value, 300, 20)
+                    key_btn = SpecialNeonKeyButton(key_text, key_value, 300, 17)
                 elif key_text in ["Ctrl", "Win", "Alt", "Fn"]:
-                    key_btn = SpecialNeonKeyButton(key_text, key_value, 54, 20)
+                    key_btn = SpecialNeonKeyButton(key_text, key_value, 54, 17)
                 else:
                     key_btn = NeonKeyButton(key_text, key_value)
                 row_layout.addWidget(key_btn)
