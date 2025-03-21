@@ -15,6 +15,7 @@ from ui.layouts import KeyboardLayoutManager
 from utils.window_utils import WindowManager
 import ctypes
 from ui.key_buttons import NeonKeyButton, SpecialNeonKeyButton
+from inference_engine import predict_next_word, complete_current_word
 
 # WM_HOTKEY (value 0x0312) is a Windows message that the system sends when a registered hotkey is triggered.
 # Applications that register hotkeys using RegisterHotKey() receive this message in their window procedure when the hotkey is pressed.
@@ -84,6 +85,12 @@ class VirtualKeyboard(QMainWindow):
             self.initial_width = 900
             self.initial_height = 350
 
+
+        # Setting up for Inference Models - Current Word Completion and Next Word Prediction
+        self.inference_prefix = ""
+        self.inference_context = ""
+        self.prediction_widgets = []
+
         # Initialize UI
         self.initUI()
 
@@ -117,6 +124,73 @@ class VirtualKeyboard(QMainWindow):
         # Scale each button
         for button in key_buttons:
             button.scale_size(scale_factor)
+
+    def setup_prediction_bar(self, parent_layout):
+        """Create the prediction bar with dynamic clickable widgets"""
+        prediction_layout = QHBoxLayout()
+        prediction_layout.setSpacing(5)
+        prediction_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        # Dummy values for context and prefix for UI testing
+        dummy_prefix = "test"
+        dummy_context = "this is a"
+
+        # Get completion suggestions (for demonstration)
+        completion_suggestions = complete_current_word(dummy_prefix, dummy_context, top_k=3)
+
+        # Get next word predictions (for demonstration)
+        next_word_predictions = predict_next_word(dummy_context, top_k=5)
+
+        # Create and add completion suggestion widgets
+        for suggestion in completion_suggestions:
+            button = QPushButton(suggestion)
+            button.setFixedWidth(80)  # Adjust width as needed
+            button.setStyleSheet(
+                "background-color: #e0f7fa; border: 1px solid #b2ebf2; border-radius: 5px; padding: 3px;")
+            button.clicked.connect(lambda _, text=suggestion: self.handle_prediction_click(text))
+            prediction_layout.addWidget(button)
+            self.prediction_widgets.append(button)
+
+        # Add a separator if needed
+        if completion_suggestions and next_word_predictions:
+            separator = QLabel("|")
+            separator.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            prediction_layout.addWidget(separator)
+
+        # Create and add next word prediction widgets
+        num_existing_widgets = len(self.prediction_widgets)
+        num_predictions_needed = 5
+        start_index = 0 if not self.prediction_widgets else 3  # Start index for next word predictions
+
+        for i in range(start_index, num_predictions_needed):
+            prediction = next_word_predictions[
+                i % len(next_word_predictions)] if next_word_predictions else f"Pred_{i + 1}"
+            button = QPushButton(prediction)
+            button.setFixedWidth(80)  # Adjust width as needed
+            button.setStyleSheet(
+                "background-color: #f0f4c3; border: 1px solid #e6ee9c; border-radius: 5px; padding: 3px;")
+            button.clicked.connect(lambda _, text=prediction: self.handle_prediction_click(text))
+            prediction_layout.addWidget(button)
+            self.prediction_widgets.append(button)
+            if len(self.prediction_widgets) >= num_predictions_needed:
+                break
+
+        parent_layout.addLayout(prediction_layout)
+
+        # Initial status label (can be removed or kept)
+        self.status_label = QLabel("Click keys to type (focus will be maintained on your Active window)")
+        self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.status_label.setStyleSheet(
+            "color: #66ccff; margin-bottom: 3px; border: 1px solid #66ccff; border-radius: 8px;")
+        parent_layout.addWidget(self.status_label)
+
+    @staticmethod
+    def handle_prediction_click(predicted_word):
+        """Handle the click event of a prediction widget"""
+        print(f"Prediction clicked: {predicted_word}")
+        # Here you would implement the logic to insert the predicted word
+        # into the currently active window or your application's text input.
+        pass
 
 
     def initUI(self):
@@ -215,11 +289,9 @@ class VirtualKeyboard(QMainWindow):
         # Add custom title bar
         self.add_title_bar(main_layout)
 
-        # Add status label (Word prediction Logic here)
-        self.status_label = QLabel("Click keys to type (focus will be maintained on your Active window)")
-        self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.status_label.setStyleSheet("color: #66ccff; margin-bottom: 3px;")
-        main_layout.addWidget(self.status_label)
+
+        # Add prediction bar
+        self.setup_prediction_bar(main_layout)
 
         # Create keyboard frame with neon effect
         keyboard_frame = self.create_keyboard_frame()
