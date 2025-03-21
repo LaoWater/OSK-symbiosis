@@ -23,7 +23,6 @@ class KeyboardApp(QApplication):
         self.keyboard = VirtualKeyboard()
 
 
-
     def exec(self):
         """Override exec to ensure proper cleanup"""
         result = super().exec()
