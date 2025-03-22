@@ -87,8 +87,8 @@ class VirtualKeyboard(QMainWindow):
 
 
         # Setting up for Inference Models - Current Word Completion and Next Word Prediction
-        self.inference_prefix = ""
-        self.inference_context = ""
+        self.current_prefix = ""
+        self.current_context = []
         self.prediction_widgets = []
 
         # Initialize UI
@@ -125,72 +125,173 @@ class VirtualKeyboard(QMainWindow):
         for button in key_buttons:
             button.scale_size(scale_factor)
 
-    def setup_prediction_bar(self, parent_layout):
-        """Create the prediction bar with dynamic clickable widgets"""
-        prediction_layout = QHBoxLayout()
+    def process_key_input(self, key_text):
+        """Process keyboard input and update predictions accordingly
+
+        Args:
+            key_text: The text of the key that was pressed
+        """
+        if key_text == " ":
+            # Space was pressed - if we have a prefix, add it to context
+            if self.current_prefix:
+                self.current_context.append(self.current_prefix)
+                self.current_prefix = ""
+            # Show next word predictions
+            self.update_predictions(is_next_word=True, context=self.current_context)
+        elif key_text == "\b":
+            # Backspace was pressed
+            if self.current_prefix:
+                # Remove last character from prefix
+                self.current_prefix = self.current_prefix[:-1]
+                if self.current_prefix:
+                    # If prefix still exists, update completion suggestions
+                    self.update_predictions(is_next_word=False, context=self.current_context,
+                                            prefix=self.current_prefix)
+                else:
+                    # If prefix is empty, show next word predictions
+                    self.update_predictions(is_next_word=True, context=self.current_context)
+            elif self.current_context:
+                # If no prefix but context exists, remove last word from context
+                # and set it as prefix for editing
+                self.current_prefix = self.current_context.pop()
+                self.update_predictions(is_next_word=False, context=self.current_context, prefix=self.current_prefix)
+        elif key_text == "\n":
+            # Enter was pressed - reset context
+            self.current_context = []
+            self.current_prefix = ""
+            self.update_predictions(is_next_word=True, context=self.current_context)
+        else:
+            # Regular character input
+            self.current_prefix += key_text
+            # Update completion suggestions
+            self.update_predictions(is_next_word=False, context=self.current_context, prefix=self.current_prefix)
+
+    def add_prediction_area(self, parent_layout):
+        """Create the prediction area with clickable prediction widgets"""
+        # Container for status label and prediction widgets
+        prediction_container = QWidget()
+        prediction_layout = QVBoxLayout(prediction_container)
+        prediction_layout.setContentsMargins(0, 0, 0, 0)
         prediction_layout.setSpacing(5)
-        prediction_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        # Dummy values for context and prefix for UI testing
-        dummy_prefix = "test"
-        dummy_context = "this is a"
-
-        # Get completion suggestions (for demonstration)
-        completion_suggestions = complete_current_word(dummy_prefix, dummy_context, top_k=3)
-
-        # Get next word predictions (for demonstration)
-        next_word_predictions = predict_next_word(dummy_context, top_k=5)
-
-        # Create and add completion suggestion widgets
-        for suggestion in completion_suggestions:
-            button = QPushButton(suggestion)
-            button.setFixedWidth(80)  # Adjust width as needed
-            button.setStyleSheet(
-                "background-color: #e0f7fa; border: 1px solid #b2ebf2; border-radius: 5px; padding: 3px;")
-            button.clicked.connect(lambda _, text=suggestion: self.handle_prediction_click(text))
-            prediction_layout.addWidget(button)
-            self.prediction_widgets.append(button)
-
-        # Add a separator if needed
-        if completion_suggestions and next_word_predictions:
-            separator = QLabel("|")
-            separator.setAlignment(Qt.AlignmentFlag.AlignCenter)
-            prediction_layout.addWidget(separator)
-
-        # Create and add next word prediction widgets
-        num_existing_widgets = len(self.prediction_widgets)
-        num_predictions_needed = 5
-        start_index = 0 if not self.prediction_widgets else 3  # Start index for next word predictions
-
-        for i in range(start_index, num_predictions_needed):
-            prediction = next_word_predictions[
-                i % len(next_word_predictions)] if next_word_predictions else f"Pred_{i + 1}"
-            button = QPushButton(prediction)
-            button.setFixedWidth(80)  # Adjust width as needed
-            button.setStyleSheet(
-                "background-color: #f0f4c3; border: 1px solid #e6ee9c; border-radius: 5px; padding: 3px;")
-            button.clicked.connect(lambda _, text=prediction: self.handle_prediction_click(text))
-            prediction_layout.addWidget(button)
-            self.prediction_widgets.append(button)
-            if len(self.prediction_widgets) >= num_predictions_needed:
-                break
-
-        parent_layout.addLayout(prediction_layout)
-
-        # Initial status label (can be removed or kept)
+        # Status label
         self.status_label = QLabel("Click keys to type (focus will be maintained on your Active window)")
         self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.status_label.setStyleSheet(
-            "color: #66ccff; margin-bottom: 3px; border: 1px solid #66ccff; border-radius: 8px;")
-        parent_layout.addWidget(self.status_label)
+            "color: #66ccff; margin-bottom: 3px; border: 1px solid #66ccff; border-radius: 8px; padding: 3px;")
+        prediction_layout.addWidget(self.status_label)
 
-    @staticmethod
-    def handle_prediction_click(predicted_word):
-        """Handle the click event of a prediction widget"""
-        print(f"Prediction clicked: {predicted_word}")
-        # Here you would implement the logic to insert the predicted word
-        # into the currently active window or your application's text input.
-        pass
+        # Prediction widgets container
+        prediction_widgets_container = QWidget()
+        prediction_widgets_layout = QHBoxLayout(prediction_widgets_container)
+        prediction_widgets_layout.setContentsMargins(0, 0, 0, 0)
+        prediction_widgets_layout.setSpacing(5)
+
+        # Create 5 clickable prediction widgets
+        self.prediction_widgets = []
+        for i in range(5):
+            prediction_widget = QPushButton("prediction " + str(i + 1))
+            prediction_widget.setStyleSheet("""
+                QPushButton {
+                    background-color: #2a2a2a;
+                    color: #ffffff;
+                    border: 1px solid #444444;
+                    border-radius: 8px;
+                    padding: 5px;
+                    font-size: 12px;
+                }
+                QPushButton:hover {
+                    background-color: #3a3a3a;
+                    border: 1px solid #66ccff;
+                }
+                QPushButton:pressed {
+                    background-color: #444444;
+                }
+            """)
+            prediction_widget.setCursor(Qt.CursorShape.PointingHandCursor)
+            prediction_widget.clicked.connect(lambda checked, idx=i: self.on_prediction_clicked(idx))
+            prediction_widgets_layout.addWidget(prediction_widget)
+            self.prediction_widgets.append(prediction_widget)
+
+        prediction_layout.addWidget(prediction_widgets_container)
+        parent_layout.addWidget(prediction_container)
+
+    def on_prediction_clicked(self, index):
+        """Handle prediction widget click"""
+        # Get the selected prediction text
+        if index >= len(self.prediction_widgets) or not self.prediction_widgets[index].isVisible():
+            return
+
+        prediction_text = self.prediction_widgets[index].text()
+        if not prediction_text:
+            return
+
+        print(f"Selected prediction {index + 1}: {prediction_text}")
+
+        # In a real implementation, this would insert the text into the active window
+        # For example, using something like:
+        # self.send_text_to_active_window(prediction_text)
+
+        # Update context with the selected word
+        if not self.current_prefix:
+            # If we were showing next word predictions, add the word to context
+            self.current_context.append(prediction_text)
+            # Reset prefix and update predictions for the next word
+            self.current_prefix = ""
+            self.update_predictions(is_next_word=True, context=self.current_context)
+        else:
+            # If we were showing completions, replace the prefix with the full word
+            # and add it to the context
+            self.current_context.append(prediction_text)
+            # Reset prefix and update predictions for the next word
+            self.current_prefix = ""
+            self.update_predictions(is_next_word=True, context=self.current_context)
+
+    def update_predictions(self, is_next_word=True, context=None, prefix=""):
+        """Update the prediction widgets with new predictions
+
+        Args:
+            is_next_word: If True, show next word predictions, otherwise show completions
+            context: The context for prediction (previous words) as a list
+            prefix: The prefix of the current word for completion
+        """
+        # Default empty context if None is provided
+        if context is None:
+            context = []
+
+        # Get predictions from inference engine
+        try:
+            if is_next_word:
+                # Get next word predictions using predict_next_word from inference_engine
+                predictions = predict_next_word(context, top_k=5)
+                prediction_type = "Next word"
+            else:
+                # Get word completion suggestions using complete_current_word from inference_engine
+                predictions = complete_current_word(prefix, context, top_k=5)
+                prediction_type = "Completion"
+
+            # Handle case where predictions might be None or empty
+            if not predictions:
+                predictions = []
+        except Exception as e:
+            print(f"Error getting predictions: {e}")
+            predictions = []
+            prediction_type = "Error in"
+
+        # Update prediction widgets
+        for i, widget in enumerate(self.prediction_widgets):
+            if i < len(predictions):
+                widget.setText(predictions[i])
+                widget.setVisible(True)
+            else:
+                widget.setVisible(False)
+
+        # Update status label with context info
+        context_str = " ".join(context) if context else ""
+        if is_next_word:
+            self.status_label.setText(f"{prediction_type} suggestions after '{context_str}'")
+        else:
+            self.status_label.setText(f"{prediction_type} suggestions for '{prefix}' after '{context_str}'")
 
 
     def initUI(self):
@@ -289,9 +390,8 @@ class VirtualKeyboard(QMainWindow):
         # Add custom title bar
         self.add_title_bar(main_layout)
 
-
-        # Add prediction bar
-        self.setup_prediction_bar(main_layout)
+        # Add prediction area
+        self.add_prediction_area(main_layout)
 
         # Create keyboard frame with neon effect
         keyboard_frame = self.create_keyboard_frame()
