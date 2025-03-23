@@ -262,12 +262,26 @@ class VirtualKeyboard(QMainWindow):
         # Get predictions from inference engine
         try:
             if is_next_word:
-                # Get next word predictions using predict_next_word from inference_engine
+                # Debugging: Print input parameters
+                print(f"Calling predict_next_word with context: {context}, top_k: 5")
+
+                # Get next word predictions
                 predictions = predict_next_word(context, top_k=5)
+
+                # Debugging: Print returned value
+                print(f"predict_next_word returned: {predictions}")
+
                 prediction_type = "Next word"
             else:
-                # Get word completion suggestions using complete_current_word from inference_engine
+                # Debugging: Print input parameters
+                print(f"Calling complete_current_word with prefix: {prefix}, context: {context}, top_k: 5")
+
+                # Get word completion suggestions
                 predictions = complete_current_word(prefix, context, top_k=5)
+
+                # Debugging: Print returned value
+                print(f"complete_current_word returned: {predictions}")
+
                 prediction_type = "Completion"
 
             # Handle case where predictions might be None or empty

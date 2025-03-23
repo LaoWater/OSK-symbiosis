@@ -16,7 +16,7 @@ class KeyboardApp(QApplication):
 
         # Set up global hotkey
         self.hotkey = Win32Hotkey()
-        self.hotkey.register(win32con.VK_SPACE, [win32con.MOD_CONTROL])
+        self.hotkey.register(win32con.VKqedg_SPACE, [win32con.MOD_CONTROL])
 
 
         # Create the keyboard window
