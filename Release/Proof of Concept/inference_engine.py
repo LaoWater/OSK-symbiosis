@@ -65,20 +65,47 @@ def predict_next_word(context, top_k=5):
 
 
 
-def main():
-    # Example test cases
-    test_context_1 = ["so"]
-    test_prefix_1 = "bea"
+def run_tests():
+    """
+    Run multiple test cases to validate both word completion and next word prediction.
+    """
+    test_cases = [
+        # Word Completion Tests
+        (["hello"], "worl"),  # Should suggest "world"
+        (["good"], "mor"),  # Should suggest "morning"
+        ([], "com"),  # Should suggest common words starting with "com"
+        (["the", "quick"], "bro"),  # Should suggest "brown"
+        (["I", "am"], "hap"),  # Should suggest "happy"
+        (["let's", "go"], "par"),  # Should suggest "party" or "park"
+        (["I", "like"], "cho"),  # Should suggest "chocolate"
+        (["this", "is"], "imp"),  # Should suggest "important"
+        (["she", "loves"], "flo"),  # Should suggest "flowers"
+        ([], "rea"),  # Should suggest common words like "read", "real", "reason"
 
-    test_context_2 = ["good", "morning"]
-    test_prefix_2 = "sun"
+        # Next Word Prediction Tests
+        (["hello", "how"], ""),  # Should suggest "are", "is", "do", etc.
+        (["good", "morning"], ""),  # Should suggest common words like "everyone", "to"
+        (["I", "am"], ""),  # Should suggest "happy", "fine", "tired"
+        (["let's", "go"], ""),  # Should suggest "to", "out", "for"
+        (["the", "weather"], ""),  # Should suggest "is", "today", "looks"
+        (["she", "is"], ""),  # Should suggest "beautiful", "happy", "smart"
+        (["he", "wants"], ""),  # Should suggest "to", "a", "something"
+        (["I", "love"], ""),  # Should suggest "you", "coding", "music"
+        (["they", "are"], ""),  # Should suggest "coming", "here", "happy"
+        (["we", "should"], ""),  # Should suggest "go", "try", "see"
+    ]
 
-    print("Completion suggestions:", complete_current_word(test_prefix_1, test_context_1, top_k=3))
-    print("Completion suggestions:", complete_current_word(test_prefix_2, test_context_2, top_k=3))
+    print("\nRunning tests...\n")
 
-    print("Next word predictions:", predict_next_word(test_context_1, top_k=5))
-    print("Next word predictions:", predict_next_word(test_context_2, top_k=5))
+    for i, (context, prefix) in enumerate(test_cases):
+        if prefix:  # Test word completion
+            result = complete_current_word(prefix, context, top_k=3)
+            print(f"Test {i+1}: complete_current_word('{prefix}', {context}) → {result}")
+        else:  # Test next word prediction
+            result = predict_next_word(context, top_k=5)
+            print(f"Test {i+1}: predict_next_word({context}) → {result}")
 
+    print("\nTesting completed.")
 
 if __name__ == "__main__":
-    main()
+    run_tests()
