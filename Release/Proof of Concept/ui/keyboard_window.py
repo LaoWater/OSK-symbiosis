@@ -258,6 +258,20 @@ class VirtualKeyboard(QMainWindow):
         # Default empty context if None is provided
         if context is None:
             context = []
+        import random
+
+        # Random word generator function
+        def generate_random_words(count=5):
+            # Dictionary of 25 common words
+            word_dict = [
+                "apple", "blue", "cat", "dog", "easy",
+                "fish", "green", "house", "ice", "jump",
+                "king", "light", "moon", "night", "ocean",
+                "play", "queen", "red", "star", "tree",
+                "up", "violet", "water", "xray", "yellow"
+            ]
+            # Return 'count' number of random words
+            return random.sample(word_dict, min(count, len(word_dict)))
 
         # Get predictions from inference engine
         try:
@@ -285,13 +299,19 @@ class VirtualKeyboard(QMainWindow):
                 prediction_type = "Completion"
 
             # Handle case where predictions might be None or empty
-            if not predictions:
-                predictions = []
+            if not predictions or predictions is None:
+                print("No predictions returned, generating random words")
+                predictions = generate_random_words(count=5)
+                prediction_type += " (using random words)"
+
         except Exception as e:
             print(f"Error getting predictions: {e}")
-            predictions = []
-            prediction_type = "Error in"
+            predictions = generate_random_words(count=5)  # Use random words on error too
+            prediction_type = "Error in (using random words)"
 
+        # At this point, predictions will always contain values:
+        # - Either from the inference engine if successful
+        # - Or random words if the inference failed or returned nothing
         # Update prediction widgets
         for i, widget in enumerate(self.prediction_widgets):
             if i < len(predictions):

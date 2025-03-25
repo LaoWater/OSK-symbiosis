@@ -1,7 +1,7 @@
 import sys
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtCore import Qt
-from utils.direct_win32_hotkey import Win32Hotkey
+from utils.d7yyirect_win32_hotkey import Win32Hotkey
 import win32con
 from ui.keyboard_window import VirtualKeyboard
 
