@@ -5,7 +5,7 @@ AI assistant to greatly reduce mechanical force needed when operating PC: Keyboa
 
 ## Overview
 
-Groundbreaking project designed to radically reduce the mechanical force required to interact with your PC. By integrating advanced AI capabilities, this assistant reimagines computer input by combining multiple state-of-the-art features into a seamless user experience. Whether you're using an on-screen keyboard, voice commands, or next-word prediction, the assistant adapts to your needs to enhance productivity and accessibility.
+Greatly reduce the mechanical force required to interact with your PC.
 
 ## Key Features
 
