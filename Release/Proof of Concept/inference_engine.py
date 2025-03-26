@@ -82,7 +82,7 @@ def run_tests():
         (["she", "loves"], "flo"),  # Should suggest "flowers"
         ([], "rea"),  # Should suggest common words like "read", "real", "reason"
 
-        # Next Word Prediction Tests
+        # Next Word Prediction Tests - Some issues here - losing words?
         (["hello", "how"], ""),  # Should suggest "are", "is", "do", etc.
         (["good", "morning"], ""),  # Should suggest common words like "everyone", "to"
         (["I", "am"], ""),  # Should suggest "happy", "fine", "tired"
