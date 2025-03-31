@@ -16,7 +16,7 @@ from utils.window_utils import WindowManager
 import ctypes
 from ui.key_buttons import NeonKeyButton, SpecialNeonKeyButton
 from inference_engine import predict_next_word, complete_current_word
-
+from
 # WM_HOTKEY (value 0x0312) is a Windows message that the system sends when a registered hotkey is triggered.
 # Applications that register hotkeys using RegisterHotKey() receive this message in their window procedure when the hotkey is pressed.
 WM_HOTKEY = 0x0312
